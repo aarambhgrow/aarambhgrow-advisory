@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   ChevronDown,
@@ -15,352 +16,210 @@ import {
   Sparkles,
   Workflow,
   Scale,
+  Receipt,
+  FileText,
+  FileCheck,
+  Stamp,
+  BriefcaseBusiness,
+  Utensils,
+  Award,
+  Tags,
+  Factory,
+  Percent,
 } from "lucide-react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const NAV_LINKS = [
+const COLORS = {
+  navy: "#03254C",
+  orange: "#F26522",
+  green: "#157327",
+  offWhite: "#fafafa",
+  white: "#ffffff",
+  slate100: "#f1f5f9",
+  slate200: "#e2e8f0",
+  slate300: "#cbd5e1",
+  slate500: "#64748b",
+  slate600: "#475569",
+  orange50: "#fff7ed",
+  green50: "#f0fdf4",
+};
+
+const SERVICES_URL = "https://YOUR-SERVICES-WEBSITE.com";
+const INFINITY_URL = "https://YOUR-INFINITY-WEBSITE.com";
+
+const SERVICES = [
   {
-    label: "Home",
-    href: "/",
+    label: "Company Incorporation",
+    href: "/services/company-incorporation",
+    description: "Pvt Ltd, OPC, LLP and Partnership Deed",
+    icon: Building2,
   },
-
   {
-    label: "About Us",
-    href: "/about",
+    label: "MSME / Udyam Registration",
+    href: "/services/msme-udyam-registration",
+    description: "MSME / Udyam Registration",
+    icon: BadgeCheck,
   },
-
+  { label: "GST Registration", href: "/services/gst-registration", description: "GST Registration", icon: Receipt },
+  { label: "Income Tax (ITR) Filing", href: "/services/income-tax-itr-filing", description: "Income Tax (ITR) Filing", icon: FileText },
   {
-    label: "Services",
-    href: "/services/registration",
-
-    children: [
-      {
-        label: "Registration",
-        href: "/services/registration",
-        description: "Company, LLP, OPC & MSME setup",
-        icon: Building2,
-      },
-
-      {
-        label: "Finance",
-        href: "/services/finance",
-        description: "Loans, subsidies & business funding",
-        icon: Banknote,
-      },
-
-      {
-        label: "Certification",
-        href: "/services/certification",
-        description: "ISO, FSSAI, Startup India & more",
-        icon: BadgeCheck,
-      },
-
-      {
-        label: "Branding",
-        href: "/services/branding",
-        description: "Brand identity, strategy & positioning",
-        icon: Sparkles,
-      },
-
-      {
-        label: "Operations",
-        href: "/services/operations",
-        description: "Process improvement, automation & consulting",
-        icon: Workflow,
-      },
-
-      {
-        label: "Legal & CA",
-
-        href: "/services/legal-ca",
-
-        description: "GST, ITR, ROC & business compliance",
-        icon: Scale,
-      },
-    ],
+    label: "MCA Annual Filing / ROC Compliance",
+    href: "/services/mca-annual-filing-roc-compliance",
+    description: "MCA Annual Filing / ROC Compliance",
+    icon: FileCheck,
   },
-
+  { label: "DSC (Digital Signature Certificate)", href: "/services/dsc", description: "DSC (Digital Signature Certificate)", icon: Stamp },
   {
-    label: "Contact Us",
-    href: "/contact",
+    label: "Startup India (DPIIT) Recognition",
+    href: "/services/startup-india-dpiit-recognition",
+    description: "Startup India (DPIIT) Recognition",
+    icon: BadgeCheck,
   },
+  { label: "Labour Licence", href: "/services/labour-licence", description: "Labour Licence", icon: BriefcaseBusiness },
+  { label: "FSSAI Licence", href: "/services/fssai-licence", description: "FSSAI Licence", icon: Utensils },
+  { label: "ISO Certification", href: "/services/iso-certification", description: "ISO Certification", icon: Award },
+  { label: "Trademark Registration", href: "/services/trademark-registration", description: "Trademark Registration", icon: Tags },
+  { label: "ZED Certification", href: "/services/zed-certification", description: "ZED Certification", icon: Factory },
+  { label: "80IAC Tax Exemption", href: "/services/80iac-tax-exemption", description: "80IAC Tax Exemption", icon: Percent },
 ];
 
-function Logo() {
-  return (
-    <Link href="/" className="flex items-center gap-1 shrink-0 group">
-      <motion.div
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{
-          type: "spring",
-          stiffness: 400,
-          damping: 17,
-        }}
-        className="flex items-center"
-      >
-        <Image
-          src="/images/home-logo.png"
-          alt="AarambhGrow Group of Companies"
-          width={130}
-          height={30}
-          priority
-          className="h-20 w-auto object-contain transition-all duration-300 filter drop-shadow-xs group-hover:drop-shadow-md"
-        />
-      </motion.div>
-    </Link>
-  );
-}
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services", children: SERVICES },
+  { label: "Contact", href: "/contact" },
+];
 
-function DesktopLink({ link, isActive }) {
-  const hasChildren = Boolean(link.children?.length);
+const EXTERNAL_LINKS = [
+  { label: "Services", href: SERVICES_URL },
+  { label: "Infinity", href: INFINITY_URL },
+];
 
-  const isMegaMenu = hasChildren && link.children.length > 5;
+function DesktopNavItem({ link, onNavigate }) {
+  const [open, setOpen] = useState(false);
+  const hasChildren = Array.isArray(link.children) && link.children.length > 0;
 
-  return (
-    <div className="group relative py-5 flex items-center">
+  if (!hasChildren) {
+    return (
       <Link
         href={link.href}
-        aria-current={isActive ? "page" : undefined}
-        className={`relative z-10 flex items-center gap-1 px-2.5 py-1.5 text-[13px] font-semibold transition-colors duration-300 ease-out select-none whitespace-nowrap hover:text-[#F26522] ${
-          isActive ? "text-[#F26522]" : "text-[#03254C]"
-        }`}
+        onClick={onNavigate}
+        className="group relative flex items-center px-4 py-2.5 text-sm font-semibold transition-colors duration-200"
+        style={{ color: COLORS.navy }}
       >
-        {/* Text */}
-        <span className="relative z-10 block transition-transform duration-300 ease-out group-hover:-translate-y-0.5">
-          {link.label}
-        </span>
-
-        {/* Dropdown Arrow */}
-        {hasChildren && (
-          <ChevronDown className="relative z-10 h-3 w-3 text-slate-400 transition-all duration-300 ease-out group-hover:rotate-180 group-hover:text-[#F26522]" />
-        )}
-
-        {/* Animated Underline */}
+        {link.label}
         <span
-          className={`absolute bottom-1 left-2.5 right-2.5 h-[2px] transition-transform duration-300 ease-out origin-left rounded-full group-hover:scale-x-100 ${
-            isActive ? "scale-x-100" : "scale-x-0"
-          }`}
-          style={{
-            background: "linear-gradient(90deg, #F26522 0%, #157327 100%)",
-          }}
+          className="absolute bottom-0 left-4 right-4 h-[2px] origin-left scale-x-0 transition-transform duration-200 group-hover:scale-x-100"
+          style={{ backgroundColor: COLORS.orange }}
         />
       </Link>
-
-      {hasChildren && (
-        <div
-          className={`invisible absolute top-full z-20 pt-2 opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-3 pointer-events-none group-hover:pointer-events-auto ${
-            isMegaMenu
-              ? "left-1/2 -translate-x-1/2 w-[640px]"
-              : "left-1/2 -translate-x-1/2 w-56"
-          }`}
-        >
-          {isMegaMenu ? (
-            <div className="overflow-hidden rounded-md border border-slate-100/80 bg-white/95 shadow-[0_20px_50px_-12px_rgba(3,37,76,0.12)] backdrop-blur-xl transition-all duration-300 flex">
-              <div className="w-2/3 p-5">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="h-4 w-1 rounded-full bg-[#F26522]" />
-
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#03254C]">
-                    Explore Services
-                  </h3>
-                </div>
-                <p className="text-[11px] text-slate-500 mb-4 ml-3">
-                  Complete business solutions to start, manage & grow with
-                  confidence.
-                </p>
-                <div className="flex gap-6">
-                  <div className="flex-1 flex flex-col gap-1">
-                    {link.children.slice(0, 3).map((child) => {
-                      const Icon = child.icon;
-
-                      return (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="group/item flex flex-col gap-0.5 p-2 rounded-md transition-all duration-200 hover:bg-[#F26522]/5"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            {Icon && (
-                              <Icon
-                                className="h-[18px] w-[18px] text-[#03254C]/60 transition-colors duration-200 group-hover/item:text-[#F26522] shrink-0"
-                                strokeWidth={1.5}
-                              />
-                            )}
-
-                            <span className="text-[12px] font-semibold text-[#03254C] transition-transform duration-200 group-hover/item:translate-x-0.5">
-                              {child.label}
-                            </span>
-                          </div>
-
-                          <p className="text-[10px] text-slate-500 leading-tight pl-[30px] mt-0.5">
-                            {child.description}
-                          </p>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                  <div className="flex-1 flex flex-col gap-1">
-                    {link.children.slice(3, 6).map((child) => {
-                      const Icon = child.icon;
-
-                      return (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="group/item flex flex-col gap-0.5 p-2 rounded-md transition-all duration-200 hover:bg-[#F26522]/5"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            {Icon && (
-                              <Icon
-                                className="h-[18px] w-[18px] text-[#03254C]/60 transition-colors duration-200 group-hover/item:text-[#F26522] shrink-0"
-                                strokeWidth={1.5}
-                              />
-                            )}
-
-                            <span className="text-[12px] font-semibold text-[#03254C] transition-transform duration-200 group-hover/item:translate-x-0.5">
-                              {child.label}
-                            </span>
-                          </div>
-
-                          <p className="text-[10px] text-slate-500 leading-tight pl-[30px] mt-0.5">
-                            {child.description}
-                          </p>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-1/3 bg-gradient-to-br from-[#03254C] to-[#062a57] p-6 flex flex-col justify-center text-white relative overflow-hidden border-l border-slate-100/10">
-                <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#F26522]/20 rounded-full blur-2xl" />
-
-                <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-[#157327]/20 rounded-full blur-2xl" />
-
-                <div className="relative z-10">
-                  <h4 className="text-sm font-bold mb-2 text-white">
-                    Need Help Deciding?
-                  </h4>
-
-                  <p className="text-[11px] text-slate-300 leading-relaxed mb-4">
-                    Our experts help you find the right solutions for your
-                    business goals.
-                  </p>
-
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-1 rounded-full bg-[#F26522] px-3 py-1.5 text-[10px] font-bold text-white transition-all hover:bg-white hover:text-[#F26522]"
-                  >
-                    Get Free Consultation
-                    <ArrowUpRight className="h-3 w-3" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="overflow-hidden rounded-md border border-slate-100/80 bg-white/95 p-2 shadow-[0_20px_50px_-12px_rgba(3,37,76,0.12)] backdrop-blur-xl transition-all duration-300">
-              {link.children.map((child, idx) => (
-                <Link
-                  key={child.label}
-                  href={child.href}
-                  style={{
-                    transitionDelay: `${idx * 25}ms`,
-                  }}
-                  className="group/item flex items-center justify-between rounded-md px-3 py-2.5 text-xs font-semibold text-[#03254C]/80 transition-all duration-200 hover:bg-[#F26522]/10 hover:text-[#F26522] hover:translate-x-1"
-                >
-                  <span className="transition-transform duration-200 group-hover/item:translate-x-0.5">
-                    {child.label}
-                  </span>
-
-                  <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-all duration-200 -translate-x-1 translate-y-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 group-hover/item:translate-y-0 text-[#157327]" />
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function MobileLink({ link, onNavigate, isActive }) {
-  const [open, setOpen] = useState(false);
-
-  const hasChildren = Boolean(link.children?.length);
+    );
+  }
 
   return (
-    <div className="border-b border-slate-100/60 last:border-none">
-      <div className="flex w-full items-center justify-between py-0.5">
-        <Link
-          href={link.href}
-          onClick={onNavigate}
-          aria-current={isActive ? "page" : undefined}
-          className={`flex-grow py-2.5 text-[13px] font-semibold tracking-wide transition-colors hover:text-[#F26522] ${
-            isActive ? "text-[#F26522]" : "text-[#03254C]"
-          }`}
-        >
-          {link.label}
-        </Link>
+    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="group relative flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold transition-colors duration-200"
+        style={{ color: COLORS.navy }}
+      >
+        {link.label}
+        <ChevronDown size={16} strokeWidth={2} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+        <span
+          className="absolute bottom-0 left-4 right-4 h-[2px] origin-left transition-transform duration-200"
+          style={{ backgroundColor: COLORS.orange, transform: open ? "scaleX(1)" : "scaleX(0)" }}
+        />
+      </button>
 
-        {hasChildren && (
-          <button
-            type="button"
-            onClick={() => setOpen((o) => !o)}
-            className="p-2.5 text-slate-400 hover:text-[#F26522] transition-colors"
-            aria-label="Toggle submenu"
-          >
-            <ChevronDown
-              className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180 text-[#F26522]" : ""}`}
-            />
-          </button>
-        )}
-      </div>
-
-      <AnimatePresence initial={false}>
-        {hasChildren && open && (
+      <AnimatePresence>
+        {open && (
           <motion.div
-            initial={{
-              height: 0,
-              opacity: 0,
-            }}
-            animate={{
-              height: "auto",
-              opacity: 1,
-            }}
-            exit={{
-              height: 0,
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.3,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="overflow-hidden"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.18 }}
+            className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4"
           >
-            <div className="pl-3 pr-2 pb-2 flex flex-col gap-1 border-l-2 border-[#F26522]/20 my-1 ml-1">
-              {link.children?.map((child) => {
-                const Icon = child.icon;
+            <div
+              className="w-[1060px] max-w-[calc(100vw-32px)] overflow-hidden rounded-md border bg-white shadow-[0_25px_70px_rgba(3,37,76,0.16)]"
+              style={{ borderColor: COLORS.slate200 }}
+            >
+              <div className="flex">
+                <div className="flex-1 p-6">
+                  <div className="grid grid-cols-3 gap-3">
+                    {link.children.map((service) => {
+                      const Icon = service.icon || Building2;
 
-                return (
-                  <Link
-                    key={child.label}
-                    href={child.href}
-                    onClick={onNavigate}
-                    className="group/m flex items-center gap-2.5 text-xs font-semibold text-slate-500 py-1.5 px-2 rounded-md hover:text-[#F26522] hover:bg-slate-50 transition-all duration-150 active:scale-98"
-                  >
-                    {Icon && (
-                      <Icon
-                        className="h-[18px] w-[18px] text-[#03254C]/50 group-hover/m:text-[#F26522] transition-colors shrink-0"
-                        strokeWidth={1.5}
-                      />
-                    )}
+                      return (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          onClick={() => {
+                            setOpen(false);
+                            onNavigate?.();
+                          }}
+                          className="group rounded-md border p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                          style={{ borderColor: COLORS.slate200, backgroundColor: COLORS.white }}
+                        >
+                          <div className="flex gap-3">
+                            <div
+                              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md transition-colors duration-200"
+                              style={{ backgroundColor: COLORS.slate100, color: COLORS.navy }}
+                            >
+                              <Icon size={19} strokeWidth={2} />
+                            </div>
 
-                    {child.label}
-                  </Link>
-                );
-              })}
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-start justify-between gap-2">
+                                <h4 className="text-sm font-bold leading-5 transition-colors" style={{ color: COLORS.navy }}>
+                                  {service.label}
+                                </h4>
+
+                                <ArrowUpRight
+                                  size={15}
+                                  className="shrink-0 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                                  style={{ color: COLORS.orange }}
+                                />
+                              </div>
+
+                              <p className="mt-1.5 text-[11px] leading-[1.55]" style={{ color: COLORS.slate500 }}>
+                                {service.description}
+                              </p>
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="flex items-center justify-between border-t px-7 py-3.5"
+                style={{ borderColor: COLORS.slate200, backgroundColor: COLORS.offWhite }}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: COLORS.green }} />
+                  <span className="text-xs font-medium" style={{ color: COLORS.slate600 }}>
+                    Business support for startups, MSMEs & entrepreneurs
+                  </span>
+                </div>
+
+                <Link
+                  href="/services"
+                  onClick={() => {
+                    setOpen(false);
+                    onNavigate?.();
+                  }}
+                  className="flex items-center gap-1 text-xs font-bold"
+                  style={{ color: COLORS.navy }}
+                >
+                  View All
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
@@ -369,204 +228,321 @@ function MobileLink({ link, onNavigate, isActive }) {
   );
 }
 
-export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+function DesktopExternalLink({ link }) {
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative flex items-center gap-1 px-3 py-2.5 text-sm font-semibold transition-colors duration-200"
+      style={{ color: COLORS.navy }}
+    >
+      {link.label}
+      <ArrowUpRight
+        size={14}
+        strokeWidth={2}
+        className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        style={{ color: COLORS.orange }}
+      />
+      <span
+        className="absolute bottom-0 left-3 right-3 h-[2px] origin-left scale-x-0 transition-transform duration-200 group-hover:scale-x-100"
+        style={{ backgroundColor: COLORS.orange }}
+      />
+    </a>
+  );
+}
 
+function MobileNavItem({ link, onNavigate }) {
+  const [open, setOpen] = useState(false);
+  const hasChildren = Array.isArray(link.children) && link.children.length > 0;
+
+  if (!hasChildren) {
+    return (
+      <Link
+        href={link.href}
+        onClick={onNavigate}
+        className="flex items-center justify-between border-b py-4 text-base font-bold"
+        style={{ borderColor: COLORS.slate200, color: COLORS.navy }}
+      >
+        <span>{link.label}</span>
+        <ArrowUpRight size={17} style={{ color: COLORS.orange }} />
+      </Link>
+    );
+  }
+
+  return (
+    <div className="border-b" style={{ borderColor: COLORS.slate200 }}>
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between py-4 text-left text-base font-bold"
+        style={{ color: COLORS.navy }}
+      >
+        <span>{link.label}</span>
+        <ChevronDown
+          size={19}
+          className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          style={{ color: COLORS.orange }}
+        />
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            <div className="space-y-1 pb-3">
+              {link.children.map((service) => (
+                <Link
+                  key={service.href}
+                  href={service.href}
+                  onClick={onNavigate}
+                  className="flex h-8 w-full items-center justify-between rounded-md px-3 transition-all duration-150 active:scale-[0.99]"
+                  style={{ backgroundColor: COLORS.offWhite, color: COLORS.navy }}
+                >
+                  <span className="text-xs font-bold">{service.label}</span>
+                  <ArrowUpRight size={13} className="shrink-0" style={{ color: COLORS.orange }} />
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+function MobileExternalLink({ link, onNavigate }) {
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onNavigate}
+      className="flex items-center justify-between border-b py-4 text-base font-bold"
+      style={{ borderColor: COLORS.slate200, color: COLORS.navy }}
+    >
+      <span>{link.label}</span>
+      <ArrowUpRight size={17} style={{ color: COLORS.orange }} />
+    </a>
+  );
+}
+
+export default function Navbar() {
+  const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const pathname = usePathname();
-
-  const isLinkActive = (href) => {
-    if (href === "/") {
-      return pathname === "/";
-    }
-
-    return pathname === href || pathname.startsWith(`${href}/`);
-  };
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 15);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    setMobileOpen(false);
+  }, [pathname]);
 
-    onScroll();
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
 
-    window.addEventListener("scroll", onScroll, {
-      passive: true,
-    });
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [mobileOpen]);
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const closeMobileMenu = () => setMobileOpen(false);
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        scrolled
-          ? "border-b border-slate-200/50 bg-white/85 shadow-xs backdrop-blur-md h-16"
-          : "border-b border-transparent bg-white h-16"
-      }`}
+      className="sticky top-0 z-50 w-full border-b transition-all duration-300"
+      style={{
+        backgroundColor: "rgba(255,255,255,0.97)",
+        borderColor: scrolled ? COLORS.slate200 : "transparent",
+        boxShadow: scrolled ? "0 4px 20px rgba(3,37,76,0.06)" : "none",
+        backdropFilter: "blur(12px)",
+      }}
     >
-      <div className="mx-auto flex h-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Logo />
+      <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" onClick={closeMobileMenu} className="relative z-50 flex shrink-0 items-center">
+          <Image
+            src="/images/logo.png"
+            alt="AarambhGrow Services Private Limited"
+            width={190}
+            height={55}
+            priority
+            className="h-auto w-[150px] object-contain sm:w-[175px]"
+          />
+        </Link>
 
-        <nav className="hidden items-center gap-2 lg:flex h-full">
+        <nav className="hidden items-center lg:flex">
           {NAV_LINKS.map((link) => (
-            <DesktopLink
-              key={link.label}
-              link={link}
-              isActive={isLinkActive(link.href)}
-            />
+            <DesktopNavItem key={link.href} link={link} onNavigate={closeMobileMenu} />
           ))}
+          <DesktopExternalLink link={EXTERNAL_LINKS[0]} />
+          <DesktopExternalLink link={EXTERNAL_LINKS[1]} />
         </nav>
+
         <div className="hidden items-center gap-5 lg:flex">
-          {/* Phone */}
-
-          <motion.a
-            whileHover={{
-              scale: 1.02,
-            }}
-            whileTap={{
-              scale: 0.98,
-            }}
-            href="tel:+919998715799"
-            className="group flex items-center gap-2 text-[13px] font-semibold text-[#03254C] hover:text-[#F26522] transition-colors"
-          >
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-50 text-[#03254C] transition-all duration-300 group-hover:bg-[#F26522] group-hover:text-white group-hover:shadow-xs">
-              <Phone className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-12" />
-            </span>
-            +91 99987 15799
-          </motion.a>
-
-          {/* Consultation */}
-
-          <motion.div
-            whileHover={{
-              scale: 1.03,
-            }}
-            whileTap={{
-              scale: 0.97,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 17,
-            }}
-          >
-            <Link
-              href="/contact"
-              className="group relative flex items-center gap-1 overflow-hidden rounded-full border border-[#F26522] bg-[#F26522] px-4 py-1.5 text-xs font-semibold text-white shadow-xs hover:shadow-md transition-all duration-300 ease-out hover:text-[#03254C]"
+          <a href="tel:+919998715799" className="group flex items-center gap-2.5">
+            <span
+              className="flex h-9 w-9 items-center justify-center rounded-md transition-colors group-hover:bg-orange-50"
+              style={{ backgroundColor: COLORS.slate100, color: COLORS.navy }}
             >
-              <span className="absolute inset-0 z-0 translate-y-full bg-white transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
+              <Phone size={16} />
+            </span>
 
-              <span className="relative z-10 flex items-center gap-1">
-                Get Free Consultation
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-white group-hover:text-[#157327]" />
+            <span>
+              <span className="block text-[10px] font-semibold uppercase tracking-wider" style={{ color: COLORS.slate500 }}>
+                Call Us
               </span>
-            </Link>
-          </motion.div>
+              <span className="block text-sm font-bold" style={{ color: COLORS.navy }}>
+                +91 99987 15799
+              </span>
+            </span>
+          </a>
+
+          <Link
+            href="/contact"
+            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-6 py-2.5 text-sm font-bold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:gap-4"
+            style={{ backgroundColor: COLORS.orange }}
+          >
+            <span
+              className="absolute inset-0 translate-y-full rounded-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0"
+              style={{ backgroundColor: "#111111" }}
+            />
+
+            <span className="relative z-10 overflow-hidden">
+              <span className="block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full">
+                Get Consultation
+              </span>
+              <span className="absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0">
+                Get Started
+              </span>
+            </span>
+
+            <span className="relative z-10 flex h-5 w-5 items-center justify-center overflow-hidden">
+              <ArrowUpRight
+                size={17}
+                className="absolute transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-6 group-hover:-translate-y-6"
+              />
+              <ArrowUpRight
+                size={17}
+                className="absolute -translate-x-6 translate-y-6 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:translate-y-0"
+              />
+            </span>
+          </Link>
         </div>
 
-        <motion.button
-          whileTap={{
-            scale: 0.9,
-          }}
+        <button
           type="button"
-          onClick={() => setMobileOpen((o) => !o)}
-          className="flex h-9 w-9 items-center justify-center rounded-md text-[#03254C] hover:bg-slate-50 active:bg-slate-100 lg:hidden transition-colors"
+          onClick={() => setMobileOpen((value) => !value)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          className="relative z-50 flex h-10 w-10 items-center justify-center rounded-md lg:hidden"
+          style={{ backgroundColor: COLORS.slate100, color: COLORS.navy }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={mobileOpen ? "close" : "open"}
-              initial={{
-                opacity: 0,
-                rotate: -90,
-                scale: 0.8,
-              }}
-              animate={{
-                opacity: 1,
-                rotate: 0,
-                scale: 1,
-              }}
-              exit={{
-                opacity: 0,
-                rotate: 90,
-                scale: 0.8,
-              }}
-              transition={{
-                duration: 0.15,
-              }}
-            >
-              {mobileOpen ? (
-                <X className="h-4 w-4" />
-              ) : (
-                <Menu className="h-4 w-4" />
-              )}
-            </motion.div>
+          <AnimatePresence mode="wait" initial={false}>
+            {mobileOpen ? (
+              <motion.span
+                key="close"
+                initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+              >
+                <X size={23} />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="menu"
+                initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
+              >
+                <Menu size={23} />
+              </motion.span>
+            )}
           </AnimatePresence>
-        </motion.button>
+        </button>
       </div>
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: -10,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: -10,
-            }}
-            transition={{
-              duration: 0.25,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="absolute left-0 top-full w-full border-t border-slate-100 bg-white/95 px-4 pb-5 backdrop-blur-xl lg:hidden shadow-xl"
-          >
-            <nav className="flex flex-col pt-1">
-              {NAV_LINKS.map((link) => (
-                <MobileLink
-                  key={link.label}
-                  link={link}
-                  onNavigate={() => setMobileOpen(false)}
-                  isActive={isLinkActive(link.href)}
-                />
-              ))}
-            </nav>
-            <div className="mt-4 flex flex-col gap-2.5 pt-2 border-t border-slate-100">
-              {/* Phone */}
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeMobileMenu}
+              className="fixed inset-0 top-[78px] z-40 bg-[#03254C]/30 lg:hidden"
+            />
 
-              <a
-                href="tel:+919998715799"
-                className="flex items-center gap-2 py-1.5 text-[13px] font-semibold text-[#03254C] hover:text-[#F26522] transition-colors"
-              >
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F26522]/10 text-[#F26522]">
-                  <Phone className="h-3.5 w-3.5" />
-                </span>
-                +91 99987 15799
-              </a>
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="fixed left-0 right-0 top-[78px] z-40 h-[calc(100dvh-78px)] overflow-y-auto overscroll-contain border-t bg-white px-5 pb-8 shadow-xl lg:hidden"
+              style={{
+                borderColor: COLORS.slate200,
+                WebkitOverflowScrolling: "touch",
+                touchAction: "pan-y",
+              }}
+            >
+              <nav className="mx-auto max-w-2xl">
+                {NAV_LINKS.map((link) => (
+                  <MobileNavItem key={link.href} link={link} onNavigate={closeMobileMenu} />
+                ))}
 
-              {/* Consultation */}
+                <MobileExternalLink link={EXTERNAL_LINKS[0]} onNavigate={closeMobileMenu} />
+                <MobileExternalLink link={EXTERNAL_LINKS[1]} onNavigate={closeMobileMenu} />
 
-              <motion.div
-                whileTap={{
-                  scale: 0.98,
-                }}
-              >
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-1 rounded-full bg-gradient-to-r from-[#F26522] to-[#157327] px-4 py-2.5 text-xs font-semibold text-white shadow-sm active:opacity-90 transition-opacity"
-                >
-                  Get Free Consultation
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
+                <div className="mt-6 rounded-md border p-5" style={{ backgroundColor: COLORS.offWhite, borderColor: COLORS.slate200 }}>
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-md"
+                      style={{ backgroundColor: COLORS.green50, color: COLORS.green }}
+                    >
+                      <Phone size={18} />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold" style={{ color: COLORS.slate500 }}>
+                        Speak With Our Team
+                      </p>
+
+                      <a href="tel:+919998715799" className="mt-0.5 block text-sm font-bold" style={{ color: COLORS.navy }}>
+                        +91 99987 15799
+                      </a>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/contact"
+                    onClick={closeMobileMenu}
+                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-md px-5 py-3.5 text-sm font-bold text-white"
+                    style={{ backgroundColor: COLORS.orange }}
+                  >
+                    Get Free Consultation
+                    <ArrowUpRight size={16} />
+                  </Link>
+                </div>
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

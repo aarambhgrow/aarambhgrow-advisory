@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = "https://aarambhgrow.group";
+  const baseUrl = "https://aarambhgrow.com";
 
   return {
     rules: {

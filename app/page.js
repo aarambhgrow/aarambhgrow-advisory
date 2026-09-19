@@ -11,31 +11,31 @@ import Footer from "./components/layout/Footer";
 import JsonLd from "./components/seo/JsonLd";
 
 export const metadata = {
-  title: "AarambhGrow – Business Registration & GST Consultants | Gujarat",
+  title: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
 
   description:
-    "Company registration, GST, ISO certification, MSME loans & branding — end-to-end support for startups & MSMEs in Gujarat. Free consultation.",
+    "AarambhGrow Advisory provides company incorporation, MSME registration, GST registration, ITR filing, MCA compliance, DSC, Startup India recognition, licences, certifications and business compliance services across India.",
 
   alternates: {
-    canonical: "https://aarambhgrow.group/",
+    canonical: "https://aarambhgrow.com/",
   },
 
   openGraph: {
-    title: "AarambhGrow – Business Registration & GST Consultants | Gujarat",
+    title: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
 
     description:
-      "Company registration, GST, ISO certification, MSME loans & branding — end-to-end support for startups & MSMEs in Gujarat.",
+      "Company incorporation, GST, MSME registration, ITR filing, MCA compliance, licences, certifications and startup compliance support for businesses across India.",
 
-    url: "https://aarambhgrow.group/",
+    url: "https://aarambhgrow.com/",
 
     type: "website",
 
     images: [
       {
-        url: "https://aarambhgrow.group/images/og-image.jpg",
+        url: "https://aarambhgrow.com/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "AarambhGrow",
+        alt: "AarambhGrow Advisory",
       },
     ],
   },
@@ -46,29 +46,27 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
 
-    name: "AarambhGrow Group of Companies",
+    name: "AarambhGrow Advisory",
 
-    alternateName: "AarambhGrow",
+    alternateName: "AarambhGrow Advisory",
 
-    url: "https://aarambhgrow.group",
+    url: "https://aarambhgrow.com",
 
-    logo: "https://aarambhgrow.group/images/white-logo.png",
+    logo: "https://aarambhgrow.com/images/white-logo.png",
 
     description:
-      "AarambhGrow is a business consultancy in Ahmedabad, Gujarat, offering company registration, GST filing, ISO certification, MSME loans, branding, and legal compliance for startups and MSMEs.",
-
-    foundingDate: "2020",
+      "AarambhGrow Advisory provides company incorporation, MSME registration, GST registration, income tax filing, MCA compliance, Startup India recognition, licences, certifications and business compliance services for startups, entrepreneurs and MSMEs.",
 
     address: {
       "@type": "PostalAddress",
 
-      streetAddress: "813, Silver Rediance-4, Gota, Jagatpur Road, Gota SG Highway",
+      streetAddress: "813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway",
 
       addressLocality: "Ahmedabad",
 
       addressRegion: "Gujarat",
 
-      postalCode: "382470",
+      postalCode: "380060",
 
       addressCountry: "IN",
     },
@@ -84,43 +82,35 @@ export default function Home() {
 
       availableLanguage: ["English", "Hindi", "Gujarati"],
     },
-
-    sameAs: [
-      "https://www.facebook.com/aarambhgrow",
-      "https://www.instagram.com/aarambhgrow",
-      "https://www.linkedin.com/company/aarambhgrow-group-of-companies",
-    ],
   };
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
 
-    name: "AarambhGrow Group of Companies",
+    name: "AarambhGrow Advisory",
 
-    image: "https://aarambhgrow.group/images/white-logo.png",
+    image: "https://aarambhgrow.com/images/white-logo.png",
 
-    url: "https://aarambhgrow.group",
+    url: "https://aarambhgrow.com",
 
     telephone: "+91-9998715799",
 
-    email: "info@aarambhgrow.group",
-
-    priceRange: "₹₹",
+    email: "info@aarambhgrow.com",
 
     description:
-      "End-to-end business solutions for startups and MSMEs in Gujarat — company registration, GST, ISO certification, MSME loans, branding, and legal compliance.",
+      "Professional business registration and compliance services including company incorporation, MSME registration, GST registration, ITR filing, MCA annual filing, ROC compliance, DSC, Startup India recognition, labour licence, FSSAI licence, ISO certification, trademark registration, ZED certification and 80IAC tax exemption support.",
 
     address: {
       "@type": "PostalAddress",
 
-      streetAddress: "813, Silver Rediance-4, Gota, Jagatpur Road, Gota SG Highway",
+      streetAddress: "813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway",
 
       addressLocality: "Ahmedabad",
 
       addressRegion: "Gujarat",
 
-      postalCode: "382470",
+      postalCode: "380060",
 
       addressCountry: "IN",
     },
@@ -145,18 +135,19 @@ export default function Home() {
       },
     ],
 
-    areaServed: ["Ahmedabad", "Surat", "Vadodara", "Gujarat", "India"],
+    areaServed: ["Ahmedabad", "Surat", "Vadodara"],
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
 
-    name: "AarambhGrow Group of Companies",
+    name: "AarambhGrow Advisory",
 
-    url: "https://aarambhgrow.group",
+    url: "https://aarambhgrow.com",
 
-    description: "Business Registration, GST & Compliance Consultants in Gujarat",
+    description:
+      "Company registration, GST, MSME, tax filing, MCA compliance, licences and certification services for businesses across India.",
   };
 
   return (
@@ -164,6 +155,7 @@ export default function Home() {
       <JsonLd data={organizationSchema} />
       <JsonLd data={localBusinessSchema} />
       <JsonLd data={websiteSchema} />
+
       <Preloader />
       <Navbar />
       <Hero />
@@ -174,10 +166,6 @@ export default function Home() {
       <BusinessCategories />
       <CTASection />
       <Footer />
-
-      <JsonLd data={organizationSchema} />
-      <JsonLd data={localBusinessSchema} />
-      <JsonLd data={websiteSchema} />
     </main>
   );
 }

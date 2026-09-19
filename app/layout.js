@@ -18,24 +18,26 @@ export const viewport = {
 };
 
 export const metadata = {
-  metadataBase: new URL("https://aarambhgrow.group"),
+  metadataBase: new URL("https://aarambhgrow.com"),
 
   title: {
-    default: "AarambhGrow – Business Registration & GST Consultants | Gujarat",
-    template: "%s | AarambhGrow",
+    default: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
+    template: "%s | AarambhGrow Advisory",
   },
 
   description:
-    "AarambhGrow provides company registration, GST, ISO certification, MSME loans, branding and compliance services for startups and MSMEs across Gujarat and India.",
-  applicationName: "AarambhGrow",
+    "AarambhGrow Advisory provides company incorporation, MSME registration, GST registration, ITR filing, MCA compliance, DSC, Startup India DPIIT recognition, licences, ISO, trademark, ZED certification and 80IAC tax exemption services across India.",
+
+  applicationName: "AarambhGrow Advisory",
 
   authors: [
     {
-      name: "AarambhGrow Group of Companies",
+      name: "AarambhGrow Advisory",
     },
   ],
-  creator: "AarambhGrow Group of Companies",
-  publisher: "AarambhGrow Group of Companies",
+
+  creator: "AarambhGrow Advisory",
+  publisher: "AarambhGrow Advisory",
 
   robots: {
     index: true,
@@ -57,24 +59,32 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    siteName: "AarambhGrow Group of Companies",
-    title: "AarambhGrow – Business Registration & GST Consultants | Gujarat",
-    description: "End-to-end business solutions for startups and MSMEs — registration, GST, ISO, loans, branding and compliance.",
+    siteName: "AarambhGrow Advisory",
+
+    title: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
+
+    description:
+      "Business registration, GST, MSME, tax filing, MCA compliance, licences, certifications and startup recognition services for businesses across India.",
+
+    url: "https://aarambhgrow.com",
 
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "AarambhGrow Group of Companies",
+        alt: "AarambhGrow Advisory – Business Registration & Compliance Services",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "AarambhGrow – Business Registration & GST Consultants | Gujarat",
-    description: "End-to-end business solutions for startups and MSMEs.",
+
+    title: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
+
+    description: "Company registration, GST, MSME, tax filing, MCA compliance, licences, certifications and startup advisory services.",
+
     images: ["/images/og-image.jpg"],
   },
 };

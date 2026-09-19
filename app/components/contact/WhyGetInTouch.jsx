@@ -125,15 +125,6 @@ export default function WhyGetInTouchSection() {
                       </p>
                     </div>
                   </div>
-
-                  <ArrowRight
-                    className={`w-3.5 h-3.5 transition-transform duration-300 shrink-0 ${
-                      isActive
-                        ? "opacity-100 translate-x-0.5"
-                        : "opacity-0 group-hover:opacity-40"
-                    }`}
-                    style={{ color: item.accent }}
-                  />
                 </div>
               );
             })}

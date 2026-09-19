@@ -10,13 +10,13 @@ import Footer from "../components/layout/Footer";
 import JsonLd from "../components/seo/JsonLd";
 
 export const metadata = {
-  title: "About AarambhGrow – Trusted Business Consultants in Gujarat",
+  title: "About AarambhGrow Advisory – Business Registration & Compliance Experts",
 
   description:
-    "Learn about AarambhGrow's team of expert consultants helping startups and MSMEs with registration, compliance, and growth across India.",
+    "Learn about AarambhGrow Advisory and our services for company incorporation, GST, MSME registration, ITR filing, MCA compliance, licences, certifications and startup recognition across India.",
 
   alternates: {
-    canonical: "https://aarambhgrow.group/about",
+    canonical: "https://aarambhgrow.com/about",
   },
 
   robots: {
@@ -25,14 +25,23 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "About AarambhGrow – Trusted Business Consultants in Gujarat",
+    title: "About AarambhGrow Advisory – Business Registration & Compliance Experts",
 
     description:
-      "Learn about AarambhGrow's team of expert consultants helping startups and MSMEs with registration, compliance, and growth across India.",
+      "AarambhGrow Advisory provides company incorporation, GST, MSME registration, tax filing, MCA compliance, licences, certifications and startup compliance services across India.",
 
-    url: "https://aarambhgrow.group/about",
+    url: "https://aarambhgrow.com/about",
 
     type: "website",
+
+    images: [
+      {
+        url: "https://aarambhgrow.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AarambhGrow Advisory",
+      },
+    ],
   },
 };
 
@@ -49,7 +58,7 @@ const breadcrumbSchema = {
 
       name: "Home",
 
-      item: "https://aarambhgrow.group/",
+      item: "https://aarambhgrow.com/",
     },
 
     {
@@ -59,7 +68,7 @@ const breadcrumbSchema = {
 
       name: "About Us",
 
-      item: "https://aarambhgrow.group/about",
+      item: "https://aarambhgrow.com/about",
     },
   ],
 };
@@ -68,7 +77,9 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
+
       <Navbar />
+
       <main className="min-h-screen">
         <Hero />
         <About />
@@ -78,6 +89,7 @@ export default function AboutPage() {
         <FAQ />
         <CTASection />
       </main>
+
       <Footer />
     </>
   );

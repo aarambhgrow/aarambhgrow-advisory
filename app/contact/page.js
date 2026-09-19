@@ -7,24 +7,38 @@ import CTASection from "../components/layout/CTA";
 import Footer from "../components/layout/Footer";
 
 export const metadata = {
-  title: "Contact AarambhGrow – Free Business Consultation | Ahmedabad, Gujarat",
+  title: "Contact AarambhGrow Advisory | Business Registration & Compliance Support",
   description:
-    "Contact AarambhGrow for a free business consultation in Ahmedabad, Gujarat. Get expert support for business registration, compliance, finance, legal, and growth services.",
+    "Contact AarambhGrow Advisory for business registration, MSME, GST, ITR filing, MCA compliance, licences, certifications, Startup India DPIIT recognition and other business advisory services across India.",
+  alternates: {
+    canonical: "https://aarambhgrow.com/contact",
+  },
+  openGraph: {
+    title: "Contact AarambhGrow Advisory | Business Registration & Compliance Support",
+    description:
+      "Connect with AarambhGrow Advisory for company incorporation, GST, MSME registration, tax filing, MCA compliance, licences, certifications and startup recognition support.",
+    url: "https://aarambhgrow.com/contact",
+    siteName: "AarambhGrow Advisory",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "AarambhGrow Group of Companies",
-    url: "https://aarambhgrow.group",
+    "@type": "ProfessionalService",
+    name: "AarambhGrow Advisory",
+    url: "https://aarambhgrow.com",
     telephone: "+91-9998715799",
+    email: "info@aarambhgrow.com",
+    description:
+      "Business registration, taxation, statutory compliance, licensing and certification advisory services for startups, MSMEs and businesses across India.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "813, Silver Rediance-4, Gota, Jagatpur Road, Gota SG Highway",
+      streetAddress: "813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway",
       addressLocality: "Ahmedabad",
       addressRegion: "Gujarat",
-      postalCode: "382470",
+      postalCode: "380060",
       addressCountry: "IN",
     },
     areaServed: {
@@ -35,9 +49,25 @@ export default function ContactPage() {
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        opens: "10:00",
+        opens: "09:00",
         closes: "19:00",
       },
+    ],
+    serviceType: [
+      "Company Incorporation",
+      "MSME / Udyam Registration",
+      "GST Registration",
+      "Income Tax ITR Filing",
+      "MCA Annual Filing",
+      "ROC Compliance",
+      "Digital Signature Certificate",
+      "Startup India DPIIT Recognition",
+      "Labour Licence",
+      "FSSAI Licence",
+      "ISO Certification",
+      "Trademark Registration",
+      "ZED Certification",
+      "80IAC Tax Exemption",
     ],
   };
 

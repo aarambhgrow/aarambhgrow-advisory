@@ -9,39 +9,43 @@ export default function AboutSection() {
   const pillars = [
     {
       id: "purpose",
-      phrase: "empowering businesses to succeed",
+      phrase: "simplifying business compliance",
       title: "Our Purpose",
       badge: "PURPOSE",
       icon: Target,
       accent: "#f26522",
       description:
-        "We simplify complex business processes, eliminate unnecessary roadblocks, and provide strategic solutions that help businesses operate efficiently and unlock new opportunities.",
-      highlights: ["Simplify complex business processes", "Eliminate unnecessary roadblocks", "Create roadmaps for long-term success"],
+        "We simplify business registration and compliance requirements by providing practical support for entrepreneurs, startups, and MSMEs at every stage of their business journey.",
+      highlights: ["Simplify business registration processes", "Reduce compliance complexity", "Provide practical business support"],
     },
     {
       id: "vision",
-      phrase: "creating lasting value",
+      phrase: "building compliant businesses",
       title: "Our Vision",
       badge: "VISION",
       icon: Award,
       accent: "#157327",
       description:
-        "To become a trusted business growth partner that empowers entrepreneurs and organizations with innovative, reliable, and strategic solutions that create lasting value.",
-      highlights: ["Trusted growth partner for entrepreneurs", "Innovative and reliable solutions", "Focus on creating sustainable value"],
+        "To become a trusted advisory partner for businesses by delivering reliable registration, taxation, compliance, licensing, certification, and startup recognition services.",
+      highlights: [
+        "Trusted advisory support for businesses",
+        "Reliable registration and compliance services",
+        "Support for sustainable business development",
+      ],
     },
     {
       id: "mission",
-      phrase: "delivering integrated solutions",
+      phrase: "delivering complete advisory support",
       title: "Our Mission",
       badge: "MISSION",
       icon: ShieldCheck,
       accent: "#f26522",
       description:
-        "To simplify the business journey by delivering integrated solutions across consulting, compliance, finance, branding, and operations while helping businesses build stronger foundations.",
+        "To help businesses establish strong foundations through company incorporation, GST, MSME registration, tax filing, MCA compliance, licences, certifications, trademark registration, and startup recognition.",
       highlights: [
-        "Integrated solutions across 5 core domains",
-        "Stronger foundational support for scaling",
-        "Focus on achieving sustainable growth",
+        "Complete registration and compliance support",
+        "Licensing and certification assistance",
+        "Startup and MSME advisory support",
       ],
     },
   ];
@@ -49,97 +53,97 @@ export default function AboutSection() {
   const current = pillars[activeHighlight];
 
   return (
-    <section className="relative w-full bg-[#f8fafc] py-10 sm:py-16 font-sans select-none overflow-hidden text-[#0f172a]">
+    <section className="relative w-full overflow-hidden bg-[#f8fafc] py-10 font-sans text-[#0f172a] sm:py-16">
       {/* Background Decorative Grid Patterns */}
-      <div className="absolute top-8 left-8 opacity-20 pointer-events-none">
+      <div className="pointer-events-none absolute left-8 top-8 opacity-20">
         <div className="grid grid-cols-6 gap-2">
           {Array.from({ length: 24 }).map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#f26522]" />
+            <div key={i} className="h-1.5 w-1.5 rounded-full bg-[#f26522]" />
           ))}
         </div>
       </div>
 
-      <div className="absolute top-8 right-8 opacity-20 pointer-events-none">
+      <div className="pointer-events-none absolute right-8 top-8 opacity-20">
         <div className="grid grid-cols-6 gap-2">
           {Array.from({ length: 24 }).map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#157327]" />
+            <div key={i} className="h-1.5 w-1.5 rounded-full bg-[#157327]" />
           ))}
         </div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         {/* SECTION BADGE */}
-        <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#fff5f0] border border-[#f26522]/20 px-3.5 py-1">
-            <Star className="w-3 h-3 fill-[#f26522] text-[#f26522]" />
+        <div className="mb-6 flex justify-center">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-[#f26522]/20 bg-[#fff5f0] px-3.5 py-1">
+            <Star className="h-3 w-3 fill-[#f26522] text-[#f26522]" />
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#f26522]">WHO WE ARE</span>
           </div>
         </div>
 
-        {/* MAIN EDITORIAL CANVAS GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* LEFT: EDITORIAL INTERACTIVE TEXT */}
-          <div className="lg:col-span-7 space-y-4">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0f2a4a] leading-[1.2] tracking-tight">
-              Empowering Businesses to Build, Grow, and Succeed.
+        {/* MAIN CONTENT */}
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+          {/* LEFT CONTENT */}
+          <div className="space-y-4 lg:col-span-7">
+            <h2 className="text-2xl font-black leading-[1.2] tracking-tight text-[#0f2a4a] sm:text-3xl lg:text-4xl">
+              Building Stronger Businesses Through <span className="text-[#f26522]">Registration & Compliance.</span>
             </h2>
 
-            {/* Interactive Narrative Block */}
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-              Starting and growing a business requires more than completing registrations or managing compliance. At{" "}
-              <strong className="text-[#0f2a4a] font-bold">AarambhGrow</strong>, we bring business consulting, financial advisory, legal
-              compliance, certifications, branding, and operational support under one roof by{" "}
+            <p className="text-sm font-normal leading-relaxed text-slate-600 sm:text-base">
+              Starting and managing a business requires more than an idea. At{" "}
+              <strong className="font-bold text-[#0f2a4a]">AarambhGrow Advisory</strong>, we help entrepreneurs, startups, and MSMEs manage
+              essential business registrations, taxation, statutory compliance, licences, certifications, and startup recognition through
+              practical and structured advisory support by{" "}
               <button
                 onMouseEnter={() => setActiveHighlight(0)}
                 onClick={() => setActiveHighlight(0)}
-                className={`inline-block font-bold px-1.5 py-0.5 rounded-md transition-all duration-200 border-b-2 cursor-pointer ${
+                className={`inline-block cursor-pointer rounded-md border-b-2 px-1.5 py-0.5 font-bold transition-all duration-200 ${
                   activeHighlight === 0
-                    ? "bg-[#fff5f0] text-[#f26522] border-[#f26522]"
-                    : "text-[#0f2a4a] border-slate-300 hover:border-[#f26522]"
+                    ? "border-[#f26522] bg-[#fff5f0] text-[#f26522]"
+                    : "border-slate-300 text-[#0f2a4a] hover:border-[#f26522]"
                 }`}
               >
-                empowering businesses to succeed
+                simplifying business compliance
               </button>
-              . Our focus remains centered on{" "}
+              . Our approach focuses on{" "}
               <button
                 onMouseEnter={() => setActiveHighlight(1)}
                 onClick={() => setActiveHighlight(1)}
-                className={`inline-block font-bold px-1.5 py-0.5 rounded-md transition-all duration-200 border-b-2 cursor-pointer ${
+                className={`inline-block cursor-pointer rounded-md border-b-2 px-1.5 py-0.5 font-bold transition-all duration-200 ${
                   activeHighlight === 1
-                    ? "bg-[#f0fdf4] text-[#157327] border-[#157327]"
-                    : "text-[#0f2a4a] border-slate-300 hover:border-[#157327]"
+                    ? "border-[#157327] bg-[#f0fdf4] text-[#157327]"
+                    : "border-slate-300 text-[#0f2a4a] hover:border-[#157327]"
                 }`}
               >
-                creating lasting value
+                building compliant businesses
               </button>{" "}
-              for every client while{" "}
+              while{" "}
               <button
                 onMouseEnter={() => setActiveHighlight(2)}
                 onClick={() => setActiveHighlight(2)}
-                className={`inline-block font-bold px-1.5 py-0.5 rounded-md transition-all duration-200 border-b-2 cursor-pointer ${
+                className={`inline-block cursor-pointer rounded-md border-b-2 px-1.5 py-0.5 font-bold transition-all duration-200 ${
                   activeHighlight === 2
-                    ? "bg-[#fff5f0] text-[#f26522] border-[#f26522]"
-                    : "text-[#0f2a4a] border-slate-300 hover:border-[#f26522]"
+                    ? "border-[#f26522] bg-[#fff5f0] text-[#f26522]"
+                    : "border-slate-300 text-[#0f2a4a] hover:border-[#f26522]"
                 }`}
               >
-                delivering integrated solutions
+                delivering complete advisory support
               </button>{" "}
-              to build strong foundations.
+              for every stage of business development.
             </p>
 
-            {/* Quick Trigger Selector */}
-            <div className="pt-2 flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-1">Hover to explore:</span>
+            {/* QUICK TRIGGER SELECTOR */}
+            <div className="flex flex-wrap items-center gap-2 pt-2">
+              <span className="mr-1 text-[11px] font-bold uppercase tracking-wider text-slate-400">Explore:</span>
 
               {pillars.map((item, idx) => (
                 <button
                   key={item.id}
                   onClick={() => setActiveHighlight(idx)}
                   onMouseEnter={() => setActiveHighlight(idx)}
-                  className={`text-xs font-extrabold px-3 py-1 rounded-full transition-all duration-200 ${
+                  className={`rounded-full px-3 py-1 text-xs font-extrabold transition-all duration-200 ${
                     activeHighlight === idx
                       ? "bg-[#0f2a4a] text-white shadow-sm"
-                      : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
+                      : "border border-slate-200 bg-white text-slate-600 hover:border-slate-300"
                   }`}
                 >
                   {item.badge}
@@ -148,32 +152,32 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* RIGHT: DYNAMIC ARCHITECTURAL DISPLAY PANEL */}
+          {/* RIGHT DYNAMIC PANEL */}
           <div className="lg:col-span-5">
-            <div className="relative bg-white border border-slate-200/80 rounded-md p-5 sm:p-6 shadow-sm">
-              {/* Top Meta Indicator */}
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+            <div className="relative rounded-md border border-slate-200/80 bg-white p-5 shadow-sm sm:p-6">
+              {/* TOP META */}
+              <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full animate-pulse" style={{ backgroundColor: current.accent }} />
+                  <span className="h-2.5 w-2.5 animate-pulse rounded-full" style={{ backgroundColor: current.accent }} />
 
                   <span className="text-xs font-black uppercase tracking-wider text-[#0f2a4a]">{current.badge}</span>
                 </div>
 
-                <Sparkles className="w-4 h-4 text-slate-300" />
+                <Sparkles className="h-4 w-4 text-slate-300" />
               </div>
 
-              {/* Title & Description */}
-              <div className="space-y-2 mb-5">
+              {/* TITLE & DESCRIPTION */}
+              <div className="mb-5 space-y-2">
                 <h3 className="text-lg font-black text-[#0f2a4a]">{current.title}</h3>
 
-                <p className="text-xs text-slate-500 leading-relaxed">{current.description}</p>
+                <p className="text-xs leading-relaxed text-slate-500">{current.description}</p>
               </div>
 
-              {/* Bullet Points */}
-              <div className="space-y-2 mb-5">
+              {/* HIGHLIGHTS */}
+              <div className="mb-5 space-y-2">
                 {current.highlights.map((point, idx) => (
-                  <div key={idx} className="flex items-center gap-2.5 p-2 rounded-md bg-[#f8fafc] border border-slate-100">
-                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: current.accent }} />
+                  <div key={idx} className="flex items-center gap-2.5 rounded-md border border-slate-100 bg-[#f8fafc] p-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0" style={{ color: current.accent }} />
 
                     <span className="text-xs font-bold text-[#0f2a4a]">{point}</span>
                   </div>
@@ -183,36 +187,55 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* EXPERIENCE & JOURNEY */}
+        {/* OUR JOURNEY */}
         <div className="mt-10 sm:mt-14">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="mx-auto max-w-4xl text-center">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#f26522]">OUR JOURNEY</span>
 
-            <h2 className="mt-2 text-2xl sm:text-3xl font-black text-[#0f2a4a] leading-tight">Our Experience & Journey</h2>
+            <h2 className="mt-2 text-2xl font-black leading-tight text-[#0f2a4a] sm:text-3xl">
+              Supporting Businesses From Registration to Compliance
+            </h2>
 
-            <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-              AarambhGrow brings together business consulting, compliance, finance, legal, branding, and operational support to help
-              businesses build stronger foundations and pursue sustainable growth. Our journey is focused on simplifying complex business
-              requirements and creating practical solutions for startups, MSMEs, and growing enterprises.
+            <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+              AarambhGrow Advisory supports entrepreneurs, startups, and MSMEs with essential business registration, taxation, statutory
+              compliance, licensing, certification, and startup recognition requirements. Our services are designed to help businesses
+              establish the right foundation and manage important regulatory requirements with greater clarity.
             </p>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div className="mx-auto mt-6 grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Experience</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Service Focus</p>
 
-                <p className="mt-1 text-xl font-black text-[#0f2a4a]">20+ Years</p>
+                <p className="mt-1 text-xl font-black text-[#0f2a4a]">Business Compliance</p>
 
-                <p className="mt-1 text-xs text-slate-500">Business experience supporting growth and development.</p>
+                <p className="mt-1 text-xs text-slate-500">
+                  Registration, taxation, licences, certifications, and statutory compliance support.
+                </p>
               </div>
 
               <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Focus</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Advisory Focus</p>
 
-                <p className="mt-1 text-xl font-black text-[#0f2a4a]">Business Growth</p>
+                <p className="mt-1 text-xl font-black text-[#0f2a4a]">Startup & MSME Support</p>
 
-                <p className="mt-1 text-xs text-slate-500">Integrated support across key business requirements.</p>
+                <p className="mt-1 text-xs text-slate-500">
+                  Structured support for entrepreneurs, startups, MSMEs, and growing businesses.
+                </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* SERVICE AREAS */}
+        <div className="mt-10 border-t border-slate-200 pt-8 sm:mt-14">
+          <div className="mx-auto max-w-5xl text-center">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#157327]">OUR SERVICES</span>
+
+            <p className="mx-auto mt-3 max-w-4xl text-sm leading-relaxed text-slate-600">
+              Our advisory services cover company incorporation, MSME / Udyam registration, GST registration, income tax filing, MCA annual
+              filing and ROC compliance, DSC, Startup India DPIIT recognition, labour and FSSAI licences, ISO certification, trademark
+              registration, ZED certification, and 80IAC tax exemption support.
+            </p>
           </div>
         </div>
       </div>

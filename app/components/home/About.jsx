@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { Star, ArrowRight } from "lucide-react";
+import { ShieldCheck, ArrowRight } from "lucide-react";
 
 export default function HomeAboutTeaser() {
   const containerVariants = {
@@ -30,13 +30,14 @@ export default function HomeAboutTeaser() {
   };
 
   const headerRef = useRef(null);
+
   const isInView = useInView(headerRef, {
     once: true,
     margin: "-40px",
   });
 
   return (
-    <section className="w-full bg-[#fafafa] py-12 sm:py-16 font-sans text-[#0f172a]">
+    <section className="w-full bg-[#fafafa] py-12 font-sans text-[#0f172a] sm:py-16">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -45,50 +46,50 @@ export default function HomeAboutTeaser() {
         className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8"
       >
         {/* Section Badge */}
-        <motion.div variants={fadeUpVariants} className="flex justify-center mb-4">
-          <div className="group inline-flex items-center gap-1.5 rounded-full bg-[#fff5f0] border border-[#f26522]/20 px-3.5 py-1 transition-all duration-300 ease-out hover:scale-105 hover:border-[#f26522]/50 hover:shadow-sm cursor-default">
-            <Star className="w-3 h-3 fill-[#f26522] text-[#f26522] transition-transform duration-300 ease-out group-hover:rotate-45" />
+        <motion.div variants={fadeUpVariants} className="mb-4 flex justify-center">
+          <div className="group inline-flex cursor-default items-center gap-1.5 rounded-full border border-[#157327]/20 bg-[#157327]/10 px-3.5 py-1 transition-all duration-300 ease-out hover:scale-105 hover:border-[#157327]/40 hover:shadow-sm">
+            <ShieldCheck className="h-3 w-3 text-[#157327] transition-transform duration-300 ease-out group-hover:scale-110" />
 
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#f26522]">WHO WE ARE</span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#157327]">WHO WE ARE</span>
           </div>
         </motion.div>
 
         {/* Heading & Content */}
-        <motion.div variants={fadeUpVariants} className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div variants={fadeUpVariants} className="mx-auto max-w-3xl space-y-4 text-center">
           <div
             ref={headerRef}
-            className={`text-center max-w-3xl mx-auto space-y-4 transition-all duration-700 delay-150 ease-out ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            className={`mx-auto max-w-3xl space-y-4 text-center transition-all duration-700 delay-150 ease-out ${
+              isInView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
             }`}
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0f2a4a] leading-tight tracking-tight transition-colors duration-300 hover:text-[#f26522]">
-              Your Trusted Partner in Business Growth
+            <h2 className="text-2xl font-black leading-tight tracking-tight text-[#0f2a4a] transition-colors duration-300 hover:text-[#f26522] sm:text-3xl lg:text-4xl">
+              Simplifying Business Registration & Compliance
               <br className="hidden sm:inline" />
             </h2>
           </div>
 
           {/* Body Copy */}
-          <div className="space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+          <div className="space-y-3 text-xs font-normal leading-relaxed text-slate-600 sm:text-sm">
             <p>
-              Every successful business begins with the right guidance. At <strong className="text-[#0f2a4a]">AarambhGrow</strong>, we help
-              entrepreneurs, startups, and growing businesses navigate every stage of their journey—from setting up a business and managing
-              legal compliance to building a strong digital presence and scaling operations.
+              Starting and managing a business involves important registrations, tax requirements, statutory filings, licences and
+              certifications. At <strong className="text-[#0f2a4a]">AarambhGrow Advisory</strong>, we help entrepreneurs, startups and MSMEs
+              navigate these requirements with structured and practical advisory support.
             </p>
 
             <p>
-              AarambhGrow is based in Ahmedabad, Gujarat, and works with startups, MSMEs, and enterprises across India on company
-              registration, GST & tax compliance, ISO/FSSAI certification, and business loans—combining legal, financial, and branding
-              expertise under one roof.
+              Based in Ahmedabad, Gujarat, AarambhGrow Advisory supports businesses across India with company incorporation, MSME / Udyam
+              registration, GST registration, income tax and ITR filing, MCA annual filing, ROC compliance and Digital Signature
+              Certificates.
             </p>
 
             <p>
-              Our experienced consultants combine industry expertise with practical strategies to simplify complex processes, improve
-              efficiency, and unlock new growth opportunities. Whether you're starting your first venture or expanding an established
-              business, we provide personalized solutions tailored to your goals.
+              We also provide support for Startup India DPIIT recognition, labour licences, FSSAI licences, ISO certification, trademark
+              registration, ZED certification and 80IAC tax exemption, helping businesses manage essential regulatory and certification
+              requirements from one place.
             </p>
 
-            <p className="text-sm sm:text-base font-bold text-[#157327] pt-1">
-              Your vision is our mission and your growth is our commitment.
+            <p className="pt-1 text-sm font-bold text-[#157327] sm:text-base">
+              Clear guidance. Structured processes. Reliable business compliance support.
             </p>
           </div>
 
@@ -96,11 +97,11 @@ export default function HomeAboutTeaser() {
           <div className="pt-3">
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#f26522] hover:text-[#0f2a4a] transition-colors group"
+              className="group inline-flex items-center gap-2 text-xs font-bold text-[#f26522] transition-colors hover:text-[#0f2a4a]"
             >
               <span>Learn More About Us</span>
 
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </motion.div>
