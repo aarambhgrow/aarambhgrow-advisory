@@ -1,6 +1,6 @@
 import Navbar from "../../components/layout/Navbar";
 import ISOCertification from "../../components/services/iso-certification/ISOCertification";
-import ISOCertification from "../../components/services/iso-certification/ISOCertificationHero";
+// import ISOCertification from "../../components/services/iso-certification/ISOCertificationHero";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";
 

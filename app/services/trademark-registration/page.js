@@ -1,5 +1,5 @@
 import Navbar from "../../components/layout/Navbar";
-import TrademarkRegistration from "../../components/services/trademark-registration/TrademarkRegistrationHero";
+// import TrademarkRegistration from "../../components/services/trademark-registration/TrademarkRegistrationHero";
 import TrademarkRegistration from "../../components/services/trademark-registration/TrademarkRegistration";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";

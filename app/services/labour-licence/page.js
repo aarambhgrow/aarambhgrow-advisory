@@ -1,6 +1,6 @@
 import Navbar from "../../components/layout/Navbar";
 import LabourLicence from "../../components/services/labour-licence/LabourLicence";
-import LabourLicence from "../../components/services/labour-licence/LabourLicenceHero";
+// import LabourLicence from "../../components/services/labour-licence/LabourLicenceHero";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";
 

@@ -1,6 +1,6 @@
 import Navbar from "../../components/layout/Navbar";
 import DSC from "../../components/services/dsc/DSC";
-import DSC from "../../components/services/dsc/DSCHero";
+// import DSC from "../../components/services/dsc/DSCHero";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";
 

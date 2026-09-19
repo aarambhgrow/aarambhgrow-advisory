@@ -1,6 +1,6 @@
 import Navbar from "../../components/layout/Navbar";
 import MSMEUdyamRegistration from "../../components/services/msme-udyam-registration/MSMEUdyamRegistration";
-import MSMEUdyamRegistration from "../../components/services/msme-udyam-registration/MSMEUdyamRegistrationHero";
+// import MSMEUdyamRegistration from "../../components/services/msme-udyam-registration/MSMEUdyamRegistrationHero";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";
 
