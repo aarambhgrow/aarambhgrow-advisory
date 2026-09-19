@@ -1,6 +1,5 @@
 import Navbar from "../../components/layout/Navbar";
 import FSSAILicence from "../../components/services/fssai-licence/FSSAILicence";
-// import FSSAILicence from "../../components/services/fssai-licence/FSSAILicenceHero";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";
 

@@ -1,5 +1,4 @@
 import Navbar from "../../components/layout/Navbar";
-// import EightyIACTaxExemption from "../../components/services/80iac-tax-exemption/80IACTaxExemptionHero";
 import EightyIACTaxExemption from "../../components/services/80iac-tax-exemption/80IACTaxExemption";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";

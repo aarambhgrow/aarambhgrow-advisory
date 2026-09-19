@@ -1,6 +1,5 @@
 import Navbar from "../../components/layout/Navbar";
 import GSTRegistration from "../../components/services/gst-registration/GSTRegistration";
-// import GSTRegistration from "../../components/services/gst-registration/GSTRegistrationHero";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";
 

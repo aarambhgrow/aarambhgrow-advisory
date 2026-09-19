@@ -1,6 +1,5 @@
 import Navbar from "../../components/layout/Navbar";
 import CompanyIncorporation from "../../components/services/company-incorporation/CompanyIncorporation";
-// import CompanyIncorporation from "../../components/services/company-incorporation/CompanyIncorporationHero";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";
 

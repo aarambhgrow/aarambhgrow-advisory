@@ -2,18 +2,65 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  CheckCircle2,
-  ShieldCheck,
-  Target,
-  FileText,
-  BriefcaseBusiness,
-  Award,
-  ClipboardCheck,
-  ChevronDown,
-} from "lucide-react";
+import { CheckCircle2, ShieldCheck, Target, FileText, BriefcaseBusiness, Award, ClipboardCheck, ChevronDown } from "lucide-react";
 
-import {labourLicenceData} from "../../../data/labour-licence";
+import { labourLicenceData } from "../../../data/labour-licence";
+
+/* =========================================================
+   SAFE CONTENT RENDERER
+========================================================= */
+
+const ItemContent = ({ item }) => {
+  if (item === null || item === undefined) {
+    return null;
+  }
+
+  if (typeof item === "string" || typeof item === "number") {
+    return <span>{item}</span>;
+  }
+
+  if (typeof item === "object") {
+    return (
+      <span className="block">
+        {item.title && <span className="block font-semibold text-[#03254C]">{item.title}</span>}
+
+        {item.desc && <span className="mt-1 block text-slate-600">{item.desc}</span>}
+
+        {!item.title && !item.desc && item.name && <span>{item.name}</span>}
+
+        {!item.title && !item.desc && !item.name && item.description && <span>{item.description}</span>}
+
+        {!item.title && !item.desc && !item.name && !item.description && item.details && <span>{item.details}</span>}
+      </span>
+    );
+  }
+
+  return null;
+};
+
+/* =========================================================
+   GET ITEM TITLE
+========================================================= */
+
+const getItemTitle = (item, fallback = "Labour Compliance Support") => {
+  if (typeof item === "string" || typeof item === "number") {
+    return String(item);
+  }
+
+  if (item?.title) {
+    return item.title;
+  }
+
+  if (item?.name) {
+    return item.name;
+  }
+
+  return fallback;
+};
+
+/* =========================================================
+   SECTION
+========================================================= */
 
 const Section = ({ number, title, children }) => (
   <section className="mb-12">
@@ -21,67 +68,95 @@ const Section = ({ number, title, children }) => (
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F26522] text-sm font-bold text-white">
         {number}
       </span>
+
       <h2 className="text-2xl font-bold text-[#03254C] sm:text-3xl">{title}</h2>
     </div>
+
     {children}
   </section>
 );
 
-const ListItem = ({ children }) => (
+/* =========================================================
+   LIST ITEM
+========================================================= */
+
+const ListItem = ({ item }) => (
   <li className="flex items-start gap-3">
     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#157327]" />
-    <span className="text-sm leading-6 text-slate-600 sm:text-base">{children}</span>
+
+    <span className="text-sm leading-6 text-slate-600 sm:text-base">
+      <ItemContent item={item} />
+    </span>
   </li>
 );
 
-const InfoCard = ({ icon: Icon, title, children }) => (
+/* =========================================================
+   INFO CARD
+========================================================= */
+
+const InfoCard = ({ icon: Icon, title, item }) => (
   <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
     <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#fff7ed]">
       <Icon className="h-5 w-5 text-[#F26522]" />
     </div>
+
     <h3 className="mb-2 text-base font-bold text-[#03254C]">{title}</h3>
-    <p className="text-sm leading-6 text-slate-600">{children}</p>
+
+    <div className="text-sm leading-6 text-slate-600">
+      <ItemContent item={item} />
+    </div>
   </div>
 );
+
+/* =========================================================
+   MAIN COMPONENT
+========================================================= */
 
 export default function LabourLicence() {
   const [openFaq, setOpenFaq] = useState(null);
 
+  /* =======================================================
+     SERVICE DATA
+  ======================================================= */
+
   const service =
     labourLicenceData?.services?.find(
-      (item) =>
-        item.id === "labour-licence" ||
-        item.name === "Labour Licence" ||
-        item.shortTitle === "Labour Licence"
+      (item) => item?.id === "labour-licence" || item?.name === "Labour Licence" || item?.shortTitle === "Labour Licence",
     ) || labourLicenceData?.services?.[0];
 
   if (!service) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#fafafa] px-6">
         <div className="rounded-2xl border border-red-200 bg-white p-8 text-center shadow-sm">
-          <h1 className="text-xl font-bold text-[#03254C]">
-            Labour Licence service data not found
-          </h1>
-          <p className="mt-2 text-sm text-slate-600">
-            Please check the data/labour-licence.js file.
-          </p>
+          <h1 className="text-xl font-bold text-[#03254C]">Labour Licence service data not found</h1>
+
+          <p className="mt-2 text-sm text-slate-600">Please check the data/labour-licence.js file.</p>
         </div>
       </main>
     );
   }
 
-  const hero = labourLicenceData?.hero || {};
-  const benefits = service.benefits || [];
-  const suitedFor = service.suitedFor || [];
-  const labourAreas = service.labourAreas || [];
-  const licenceTypes = service.licenceTypes || [];
-  const businessNeeds = service.businessNeeds || [];
-  const whatWeDo = service.whatWeDo || [];
-  const documents = service.documents || [];
-  const process = service.process || [];
-  const whyChoose = service.whyChoose || [];
+  /* =======================================================
+     DATA ARRAYS
+  ======================================================= */
 
-  const faqs = service.faqs?.length
+  const hero = labourLicenceData?.hero || {};
+
+  const benefits = service?.benefits || [];
+  const suitedFor = service?.suitedFor || [];
+  const labourAreas = service?.labourAreas || [];
+  const licenceTypes = service?.licenceTypes || [];
+  const businessNeeds = service?.businessNeeds || [];
+  const whatWeDo = service?.whatWeDo || [];
+  const documents = service?.documents || [];
+  const process = service?.process || [];
+  const whyChoose = service?.whyChoose || [];
+
+  /* =======================================================
+     FAQ
+  ======================================================= */
+
+  const faqs = service?.faqs?.length
     ? service.faqs
     : [
         {
@@ -113,34 +188,31 @@ export default function LabourLicence() {
 
   return (
     <main className="min-h-screen bg-[#fafafa] text-slate-800">
-      {/* Hero */}
+      {/* ===================================================
+          HERO
+      =================================================== */}
+
       <section className="relative overflow-hidden bg-gradient-to-br from-[#03254C] to-[#062a57]">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#F26522]/10 blur-3xl" />
+
         <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[#157327]/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl"
-          >
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl">
             <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-orange-200">
-              {hero.category || service.category || "Labour & Compliance"}
+              {hero?.category || service?.category || "Labour & Compliance"}
             </span>
 
             <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-              {hero.title || service.title || "Labour Licence Services in India"}
+              {hero?.title || service?.title || "Labour Licence Services in India"}
             </h1>
 
             <p className="mt-5 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg">
-              {service.tagline ||
+              {service?.tagline ||
                 "Get structured assistance for Labour Licence registration, documentation, application, and applicable compliance requirements"}
             </p>
 
-            <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
-              {service.description}
-            </p>
+            <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">{service?.description}</p>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <a
@@ -161,20 +233,20 @@ export default function LabourLicence() {
         </div>
       </section>
 
-      <div
-        id="labour-licence-content"
-        className="mx-auto flex max-w-7xl gap-8 px-5 py-12 sm:px-8 lg:px-10"
-      >
-        {/* Sidebar */}
+      {/* ===================================================
+          CONTENT WRAPPER
+      =================================================== */}
+
+      <div id="labour-licence-content" className="mx-auto flex max-w-7xl gap-8 px-5 py-12 sm:px-8 lg:px-10">
+        {/* =================================================
+            SIDEBAR
+        ================================================= */}
+
         <aside className="hidden w-72 shrink-0 lg:block">
           <div className="sticky top-24 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[#F26522]">
-              Labour & Compliance
-            </p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[#F26522]">Labour & Compliance</p>
 
-            <h3 className="mb-5 text-lg font-bold text-[#03254C]">
-              Labour Licence Services
-            </h3>
+            <h3 className="mb-5 text-lg font-bold text-[#03254C]">Labour Licence Services</h3>
 
             <nav className="space-y-2">
               {[
@@ -202,124 +274,129 @@ export default function LabourLicence() {
           </div>
         </aside>
 
-        {/* Main Content */}
+        {/* =================================================
+            MAIN CONTENT
+        ================================================= */}
+
         <div className="min-w-0 flex-1">
-          {/* Introduction */}
+          {/* =================================================
+              INTRODUCTION
+          ================================================= */}
+
           <div id="introduction">
             <Section number="01" title="Labour Licence Services">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                <p className="text-base leading-8 text-slate-600">
-                  {service.description}
-                </p>
+                <p className="text-base leading-8 text-slate-600">{service?.description}</p>
 
                 <p className="mt-4 text-base leading-8 text-slate-600">
-                  Labour-related registration and licensing requirements can
-                  vary according to the nature of work, workforce size,
-                  contractual arrangements, establishment type, worksite
-                  location, and applicable labour regulations. Proper
-                  documentation and timely compliance can help businesses
-                  maintain organized labour records and meet applicable
-                  regulatory requirements.
+                  Labour-related registration and licensing requirements can vary according to the nature of work, workforce size,
+                  contractual arrangements, establishment type, worksite location, and applicable labour regulations. Proper documentation
+                  and timely compliance can help businesses maintain organized labour records and meet applicable regulatory requirements.
                 </p>
               </div>
             </Section>
           </div>
 
-          {/* Benefits */}
+          {/* =================================================
+              BENEFITS
+          ================================================= */}
+
           <div id="benefits">
             <Section number="02" title="Benefits of Labour Licence Support">
               <div className="grid gap-4 sm:grid-cols-2">
-                {benefits.map((item, index) => (
-                  <InfoCard
-                    key={index}
-                    icon={index % 2 === 0 ? ShieldCheck : ClipboardCheck}
-                    title={item.title || item.name || `Benefit ${index + 1}`}
-                  >
-                    {item.description || item}
-                  </InfoCard>
-                ))}
+                {benefits.map((item, index) => {
+                  const title = getItemTitle(item, `Benefit ${index + 1}`);
+
+                  return <InfoCard key={index} icon={index % 2 === 0 ? ShieldCheck : ClipboardCheck} title={title} item={item} />;
+                })}
               </div>
             </Section>
           </div>
 
-          {/* Who Can Benefit */}
+          {/* =================================================
+              WHO CAN BENEFIT
+          ================================================= */}
+
           <div id="suited-for">
             <Section number="03" title="Who Can Benefit">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {suitedFor.map((item, index) => (
-                    <ListItem key={index}>{item}</ListItem>
+                    <ListItem key={index} item={item} />
                   ))}
                 </ul>
               </div>
             </Section>
           </div>
 
-          {/* Licence Types */}
+          {/* =================================================
+              LICENCE TYPES
+          ================================================= */}
+
           <div id="licence-types">
             <Section number="04" title="Labour Licence Types">
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {licenceTypes.map((item, index) => (
-                  <InfoCard
-                    key={index}
-                    icon={BriefcaseBusiness}
-                    title={item.title || item.name || item}
-                  >
-                    {item.description ||
-                      "Applicable labour registration or licensing support based on business and workforce requirements."}
-                  </InfoCard>
-                ))}
+                {licenceTypes.map((item, index) => {
+                  const title = getItemTitle(item, `Licence Type ${index + 1}`);
+
+                  return <InfoCard key={index} icon={BriefcaseBusiness} title={title} item={item} />;
+                })}
               </div>
             </Section>
           </div>
 
-          {/* Labour Areas */}
+          {/* =================================================
+              LABOUR AREAS
+          ================================================= */}
+
           <div id="labour-areas">
             <Section number="05" title="Labour Compliance Areas">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {labourAreas.map((item, index) => (
-                    <ListItem key={index}>{item}</ListItem>
+                    <ListItem key={index} item={item} />
                   ))}
                 </ul>
               </div>
             </Section>
           </div>
 
-          {/* Business Needs */}
+          {/* =================================================
+              BUSINESS NEEDS
+          ================================================= */}
+
           <div id="business-needs">
             <Section number="06" title="Business Needs We Support">
               <div className="grid gap-4 sm:grid-cols-2">
-                {businessNeeds.map((item, index) => (
-                  <InfoCard
-                    key={index}
-                    icon={Target}
-                    title={
-                      item.title || item.name || `Business Requirement ${index + 1}`
-                    }
-                  >
-                    {item.description ||
-                      "Structured assistance based on applicable labour registration and compliance requirements."}
-                  </InfoCard>
-                ))}
+                {businessNeeds.map((item, index) => {
+                  const title = getItemTitle(item, `Business Requirement ${index + 1}`);
+
+                  return <InfoCard key={index} icon={Target} title={title} item={item} />;
+                })}
               </div>
             </Section>
           </div>
 
-          {/* What We Do */}
+          {/* =================================================
+              WHAT WE DO
+          ================================================= */}
+
           <div id="what-we-do">
             <Section number="07" title="What We Do">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
                 <ul className="space-y-4">
                   {whatWeDo.map((item, index) => (
-                    <ListItem key={index}>{item}</ListItem>
+                    <ListItem key={index} item={item} />
                   ))}
                 </ul>
               </div>
             </Section>
           </div>
 
-          {/* Documents */}
+          {/* =================================================
+              DOCUMENTS
+          ================================================= */}
+
           <div id="documents">
             <Section number="08" title="Documents Required">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
@@ -329,71 +406,86 @@ export default function LabourLicence() {
                   </div>
 
                   <div>
-                    <h3 className="font-bold text-[#03254C]">
-                      Typical Documents
-                    </h3>
-                    <p className="text-sm text-slate-500">
-                      Requirements may vary based on the applicable licence or
-                      registration.
-                    </p>
+                    <h3 className="font-bold text-[#03254C]">Typical Documents</h3>
+
+                    <p className="text-sm text-slate-500">Requirements may vary based on the applicable licence or registration.</p>
                   </div>
                 </div>
 
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {documents.map((item, index) => (
-                    <ListItem key={index}>{item}</ListItem>
+                    <ListItem key={index} item={item} />
                   ))}
                 </ul>
               </div>
             </Section>
           </div>
 
-          {/* Process */}
+          {/* =================================================
+              PROCESS
+          ================================================= */}
+
           <div id="process">
             <Section number="09" title="Labour Licence Process">
               <div className="space-y-4">
-                {process.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.35, delay: index * 0.04 }}
-                    className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
-                  >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#03254C] text-sm font-bold text-white">
-                      {String(index + 1).padStart(2, "0")}
-                    </div>
+                {process.map((item, index) => {
+                  const title = typeof item === "object" ? item?.title || item?.name || `Stage ${index + 1}` : `Stage ${index + 1}`;
 
-                    <div className="pt-1">
-                      <p className="text-sm leading-6 text-slate-600 sm:text-base">
-                        {item}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                  const description = typeof item === "object" ? item?.desc || item?.description || item?.details : item;
+
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -12 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{
+                        once: true,
+                        amount: 0.2,
+                      }}
+                      transition={{
+                        duration: 0.35,
+                        delay: index * 0.04,
+                      }}
+                      className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+                    >
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#03254C] text-sm font-bold text-white">
+                        {String(index + 1).padStart(2, "0")}
+                      </div>
+
+                      <div className="pt-1">
+                        <h3 className="font-bold text-[#03254C]">{title}</h3>
+
+                        <p className="mt-1 text-sm leading-6 text-slate-600 sm:text-base">
+                          <ItemContent item={description} />
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </Section>
           </div>
 
-          {/* Why Choose */}
+          {/* =================================================
+              WHY CHOOSE
+          ================================================= */}
+
           <div id="why-choose">
             <Section number="10" title="Why Choose Our Labour Licence Support">
               <div className="grid gap-4 sm:grid-cols-2">
-                {whyChoose.map((item, index) => (
-                  <InfoCard
-                    key={index}
-                    icon={index % 2 === 0 ? Award : ShieldCheck}
-                    title={item.title || item.name || `Support Advantage ${index + 1}`}
-                  >
-                    {item.description || item}
-                  </InfoCard>
-                ))}
+                {whyChoose.map((item, index) => {
+                  const title = getItemTitle(item, `Support Advantage ${index + 1}`);
+
+                  return <InfoCard key={index} icon={index % 2 === 0 ? Award : ShieldCheck} title={title} item={item} />;
+                })}
               </div>
             </Section>
           </div>
 
-          {/* FAQs */}
+          {/* =================================================
+              FAQ
+          ================================================= */}
+
           <div id="faqs">
             <Section number="11" title="Frequently Asked Questions">
               <div className="space-y-3">
@@ -401,36 +493,41 @@ export default function LabourLicence() {
                   const isOpen = openFaq === index;
 
                   return (
-                    <div
-                      key={index}
-                      className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
-                    >
+                    <div key={index} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
                       <button
                         type="button"
                         onClick={() => setOpenFaq(isOpen ? null : index)}
                         className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
+                        aria-expanded={isOpen}
                       >
-                        <span className="text-sm font-bold text-[#03254C] sm:text-base">
-                          {faq.question}
-                        </span>
+                        <span className="text-sm font-bold text-[#03254C] sm:text-base">{faq?.question}</span>
 
                         <ChevronDown
-                          className={`h-5 w-5 shrink-0 text-[#F26522] transition-transform duration-300 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
+                          className={`h-5 w-5 shrink-0 text-[#F26522] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                         />
                       </button>
 
                       <AnimatePresence initial={false}>
                         {isOpen && (
                           <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
+                            initial={{
+                              height: 0,
+                              opacity: 0,
+                            }}
+                            animate={{
+                              height: "auto",
+                              opacity: 1,
+                            }}
+                            exit={{
+                              height: 0,
+                              opacity: 0,
+                            }}
+                            transition={{
+                              duration: 0.25,
+                            }}
                           >
                             <div className="border-t border-slate-100 px-5 pb-5 pt-4 text-sm leading-7 text-slate-600 sm:px-6">
-                              {faq.answer}
+                              {faq?.answer}
                             </div>
                           </motion.div>
                         )}
@@ -442,23 +539,23 @@ export default function LabourLicence() {
             </Section>
           </div>
 
-          {/* CTA */}
+          {/* =================================================
+              CTA
+          ================================================= */}
+
           <section className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#03254C] to-[#062a57] p-7 shadow-xl sm:p-10">
             <div className="relative">
               <div className="absolute -right-10 -top-16 h-40 w-40 rounded-full bg-[#F26522]/10 blur-2xl" />
 
               <div className="relative">
-                <span className="text-xs font-bold uppercase tracking-wider text-orange-200">
-                  Labour Licence & Compliance Support
-                </span>
+                <span className="text-xs font-bold uppercase tracking-wider text-orange-200">Labour Licence & Compliance Support</span>
 
                 <h2 className="mt-3 max-w-2xl text-2xl font-bold text-white sm:text-3xl">
                   Get Structured Support for Your Labour Licence Requirements
                 </h2>
 
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-                  Get assistance with requirement assessment, documentation,
-                  application preparation, submission support, and applicable
+                  Get assistance with requirement assessment, documentation, application preparation, submission support, and applicable
                   labour compliance requirements based on your business profile.
                 </p>
 

@@ -12,11 +12,11 @@ import {
   ClipboardCheck,
   ChevronDown,
 } from "lucide-react";
-import {dscData} from "../../../data/dsc";
+import { dscDigitalSignatureCertificateData } from "../../../data/dsc";
 
 export default function DSC() {
   const [openFaq, setOpenFaq] = useState(null);
-  const data = dscData;
+  const data = dscDigitalSignatureCertificateData;
   const service =
     data.services?.find(
       (item) =>

@@ -1,5 +1,4 @@
 import Navbar from "../../components/layout/Navbar";
-// import StartupIndiaDPIITRecognition from "../../components/services/startup-india-dpiit-recognition/StartupIndiaDPIITRecognitionHero";
 import StartupIndiaDPIITRecognition from "../../components/services/startup-india-dpiit-recognition/StartupIndiaDPIITRecognition";
 import CTASection from "../../components/layout/CTA";
 import Footer from "../../components/layout/Footer";

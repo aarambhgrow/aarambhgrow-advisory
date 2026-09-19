@@ -2,17 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  CheckCircle2,
-  ShieldCheck,
-  Target,
-  FileText,
-  BriefcaseBusiness,
-  Award,
-  ClipboardCheck,
-  ChevronDown,
-} from "lucide-react";
-import {fssaiData} from "../../../data/fssai-licence";
+import { CheckCircle2, ShieldCheck, Target, FileText, BriefcaseBusiness, Award, ClipboardCheck, ChevronDown } from "lucide-react";
+import { fssaiLicenceData } from "../../../data/fssai-licence";
 
 const Section = ({ number, title, children }) => (
   <section className="mb-10">
@@ -20,22 +11,44 @@ const Section = ({ number, title, children }) => (
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F26522] text-sm font-bold text-white">
         {number}
       </span>
-      <h2 className="text-2xl font-bold tracking-tight text-[#03254C] sm:text-3xl">
-        {title}
-      </h2>
+
+      <h2 className="text-2xl font-bold tracking-tight text-[#03254C] sm:text-3xl">{title}</h2>
     </div>
+
     {children}
   </section>
 );
 
-const ListItem = ({ children }) => (
+/* Safely render strings OR { title, desc } objects */
+const ItemContent = ({ item }) => {
+  if (typeof item === "string" || typeof item === "number") {
+    return <span>{item}</span>;
+  }
+
+  if (item && typeof item === "object") {
+    return (
+      <span className="block">
+        {item.title && <span className="block font-semibold text-[#03254C]">{item.title}</span>}
+
+        {item.desc && <span className="mt-1 block text-slate-600">{item.desc}</span>}
+      </span>
+    );
+  }
+
+  return null;
+};
+
+const ListItem = ({ item }) => (
   <li className="flex items-start gap-3">
     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#157327]" />
-    <span className="text-[15px] leading-7 text-slate-600">{children}</span>
+
+    <span className="text-[15px] leading-7 text-slate-600">
+      <ItemContent item={item} />
+    </span>
   </li>
 );
 
-const InfoCard = ({ icon: Icon, title, items = [] }) => (
+const InfoCard = ({ icon: Icon, title, item }) => (
   <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
     <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50">
       <Icon className="h-5 w-5 text-[#F26522]" />
@@ -43,11 +56,9 @@ const InfoCard = ({ icon: Icon, title, items = [] }) => (
 
     <h3 className="mb-3 text-lg font-bold text-[#03254C]">{title}</h3>
 
-    <ul className="space-y-2.5">
-      {items.map((item, index) => (
-        <ListItem key={`${title}-${index}`}>{item}</ListItem>
-      ))}
-    </ul>
+    <div className="text-[15px] leading-7 text-slate-600">
+      <ItemContent item={item} />
+    </div>
   </div>
 );
 
@@ -55,39 +66,35 @@ export default function FSSAILicence() {
   const [openFaq, setOpenFaq] = useState(null);
 
   const service =
-    fssaiData?.services?.find(
-      (item) =>
-        item.id === "fssai-licence" ||
-        item.name === "FSSAI Licence" ||
-        item.shortTitle === "FSSAI Licence"
-    ) || fssaiData?.services?.[0];
+    fssaiLicenceData?.services?.find(
+      (item) => item.id === "fssai-licence" || item.name === "FSSAI Licence" || item.shortTitle === "FSSAI Licence",
+    ) || fssaiLicenceData?.services?.[0];
 
   if (!service) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#fafafa] px-6">
         <div className="rounded-2xl border border-red-200 bg-white p-8 text-center shadow-sm">
-          <h1 className="text-xl font-bold text-red-600">
-            FSSAI Licence data not found
-          </h1>
-          <p className="mt-2 text-sm text-slate-500">
-            Please check data/fssai-licence.js
-          </p>
+          <h1 className="text-xl font-bold text-red-600">FSSAI Licence data not found</h1>
+
+          <p className="mt-2 text-sm text-slate-500">Please check data/fssai-licence.js</p>
         </div>
       </main>
     );
   }
 
-  const hero = fssaiData.hero || {};
-  const benefits = service.benefits || [];
-  const suitedFor = service.suitedFor || [];
-  const foodBusinessAreas = service.foodBusinessAreas || [];
-  const licenceTypes = service.licenceTypes || [];
-  const businessNeeds = service.businessNeeds || [];
-  const whatWeDo = service.whatWeDo || [];
-  const documents = service.documents || [];
-  const process = service.process || [];
-  const whyChoose = service.whyChoose || [];
-  const faqs = service.faqs || [
+  const hero = fssaiLicenceData?.hero || {};
+
+  const benefits = service?.benefits || [];
+  const suitedFor = service?.suitedFor || [];
+  const foodBusinessAreas = service?.foodBusinessAreas || [];
+  const licenceTypes = service?.licenceTypes || [];
+  const businessNeeds = service?.businessNeeds || [];
+  const whatWeDo = service?.whatWeDo || [];
+  const documents = service?.documents || [];
+  const process = service?.process || [];
+  const whyChoose = service?.whyChoose || [];
+
+  const faqs = service?.faqs || [
     {
       question: "What is FSSAI Licence?",
       answer:
@@ -148,9 +155,7 @@ export default function FSSAILicence() {
                 "Get structured assistance for FSSAI Registration, FSSAI Licence application, documentation, and applicable food safety compliance requirements"}
             </p>
 
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
-              {service.description}
-            </p>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">{service.description}</p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -183,12 +188,9 @@ export default function FSSAILicence() {
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                    Service
-                  </p>
-                  <h3 className="font-bold text-[#03254C]">
-                    FSSAI Licence
-                  </h3>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Service</p>
+
+                  <h3 className="font-bold text-[#03254C]">FSSAI Licence</h3>
                 </div>
               </div>
 
@@ -224,17 +226,12 @@ export default function FSSAILicence() {
             <section id="introduction" className="mb-12 scroll-mt-24">
               <Section number="01" title="FSSAI Licence & Registration">
                 <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                  <p className="text-[15px] leading-8 text-slate-600">
-                    {service.description}
-                  </p>
+                  <p className="text-[15px] leading-8 text-slate-600">{service.description}</p>
 
                   <p className="mt-4 text-[15px] leading-8 text-slate-600">
-                    FSSAI registration or licensing requirements can vary
-                    according to the nature, scale, activities, location, and
-                    other applicable conditions of a food business. Proper
-                    assessment of the business activity and documentation
-                    helps in preparing the applicable application and
-                    compliance records.
+                    FSSAI registration or licensing requirements can vary according to the nature, scale, activities, location, and other
+                    applicable conditions of a food business. Proper assessment of the business activity and documentation helps in
+                    preparing the applicable application and compliance records.
                   </p>
                 </div>
               </Section>
@@ -248,8 +245,8 @@ export default function FSSAILicence() {
                     <InfoCard
                       key={index}
                       icon={CheckCircle2}
-                      title={`FSSAI Support ${String(index + 1).padStart(2, "0")}`}
-                      items={[item]}
+                      title={item?.title || `FSSAI Support ${String(index + 1).padStart(2, "0")}`}
+                      item={item?.desc ? item.desc : item}
                     />
                   ))}
                 </div>
@@ -262,7 +259,7 @@ export default function FSSAILicence() {
                 <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
                   <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
                     {suitedFor.map((item, index) => (
-                      <ListItem key={index}>{item}</ListItem>
+                      <ListItem key={index} item={item} />
                     ))}
                   </div>
                 </div>
@@ -281,8 +278,9 @@ export default function FSSAILicence() {
                       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-green-50">
                         <ShieldCheck className="h-5 w-5 text-[#157327]" />
                       </div>
+
                       <h3 className="text-sm font-bold leading-6 text-[#03254C]">
-                        {item}
+                        <ItemContent item={item} />
                       </h3>
                     </div>
                   ))}
@@ -294,16 +292,18 @@ export default function FSSAILicence() {
             <section id="food-business-areas" className="mb-12 scroll-mt-24">
               <Section number="05" title="Food Business Areas">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {foodBusinessAreas.map((item, index) => (
-                    <InfoCard
-                      key={index}
-                      icon={BriefcaseBusiness}
-                      title={item}
-                      items={[
-                        `FSSAI support for ${item.toLowerCase()} activities`,
-                      ]}
-                    />
-                  ))}
+                  {foodBusinessAreas.map((item, index) => {
+                    const label = typeof item === "string" ? item : item?.title || "Food Business";
+
+                    return (
+                      <InfoCard
+                        key={index}
+                        icon={BriefcaseBusiness}
+                        title={label}
+                        item={typeof item === "object" && item?.desc ? item.desc : `FSSAI support for ${label.toLowerCase()} activities`}
+                      />
+                    );
+                  })}
                 </div>
               </Section>
             </section>
@@ -314,7 +314,7 @@ export default function FSSAILicence() {
                 <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
                   <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
                     {businessNeeds.map((item, index) => (
-                      <ListItem key={index}>{item}</ListItem>
+                      <ListItem key={index} item={item} />
                     ))}
                   </div>
                 </div>
@@ -325,25 +325,29 @@ export default function FSSAILicence() {
             <section id="what-we-do" className="mb-12 scroll-mt-24">
               <Section number="07" title="What We Do">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {whatWeDo.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
-                    >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50">
-                        <ClipboardCheck className="h-5 w-5 text-[#F26522]" />
-                      </div>
+                  {whatWeDo.map((item, index) => {
+                    const title = typeof item === "object" ? item?.title || `Step ${index + 1}` : `Step ${index + 1}`;
 
-                      <div>
-                        <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-[#F26522]">
-                          Step {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <p className="text-sm font-semibold leading-6 text-[#03254C]">
-                          {item}
-                        </p>
+                    const description = typeof item === "object" ? item?.desc : item;
+
+                    return (
+                      <div key={index} className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50">
+                          <ClipboardCheck className="h-5 w-5 text-[#F26522]" />
+                        </div>
+
+                        <div>
+                          <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-[#F26522]">
+                            Step {String(index + 1).padStart(2, "0")}
+                          </span>
+
+                          <h3 className="text-sm font-bold leading-6 text-[#03254C]">{title}</h3>
+
+                          {description && <p className="mt-1 text-sm leading-6 text-slate-600">{description}</p>}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </Section>
             </section>
@@ -358,19 +362,17 @@ export default function FSSAILicence() {
                     </div>
 
                     <div>
-                      <h3 className="font-bold text-[#03254C]">
-                        Commonly Required Documents
-                      </h3>
+                      <h3 className="font-bold text-[#03254C]">Commonly Required Documents</h3>
+
                       <p className="text-sm text-slate-500">
-                        Requirements may vary according to the food business
-                        and applicable licence category.
+                        Requirements may vary according to the food business and applicable licence category.
                       </p>
                     </div>
                   </div>
 
                   <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
                     {documents.map((item, index) => (
-                      <ListItem key={index}>{item}</ListItem>
+                      <ListItem key={index} item={item} />
                     ))}
                   </div>
                 </div>
@@ -381,25 +383,25 @@ export default function FSSAILicence() {
             <section id="process" className="mb-12 scroll-mt-24">
               <Section number="09" title="FSSAI Licence Process">
                 <div className="space-y-4">
-                  {process.map((item, index) => (
-                    <div
-                      key={index}
-                      className="relative flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
-                    >
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#03254C] text-sm font-bold text-white">
-                        {String(index + 1).padStart(2, "0")}
-                      </div>
+                  {process.map((item, index) => {
+                    const title = typeof item === "object" ? item?.title || `Stage ${index + 1}` : `Stage ${index + 1}`;
 
-                      <div>
-                        <h3 className="font-bold text-[#03254C]">
-                          Stage {index + 1}
-                        </h3>
-                        <p className="mt-1 text-sm leading-6 text-slate-600">
-                          {item}
-                        </p>
+                    const description = typeof item === "object" ? item?.desc : item;
+
+                    return (
+                      <div key={index} className="relative flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#03254C] text-sm font-bold text-white">
+                          {String(index + 1).padStart(2, "0")}
+                        </div>
+
+                        <div>
+                          <h3 className="font-bold text-[#03254C]">{title}</h3>
+
+                          {description && <p className="mt-1 text-sm leading-6 text-slate-600">{description}</p>}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </Section>
             </section>
@@ -412,11 +414,8 @@ export default function FSSAILicence() {
                     <InfoCard
                       key={index}
                       icon={Award}
-                      title={`Support Advantage ${String(index + 1).padStart(
-                        2,
-                        "0"
-                      )}`}
-                      items={[item]}
+                      title={item?.title || `Support Advantage ${String(index + 1).padStart(2, "0")}`}
+                      item={item?.desc ? item.desc : item}
                     />
                   ))}
                 </div>
@@ -431,39 +430,41 @@ export default function FSSAILicence() {
                     const isOpen = openFaq === index;
 
                     return (
-                      <div
-                        key={index}
-                        className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
-                      >
+                      <div key={index} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
                         <button
                           type="button"
                           onClick={() => setOpenFaq(isOpen ? null : index)}
                           className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left"
                           aria-expanded={isOpen}
                         >
-                          <span className="text-sm font-bold leading-6 text-[#03254C] sm:text-base">
-                            {faq.question}
-                          </span>
+                          <span className="text-sm font-bold leading-6 text-[#03254C] sm:text-base">{faq.question}</span>
 
                           <ChevronDown
-                            className={`h-5 w-5 shrink-0 text-[#F26522] transition-transform duration-300 ${
-                              isOpen ? "rotate-180" : ""
-                            }`}
+                            className={`h-5 w-5 shrink-0 text-[#F26522] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                           />
                         </button>
 
                         <AnimatePresence initial={false}>
                           {isOpen && (
                             <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.25 }}
+                              initial={{
+                                height: 0,
+                                opacity: 0,
+                              }}
+                              animate={{
+                                height: "auto",
+                                opacity: 1,
+                              }}
+                              exit={{
+                                height: 0,
+                                opacity: 0,
+                              }}
+                              transition={{
+                                duration: 0.25,
+                              }}
                             >
                               <div className="border-t border-slate-100 px-5 pb-5 pt-4">
-                                <p className="text-sm leading-7 text-slate-600">
-                                  {faq.answer}
-                                </p>
+                                <p className="text-sm leading-7 text-slate-600">{faq.answer}</p>
                               </div>
                             </motion.div>
                           )}
@@ -489,8 +490,7 @@ export default function FSSAILicence() {
                   </h2>
 
                   <p className="mt-3 text-sm leading-7 text-slate-300 sm:text-base">
-                    Get structured assistance with requirement assessment,
-                    documentation, application preparation, submission, and
+                    Get structured assistance with requirement assessment, documentation, application preparation, submission, and
                     applicable FSSAI compliance support.
                   </p>
                 </div>

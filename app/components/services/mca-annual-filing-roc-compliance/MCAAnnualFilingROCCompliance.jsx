@@ -2,86 +2,174 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  CheckCircle2,
-  ShieldCheck,
-  Target,
-  FileText,
-  BriefcaseBusiness,
-  Award,
-  ClipboardCheck,
-  ChevronDown,
-} from "lucide-react";
+import { CheckCircle2, ShieldCheck, Target, FileText, BriefcaseBusiness, Award, ClipboardCheck, ChevronDown } from "lucide-react";
 
-import {mcaAnnualFilingData} from "../../../data/mca-annual-filing-roc-compliance";
+import { mcaAnnualFilingRocComplianceData } from "../../../data/mca-annual-filing-roc-compliance";
 
+/* =========================================================
+   SAFE CONTENT RENDERER
+   Handles strings, numbers and objects such as:
+   { title: "...", desc: "..." }
+========================================================= */
+const ItemContent = ({ item }) => {
+  if (item === null || item === undefined) {
+    return null;
+  }
+
+  if (typeof item === "string" || typeof item === "number") {
+    return <>{item}</>;
+  }
+
+  if (typeof item === "object") {
+    if (item.title && item.desc) {
+      return (
+        <>
+          <strong className="font-semibold text-[#03254C]">{item.title}</strong> <span>{item.desc}</span>
+        </>
+      );
+    }
+
+    if (item.title) {
+      return <strong className="font-semibold text-[#03254C]">{item.title}</strong>;
+    }
+
+    if (item.name && item.description) {
+      return (
+        <>
+          <strong className="font-semibold text-[#03254C]">{item.name}</strong> <span>{item.description}</span>
+        </>
+      );
+    }
+
+    if (item.name) {
+      return <strong className="font-semibold text-[#03254C]">{item.name}</strong>;
+    }
+
+    if (item.description) {
+      return <span>{item.description}</span>;
+    }
+
+    if (item.desc) {
+      return <span>{item.desc}</span>;
+    }
+
+    return null;
+  }
+
+  return null;
+};
+
+/* =========================================================
+   GET TITLE FROM ANY DATA FORMAT
+========================================================= */
+const getItemTitle = (item, fallback = "") => {
+  if (typeof item === "string" || typeof item === "number") {
+    return String(item);
+  }
+
+  if (item && typeof item === "object") {
+    return item.title || item.name || item.shortTitle || fallback;
+  }
+
+  return fallback;
+};
+
+/* =========================================================
+   SECTION
+========================================================= */
 const Section = ({ number, title, children }) => (
   <section className="mb-12" id={title.toLowerCase().replace(/\s+/g, "-")}>
     <div className="mb-5 flex items-center gap-3">
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F26522] text-sm font-bold text-white">
         {number}
       </span>
+
       <h2 className="text-2xl font-bold text-[#03254C] sm:text-3xl">{title}</h2>
     </div>
+
     {children}
   </section>
 );
 
-const ListItem = ({ children }) => (
+/* =========================================================
+   LIST ITEM
+========================================================= */
+const ListItem = ({ item }) => (
   <li className="flex items-start gap-3">
     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#157327]" />
-    <span className="text-sm leading-6 text-slate-600 sm:text-base">{children}</span>
+
+    <span className="text-sm leading-6 text-slate-600 sm:text-base">
+      <ItemContent item={item} />
+    </span>
   </li>
 );
 
+/* =========================================================
+   INFO CARD
+========================================================= */
 const InfoCard = ({ icon: Icon, title, children }) => (
   <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
     <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#fff7ed]">
       <Icon className="h-5 w-5 text-[#F26522]" />
     </div>
+
     <h3 className="mb-2 text-base font-bold text-[#03254C]">{title}</h3>
-    <p className="text-sm leading-6 text-slate-600">{children}</p>
+
+    <div className="text-sm leading-6 text-slate-600">{children}</div>
   </div>
 );
 
+/* =========================================================
+   MAIN COMPONENT
+========================================================= */
 export default function MCAAnnualFilingROCCompliance() {
   const [openFaq, setOpenFaq] = useState(null);
 
+  /* =======================================================
+     SERVICE DATA
+  ======================================================= */
   const service =
-    mcaAnnualFilingData?.services?.find(
+    mcaAnnualFilingRocComplianceData?.services?.find(
       (item) =>
-        item.id === "mca-annual-filing-roc-compliance" ||
-        item.name === "MCA Annual Filing / ROC Compliance" ||
-        item.shortTitle === "MCA Annual Filing / ROC Compliance"
-    ) || mcaAnnualFilingData?.services?.[0];
+        item?.id === "mca-annual-filing-roc-compliance" ||
+        item?.name === "MCA Annual Filing / ROC Compliance" ||
+        item?.shortTitle === "MCA Annual Filing / ROC Compliance",
+    ) || mcaAnnualFilingRocComplianceData?.services?.[0];
 
+  /* =======================================================
+     FALLBACK IF DATA NOT FOUND
+  ======================================================= */
   if (!service) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#fafafa] px-6">
         <div className="rounded-2xl border border-red-200 bg-white p-8 text-center shadow-sm">
-          <h1 className="text-xl font-bold text-[#03254C]">
-            MCA Annual Filing / ROC Compliance service data not found
-          </h1>
-          <p className="mt-2 text-sm text-slate-600">
-            Please check the data/mca-annual-filing-roc-compliance.js file.
-          </p>
+          <h1 className="text-xl font-bold text-[#03254C]">MCA Annual Filing / ROC Compliance service data not found</h1>
+
+          <p className="mt-2 text-sm text-slate-600">Please check the data/mca-annual-filing-roc-compliance.js file.</p>
         </div>
       </main>
     );
   }
 
-  const hero = mcaAnnualFilingData?.hero || {};
-  const benefits = service.benefits || [];
-  const suitedFor = service.suitedFor || [];
-  const complianceAreas = service.complianceAreas || [];
-  const filingTypes = service.filingTypes || [];
-  const corporateNeeds = service.corporateNeeds || [];
-  const whatWeDo = service.whatWeDo || [];
-  const documents = service.documents || [];
-  const process = service.process || [];
-  const whyChoose = service.whyChoose || [];
+  /* =======================================================
+     DATA
+  ======================================================= */
+  const hero = mcaAnnualFilingRocComplianceData?.hero || {};
 
-  const faqs = service.faqs?.length
+  const benefits = service?.benefits || [];
+  const suitedFor = service?.suitedFor || [];
+  const complianceAreas = service?.complianceAreas || [];
+  const filingTypes = service?.filingTypes || [];
+  const corporateNeeds = service?.corporateNeeds || [];
+  const whatWeDo = service?.whatWeDo || [];
+  const documents = service?.documents || [];
+  const process = service?.process || [];
+  const whyChoose = service?.whyChoose || [];
+
+  /* =======================================================
+     FAQ
+  ======================================================= */
+  const faqs = service?.faqs?.length
     ? service.faqs
     : [
         {
@@ -113,26 +201,22 @@ export default function MCAAnnualFilingROCCompliance() {
 
   return (
     <main className="min-h-screen bg-[#fafafa] text-slate-800">
-      {/* Hero */}
+      {/* ===================================================
+          HERO
+      =================================================== */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#03254C] to-[#062a57]">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#F26522]/10 blur-3xl" />
+
         <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[#157327]/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl"
-          >
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl">
             <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-orange-200">
               {hero.category || service.category || "Tax & Compliance"}
             </span>
 
             <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-              {hero.title ||
-                service.title ||
-                "MCA Annual Filing & ROC Compliance Services in India"}
+              {hero.title || service.title || "MCA Annual Filing & ROC Compliance Services in India"}
             </h1>
 
             <p className="mt-5 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg">
@@ -140,9 +224,7 @@ export default function MCAAnnualFilingROCCompliance() {
                 "Manage applicable MCA annual filing and ROC compliance requirements with structured documentation and filing support"}
             </p>
 
-            <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
-              {service.description}
-            </p>
+            <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">{service.description}</p>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <a
@@ -163,20 +245,18 @@ export default function MCAAnnualFilingROCCompliance() {
         </div>
       </section>
 
-      <div
-        id="mca-annual-filing-roc-compliance-content"
-        className="mx-auto flex max-w-7xl gap-8 px-5 py-12 sm:px-8 lg:px-10"
-      >
-        {/* Sidebar */}
+      {/* ===================================================
+          CONTENT WRAPPER
+      =================================================== */}
+      <div id="mca-annual-filing-roc-compliance-content" className="mx-auto flex max-w-7xl gap-8 px-5 py-12 sm:px-8 lg:px-10">
+        {/* =================================================
+            SIDEBAR
+        ================================================= */}
         <aside className="hidden w-72 shrink-0 lg:block">
           <div className="sticky top-24 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[#F26522]">
-              Tax & Compliance
-            </p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[#F26522]">Tax & Compliance</p>
 
-            <h3 className="mb-5 text-lg font-bold text-[#03254C]">
-              MCA & ROC Compliance
-            </h3>
+            <h3 className="mb-5 text-lg font-bold text-[#03254C]">MCA & ROC Compliance</h3>
 
             <nav className="space-y-2">
               {[
@@ -204,28 +284,30 @@ export default function MCAAnnualFilingROCCompliance() {
           </div>
         </aside>
 
-        {/* Main Content */}
+        {/* =================================================
+            MAIN CONTENT
+        ================================================= */}
         <div className="min-w-0 flex-1">
-          {/* Introduction */}
+          {/* =================================================
+              01 INTRODUCTION
+          ================================================= */}
           <div id="introduction">
             <Section number="01" title="MCA Annual Filing & ROC Compliance">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                <p className="text-base leading-8 text-slate-600">
-                  {service.description}
-                </p>
+                <p className="text-base leading-8 text-slate-600">{service.description}</p>
 
                 <p className="mt-4 text-base leading-8 text-slate-600">
-                  Companies are required to maintain various corporate records
-                  and complete applicable statutory filings and disclosures.
-                  MCA annual filing and ROC compliance support helps businesses
-                  organize required corporate, financial, director, shareholder,
-                  and statutory information for applicable filings.
+                  Companies are required to maintain various corporate records and complete applicable statutory filings and disclosures.
+                  MCA annual filing and ROC compliance support helps businesses organize required corporate, financial, director,
+                  shareholder, and statutory information for applicable filings.
                 </p>
               </div>
             </Section>
           </div>
 
-          {/* Benefits */}
+          {/* =================================================
+              02 BENEFITS
+          ================================================= */}
           <div id="benefits">
             <Section number="02" title="Benefits of MCA Annual Filing Support">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -233,60 +315,69 @@ export default function MCAAnnualFilingROCCompliance() {
                   <InfoCard
                     key={index}
                     icon={index % 2 === 0 ? ShieldCheck : ClipboardCheck}
-                    title={item.title || item.name || `Benefit ${index + 1}`}
+                    title={getItemTitle(item, `Benefit ${index + 1}`)}
                   >
-                    {item.description || item}
+                    <ItemContent item={item?.desc || item?.description || item} />
                   </InfoCard>
                 ))}
               </div>
             </Section>
           </div>
 
-          {/* Who Can Benefit */}
+          {/* =================================================
+              03 WHO CAN BENEFIT
+          ================================================= */}
           <div id="who-can-benefit">
             <Section number="03" title="Who Can Benefit">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {suitedFor.map((item, index) => (
-                    <ListItem key={index}>{item}</ListItem>
+                    <ListItem key={index} item={item} />
                   ))}
                 </ul>
               </div>
             </Section>
           </div>
 
-          {/* Compliance Areas */}
+          {/* =================================================
+              04 COMPLIANCE AREAS
+          ================================================= */}
           <div id="compliance-areas">
             <Section number="04" title="MCA & ROC Compliance Areas">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {complianceAreas.map((item, index) => (
-                    <ListItem key={index}>{item}</ListItem>
+                    <ListItem key={index} item={item} />
                   ))}
                 </ul>
               </div>
             </Section>
           </div>
 
-          {/* Filing Types */}
+          {/* =================================================
+              05 FILING TYPES
+          ================================================= */}
           <div id="filing-types">
             <Section number="05" title="MCA Filing Types">
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {filingTypes.map((item, index) => (
-                  <InfoCard
-                    key={index}
-                    icon={FileText}
-                    title={item.title || item.name || item}
-                  >
-                    {item.description ||
-                      "Applicable MCA filing and statutory reporting support based on the entity's requirements."}
+                  <InfoCard key={index} icon={FileText} title={getItemTitle(item, `Filing Type ${index + 1}`)}>
+                    <ItemContent
+                      item={
+                        item?.desc ||
+                        item?.description ||
+                        "Applicable MCA filing and statutory reporting support based on the entity's requirements."
+                      }
+                    />
                   </InfoCard>
                 ))}
               </div>
             </Section>
           </div>
 
-          {/* Corporate Needs */}
+          {/* =================================================
+              06 CORPORATE NEEDS
+          ================================================= */}
           <div id="corporate-needs">
             <Section number="06" title="Corporate Compliance Needs We Support">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -294,34 +385,37 @@ export default function MCAAnnualFilingROCCompliance() {
                   <InfoCard
                     key={index}
                     icon={index % 2 === 0 ? Target : BriefcaseBusiness}
-                    title={
-                      item.title ||
-                      item.name ||
-                      `Corporate Requirement ${index + 1}`
-                    }
+                    title={getItemTitle(item, `Corporate Requirement ${index + 1}`)}
                   >
-                    {item.description ||
-                      "Structured support based on applicable company and ROC compliance requirements."}
+                    <ItemContent
+                      item={
+                        item?.desc || item?.description || "Structured support based on applicable company and ROC compliance requirements."
+                      }
+                    />
                   </InfoCard>
                 ))}
               </div>
             </Section>
           </div>
 
-          {/* What We Do */}
+          {/* =================================================
+              07 WHAT WE DO
+          ================================================= */}
           <div id="what-we-do">
             <Section number="07" title="What We Do">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
                 <ul className="space-y-4">
                   {whatWeDo.map((item, index) => (
-                    <ListItem key={index}>{item}</ListItem>
+                    <ListItem key={index} item={item} />
                   ))}
                 </ul>
               </div>
             </Section>
           </div>
 
-          {/* Documents */}
+          {/* =================================================
+              08 DOCUMENTS
+          ================================================= */}
           <div id="documents-required">
             <Section number="08" title="Documents Required">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
@@ -331,35 +425,42 @@ export default function MCAAnnualFilingROCCompliance() {
                   </div>
 
                   <div>
-                    <h3 className="font-bold text-[#03254C]">
-                      Typical Documents
-                    </h3>
-                    <p className="text-sm text-slate-500">
-                      Requirements may vary based on the company and applicable
-                      filing requirements.
-                    </p>
+                    <h3 className="font-bold text-[#03254C]">Typical Documents</h3>
+
+                    <p className="text-sm text-slate-500">Requirements may vary based on the company and applicable filing requirements.</p>
                   </div>
                 </div>
 
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {documents.map((item, index) => (
-                    <ListItem key={index}>{item}</ListItem>
+                    <ListItem key={index} item={item} />
                   ))}
                 </ul>
               </div>
             </Section>
           </div>
 
-          {/* Process */}
+          {/* =================================================
+              09 PROCESS
+          ================================================= */}
           <div id="mca-annual-filing-process">
             <Section number="09" title="MCA Annual Filing Process">
               <div className="space-y-4">
                 {process.map((item, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
+                    initial={{
+                      opacity: 0,
+                      x: -12,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.2,
+                    }}
                     transition={{
                       duration: 0.35,
                       delay: index * 0.04,
@@ -372,7 +473,7 @@ export default function MCAAnnualFilingROCCompliance() {
 
                     <div className="pt-1">
                       <p className="text-sm leading-6 text-slate-600 sm:text-base">
-                        {item}
+                        <ItemContent item={item} />
                       </p>
                     </div>
                   </motion.div>
@@ -381,7 +482,9 @@ export default function MCAAnnualFilingROCCompliance() {
             </Section>
           </div>
 
-          {/* Why Choose */}
+          {/* =================================================
+              10 WHY CHOOSE US
+          ================================================= */}
           <div id="why-choose-us">
             <Section number="10" title="Why Choose Our MCA & ROC Support">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -389,57 +492,63 @@ export default function MCAAnnualFilingROCCompliance() {
                   <InfoCard
                     key={index}
                     icon={index % 2 === 0 ? Award : ShieldCheck}
-                    title={
-                      item.title ||
-                      item.name ||
-                      `Support Advantage ${index + 1}`
-                    }
+                    title={getItemTitle(item, `Support Advantage ${index + 1}`)}
                   >
-                    {item.description || item}
+                    <ItemContent item={item?.desc || item?.description || item} />
                   </InfoCard>
                 ))}
               </div>
             </Section>
           </div>
 
-          {/* FAQs */}
+          {/* =================================================
+              11 FAQ
+          ================================================= */}
           <div id="frequently-asked-questions">
             <Section number="11" title="Frequently Asked Questions">
               <div className="space-y-3">
                 {faqs.map((faq, index) => {
                   const isOpen = openFaq === index;
 
+                  const question = typeof faq === "object" ? faq?.question || faq?.title || "" : String(faq);
+
+                  const answer = typeof faq === "object" ? faq?.answer || faq?.desc || faq?.description || "" : "";
+
                   return (
-                    <div
-                      key={index}
-                      className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
-                    >
+                    <div key={index} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
                       <button
                         type="button"
                         onClick={() => setOpenFaq(isOpen ? null : index)}
                         className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
                       >
-                        <span className="text-sm font-bold text-[#03254C] sm:text-base">
-                          {faq.question}
-                        </span>
+                        <span className="text-sm font-bold text-[#03254C] sm:text-base">{question}</span>
 
                         <ChevronDown
-                          className={`h-5 w-5 shrink-0 text-[#F26522] transition-transform duration-300 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
+                          className={`h-5 w-5 shrink-0 text-[#F26522] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                         />
                       </button>
 
                       <AnimatePresence initial={false}>
                         {isOpen && (
                           <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
+                            initial={{
+                              height: 0,
+                              opacity: 0,
+                            }}
+                            animate={{
+                              height: "auto",
+                              opacity: 1,
+                            }}
+                            exit={{
+                              height: 0,
+                              opacity: 0,
+                            }}
+                            transition={{
+                              duration: 0.25,
+                            }}
                           >
                             <div className="border-t border-slate-100 px-5 pb-5 pt-4 text-sm leading-7 text-slate-600 sm:px-6">
-                              {faq.answer}
+                              <ItemContent item={answer} />
                             </div>
                           </motion.div>
                         )}
@@ -451,24 +560,23 @@ export default function MCAAnnualFilingROCCompliance() {
             </Section>
           </div>
 
-          {/* CTA */}
+          {/* =================================================
+              CTA
+          ================================================= */}
           <section className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#03254C] to-[#062a57] p-7 shadow-xl sm:p-10">
             <div className="relative">
               <div className="absolute -right-10 -top-16 h-40 w-40 rounded-full bg-[#F26522]/10 blur-2xl" />
 
               <div className="relative">
-                <span className="text-xs font-bold uppercase tracking-wider text-orange-200">
-                  MCA Annual Filing & ROC Compliance
-                </span>
+                <span className="text-xs font-bold uppercase tracking-wider text-orange-200">MCA Annual Filing & ROC Compliance</span>
 
                 <h2 className="mt-3 max-w-2xl text-2xl font-bold text-white sm:text-3xl">
                   Keep Your Applicable MCA & ROC Compliance Organized
                 </h2>
 
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-                  Get structured assistance with compliance assessment,
-                  document preparation, annual filing requirements, MCA
-                  submission support, and post-filing records.
+                  Get structured assistance with compliance assessment, document preparation, annual filing requirements, MCA submission
+                  support, and post-filing records.
                 </p>
 
                 <a
