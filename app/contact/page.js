@@ -5,6 +5,7 @@ import ContactFormWithMap from "../components/contact/ContactFormWithMap";
 import WhyGetInTouch from "../components/contact/WhyGetInTouch";
 import CTASection from "../components/layout/CTA";
 import Footer from "../components/layout/Footer";
+import { ADDRESS } from "../data/site";
 
 export const metadata = {
   title: "Contact AarambhGrow Advisory | Business Registration & Compliance Support",
@@ -33,14 +34,7 @@ export default function ContactPage() {
     email: "info@aarambhgrow.com",
     description:
       "Business registration, taxation, statutory compliance, licensing and certification advisory services for startups, MSMEs and businesses across India.",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway",
-      addressLocality: "Ahmedabad",
-      addressRegion: "Gujarat",
-      postalCode: "380060",
-      addressCountry: "IN",
-    },
+    address: { "@type": "PostalAddress", ...ADDRESS },
     areaServed: {
       "@type": "Country",
       name: "India",

@@ -5,6 +5,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Building2, ArrowUpRight } from "lucide-react";
 
+import { services } from "../../data/services";
+import { ADDRESS_LINE, MAPS_DIRECTIONS_URL } from "../../data/site";
+
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
@@ -12,56 +15,10 @@ const quickLinks = [
   { label: "Contact Us", href: "/contact" },
 ];
 
-const serviceLinks = [
-  {
-    label: "Startup Seed Fund",
-    href: "/services/startup-seed-fund",
-  },
-  {
-    label: "SISFS",
-    href: "/services/sisfs",
-  },
-  {
-    label: "Seed Funding Access",
-    href: "/services/seed-funding-access",
-  },
-  {
-    label: "Government Grants",
-    href: "/services/government-grants",
-  },
-  {
-    label: "CGTMSE",
-    href: "/services/cgtmse",
-  },
-  {
-    label: "Mudra Loan",
-    href: "/services/mudra-loan",
-  },
-  {
-    label: "PMEGP Loan",
-    href: "/services/pmegp-loan",
-  },
-  {
-    label: "CC / Term Loans",
-    href: "/services/cc-term-loans",
-  },
-  {
-    label: "NAIFF",
-    href: "/services/naiff",
-  },
-  {
-    label: "SSS",
-    href: "/services/sss",
-  },
-  {
-    label: "Textile Fund",
-    href: "/services/textile-fund",
-  },
-  {
-    label: "PMFME",
-    href: "/services/pmfme",
-  },
-];
+const serviceLinks = services.map((service) => ({
+  label: service.label,
+  href: `/services/${service.slug}`,
+}));
 
 const socialLinks = [
   {
@@ -169,7 +126,7 @@ export default function Footer() {
               className="relative flex w-fit items-center"
             >
               <Image
-                src="/images/white-logo.png"
+                src="/images/logo.png"
                 alt="AarambhGrow Services Private Limited"
                 width={400}
                 height={120}
@@ -275,7 +232,7 @@ export default function Footer() {
               className="space-y-3.5 rounded-md border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06]"
             >
               <p className="text-xs leading-[1.7] text-slate-300">
-                813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway, Ahmedabad, Gujarat, 380060
+                {ADDRESS_LINE}
               </p>
 
               <motion.a
@@ -285,7 +242,7 @@ export default function Footer() {
                 whileTap={{
                   scale: 0.98,
                 }}
-                href="https://www.google.com/maps/dir/?api=1&destination=813%2C%20Silver%20Radiance%204%2C%20Ovnaj%2C%20Bhavik%20Publication%2C%20SG%20Highway%2C%20Ahmedabad%2C%20Gujarat%2C%20380060"
+                href={MAPS_DIRECTIONS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group/btn inline-flex w-full items-center justify-between rounded-md border border-white/10 bg-white/[0.06] px-3.5 py-2 text-xs font-medium text-white transition-all duration-300 hover:border-[#F26522] hover:bg-[#F26522]"
@@ -360,10 +317,10 @@ export default function Footer() {
               <div>
                 <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-slate-500">Official Correspondence</p>
                 <a
-                  href="mailto:info@aarambhgrow.co.in"
+                  href="mailto:info@aarambhgrow.com"
                   className="mt-0.5 block text-xs font-semibold text-white transition-colors duration-200 hover:text-[#157327]"
                 >
-                  info@aarambhgrow.co.in
+                  info@aarambhgrow.com
                 </a>
               </div>
             </motion.div>

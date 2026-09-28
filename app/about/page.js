@@ -8,42 +8,17 @@ import FAQ from "../components/layout/FAQ";
 import CTASection from "../components/layout/CTA";
 import Footer from "../components/layout/Footer";
 import JsonLd from "../components/seo/JsonLd";
+import { buildMetadata, ROBOTS_BASIC } from "../lib/seo";
 
-export const metadata = {
-  title: "About AarambhGrow Advisory – Business Registration & Compliance Experts",
-
+export const metadata = buildMetadata({
+  title: "About AarambhGrow Advisory | Business Compliance Experts India",
   description:
-    "Learn about AarambhGrow Advisory and our services for company incorporation, GST, MSME registration, ITR filing, MCA compliance, licences, certifications and startup recognition across India.",
-
-  alternates: {
-    canonical: "https://aarambhgrow.com/about",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
-
-  openGraph: {
-    title: "About AarambhGrow Advisory – Business Registration & Compliance Experts",
-
-    description:
-      "AarambhGrow Advisory provides company incorporation, GST, MSME registration, tax filing, MCA compliance, licences, certifications and startup compliance services across India.",
-
-    url: "https://aarambhgrow.com/about",
-
-    type: "website",
-
-    images: [
-      {
-        url: "https://aarambhgrow.com/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AarambhGrow Advisory",
-      },
-    ],
-  },
-};
+    "Learn about AarambhGrow Advisory, supporting startups and MSMEs across India with business registration, taxation, compliance, licences and certifications.",
+  path: "/about",
+  robots: ROBOTS_BASIC,
+  ogDescription:
+    "Practical business registration, tax, compliance, licensing and certification support for startups and MSMEs across India.",
+});
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

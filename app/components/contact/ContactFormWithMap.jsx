@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Lock, ArrowRight, CheckCircle2, XCircle } from "lucide-react";
+import { ADDRESS_LINE, MAPS_DIRECTIONS_URL, MAPS_EMBED_URL } from "../../data/site";
 
 export default function ContactFormWithMap() {
   const [formData, setFormData] = useState({
@@ -154,6 +155,7 @@ export default function ContactFormWithMap() {
                       })
                     }
                     className="w-full rounded-md border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-[#03254C] transition-all focus:border-[#F26522] focus:bg-white focus:outline-none"
+                    required
                   />
                 </motion.div>
 
@@ -268,7 +270,7 @@ export default function ContactFormWithMap() {
           >
             <iframe
               title="AarambhGrow Advisory Location Map"
-              src="https://www.google.com/maps?q=813%2C%20Silver%20Radiance%204%2C%20Ovnaj%2C%20Bhavik%20Publication%2C%20SG%20Highway%2C%20Ahmedabad%2C%20Gujarat%20380060&output=embed"
+              src={MAPS_EMBED_URL}
               className="absolute inset-0 h-full w-full border-0 opacity-80 invert brightness-90 contrast-125"
               loading="lazy"
             />
@@ -283,11 +285,11 @@ export default function ContactFormWithMap() {
               <h4 className="text-xs font-black text-[#03254C]">AarambhGrow Advisory</h4>
 
               <p className="text-[11px] leading-snug text-slate-600">
-                813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway, Ahmedabad, Gujarat, 380060
+                {ADDRESS_LINE}
               </p>
 
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=813%2C%20Silver%20Radiance%204%2C%20Ovnaj%2C%20Bhavik%20Publication%2C%20SG%20Highway%2C%20Ahmedabad%2C%20Gujarat%20380060"
+                href={MAPS_DIRECTIONS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 pt-1 text-[11px] font-bold text-[#F26522] hover:underline"

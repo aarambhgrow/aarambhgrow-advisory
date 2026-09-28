@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
+import { OG_IMAGE, ORGANIZATION_NAME, SITE_URL } from "./data/site";
+import { ROBOTS_FULL } from "./lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,40 +19,26 @@ export const viewport = {
   initialScale: 1,
 };
 
-export const metadata = {
-  metadataBase: new URL("https://aarambhgrow.com"),
+const HOME_TITLE = "Business Registration, GST & Compliance Services India | AarambhGrow";
 
-  title: {
-    default: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
-    template: "%s | AarambhGrow Advisory",
-  },
+/*
+  Site-wide defaults. No title template: every page title from the SEO spec
+  already ends with the brand name.
+*/
+export const metadata = {
+  metadataBase: new URL(SITE_URL),
+
+  title: HOME_TITLE,
 
   description:
-    "AarambhGrow Advisory provides company incorporation, MSME registration, GST registration, ITR filing, MCA compliance, DSC, Startup India DPIIT recognition, licences, ISO, trademark, ZED certification and 80IAC tax exemption services across India.",
+    "AarambhGrow Advisory supports startups and MSMEs across India with company incorporation, GST, Udyam, ITR, ROC compliance, DPIIT, licences, certifications and trademarks.",
 
-  applicationName: "AarambhGrow Advisory",
+  applicationName: ORGANIZATION_NAME,
+  authors: [{ name: ORGANIZATION_NAME }],
+  creator: ORGANIZATION_NAME,
+  publisher: ORGANIZATION_NAME,
 
-  authors: [
-    {
-      name: "AarambhGrow Advisory",
-    },
-  ],
-
-  creator: "AarambhGrow Advisory",
-  publisher: "AarambhGrow Advisory",
-
-  robots: {
-    index: true,
-    follow: true,
-
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
-  },
+  robots: ROBOTS_FULL,
 
   icons: {
     icon: "/images/favicon.ico",
@@ -59,33 +47,20 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    siteName: "AarambhGrow Advisory",
-
-    title: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
-
+    siteName: ORGANIZATION_NAME,
+    title: HOME_TITLE,
     description:
-      "Business registration, GST, MSME, tax filing, MCA compliance, licences, certifications and startup recognition services for businesses across India.",
-
-    url: "https://aarambhgrow.com",
-
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AarambhGrow Advisory – Business Registration & Compliance Services",
-      },
-    ],
+      "Business registration, tax, compliance, licensing and certification support for startups and MSMEs across India.",
+    url: `${SITE_URL}/`,
+    images: [OG_IMAGE],
   },
 
   twitter: {
     card: "summary_large_image",
-
-    title: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
-
-    description: "Company registration, GST, MSME, tax filing, MCA compliance, licences, certifications and startup advisory services.",
-
-    images: ["/images/og-image.jpg"],
+    title: "Business Registration & Compliance Services India | AarambhGrow",
+    description:
+      "Company incorporation, GST, Udyam, ROC compliance, DPIIT recognition, licences, certifications and trademark support across India.",
+    images: [OG_IMAGE.url],
   },
 };
 

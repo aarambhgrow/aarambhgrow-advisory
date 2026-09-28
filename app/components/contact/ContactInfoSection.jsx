@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Phone, Mail, MapPin, MessageCircle, ArrowUpRight, Sparkles, Navigation } from "lucide-react";
+import { ADDRESS_LINE, MAPS_DIRECTIONS_URL } from "../../data/site";
 
 export default function ContactMainSection() {
   return (
@@ -116,13 +117,13 @@ export default function ContactMainSection() {
                   <span className="block text-[9px] font-bold uppercase tracking-wider text-slate-500">Visit Our Office</span>
 
                   <p className="mt-0.5 text-[11px] font-semibold leading-snug text-[#03254C]">
-                    813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway, Ahmedabad, Gujarat, 380060
+                    {ADDRESS_LINE}
                   </p>
                 </div>
               </div>
 
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=813%2C%20Silver%20Radiance%204%2C%20Ovnaj%2C%20Bhavik%20Publication%2C%20SG%20Highway%2C%20Ahmedabad%2C%20Gujarat%20380060"
+                href={MAPS_DIRECTIONS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center gap-1.5 rounded-md bg-[#F26522] px-3 py-1.5 text-[11px] font-bold text-white shadow-xs transition-colors hover:bg-[#d85416]"

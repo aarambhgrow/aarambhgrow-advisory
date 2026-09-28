@@ -1,6 +1,6 @@
-export default function robots() {
-  const baseUrl = "https://aarambhgrow.com";
+import { SITE_URL } from "./data/site";
 
+export default function robots() {
   return {
     rules: {
       userAgent: "*",
@@ -10,6 +10,6 @@ export default function robots() {
       disallow: ["/api/", "/admin/"],
     },
 
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

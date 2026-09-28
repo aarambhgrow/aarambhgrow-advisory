@@ -4,30 +4,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import {
-  ChevronDown,
-  Menu,
-  Phone,
-  X,
-  ArrowUpRight,
-  Building2,
-  BadgeCheck,
-  Banknote,
-  Sparkles,
-  Workflow,
-  Scale,
-  Receipt,
-  FileText,
-  FileCheck,
-  Stamp,
-  BriefcaseBusiness,
-  Utensils,
-  Award,
-  Tags,
-  Factory,
-  Percent,
-} from "lucide-react";
+import { ChevronDown, Menu, Phone, X, ArrowUpRight, Building2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+import { services } from "../../data/services";
+import { getServiceIcon } from "../services/serviceIcons";
 
 const COLORS = {
   navy: "#03254C",
@@ -44,44 +25,15 @@ const COLORS = {
   green50: "#f0fdf4",
 };
 
-const SERVICES_URL = "https://YOUR-SERVICES-WEBSITE.com";
-const INFINITY_URL = "https://YOUR-INFINITY-WEBSITE.com";
+const SERVICES_URL = "https://aarambhgrow.co.in";
+const INFINITY_URL = "https://aarambhgrow.tech";
 
-const SERVICES = [
-  {
-    label: "Company Incorporation",
-    href: "/services/company-incorporation",
-    description: "Pvt Ltd, OPC, LLP and Partnership Deed",
-    icon: Building2,
-  },
-  {
-    label: "MSME / Udyam Registration",
-    href: "/services/msme-udyam-registration",
-    description: "MSME / Udyam Registration",
-    icon: BadgeCheck,
-  },
-  { label: "GST Registration", href: "/services/gst-registration", description: "GST Registration", icon: Receipt },
-  { label: "Income Tax (ITR) Filing", href: "/services/income-tax-itr-filing", description: "Income Tax (ITR) Filing", icon: FileText },
-  {
-    label: "MCA Annual Filing / ROC Compliance",
-    href: "/services/mca-annual-filing-roc-compliance",
-    description: "MCA Annual Filing / ROC Compliance",
-    icon: FileCheck,
-  },
-  { label: "DSC (Digital Signature Certificate)", href: "/services/dsc", description: "DSC (Digital Signature Certificate)", icon: Stamp },
-  {
-    label: "Startup India (DPIIT) Recognition",
-    href: "/services/startup-india-dpiit-recognition",
-    description: "Startup India (DPIIT) Recognition",
-    icon: BadgeCheck,
-  },
-  { label: "Labour Licence", href: "/services/labour-licence", description: "Labour Licence", icon: BriefcaseBusiness },
-  { label: "FSSAI Licence", href: "/services/fssai-licence", description: "FSSAI Licence", icon: Utensils },
-  { label: "ISO Certification", href: "/services/iso-certification", description: "ISO Certification", icon: Award },
-  { label: "Trademark Registration", href: "/services/trademark-registration", description: "Trademark Registration", icon: Tags },
-  { label: "ZED Certification", href: "/services/zed-certification", description: "ZED Certification", icon: Factory },
-  { label: "80IAC Tax Exemption", href: "/services/80iac-tax-exemption", description: "80IAC Tax Exemption", icon: Percent },
-];
+const SERVICES = services.map((service) => ({
+  label: service.label,
+  href: `/services/${service.slug}`,
+  description: service.navDescription,
+  icon: getServiceIcon(service.icon),
+}));
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -143,12 +95,12 @@ function DesktopNavItem({ link, onNavigate }) {
             className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4"
           >
             <div
-              className="w-[1060px] max-w-[calc(100vw-32px)] overflow-hidden rounded-md border bg-white shadow-[0_25px_70px_rgba(3,37,76,0.16)]"
+              className="w-[1080px] max-w-[calc(100vw-32px)] overflow-hidden rounded-md border bg-white shadow-[0_25px_70px_rgba(3,37,76,0.16)]"
               style={{ borderColor: COLORS.slate200 }}
             >
               <div className="flex">
                 <div className="flex-1 p-6">
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-4 gap-3">
                     {link.children.map((service) => {
                       const Icon = service.icon || Building2;
 

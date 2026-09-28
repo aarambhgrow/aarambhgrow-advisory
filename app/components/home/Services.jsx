@@ -1,515 +1,267 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { ArrowRight, Star, Headphones, FileText, Award, Palette, Settings, Scale, ArrowUpRight, IndianRupee } from "lucide-react";
+import { ArrowUpRight, Headphones } from "lucide-react";
+import { services } from "../../data/services";
+import { SITE_URL, ORGANIZATION_NAME } from "../../data/site";
+import { getServiceIcon } from "../services/serviceIcons";
 
-export default function ServicesSection() {
-  const [activeTab, setActiveTab] = useState("All");
-  const headerRef = useRef(null);
+const CATEGORIES = {
+  "company-incorporation": "Business Registration",
+  "msme-udyam-registration": "Business Registration",
+  "gst-registration": "Tax Registration",
+  "income-tax-itr-filing": "Tax Compliance",
+  "mca-annual-filing-roc-compliance": "ROC Compliance",
+  dsc: "Digital Compliance",
+  "startup-india-dpiit-recognition": "Startup Recognition",
+  "labour-licence": "Licensing",
+  "fssai-licence": "Licensing",
+  "iso-certification": "Certification",
+  "trademark-registration": "Brand Protection",
+  "zed-certification": "Certification",
+  "80iac-tax-exemption": "Tax Benefits",
+};
 
-  const isInView = useInView(headerRef, {
-    once: true,
-    margin: "-40px",
-  });
+const SERVICES = services.map((service, index) => ({
+  number: String(index + 1).padStart(2, "0"),
+  label: service.label,
+  category: CATEGORIES[service.slug] || "Business Services",
+  href: `/services/${service.slug}`,
+  icon: getServiceIcon(service.icon),
+  summary: service.navDescription,
+  description: service.schema.description,
+  serviceType: service.schema.serviceType,
+}));
 
-  const avatars = [
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80",
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.07,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 28, filter: "blur(7px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+function ServicesStructuredData() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Business Registration, Compliance and Certification Services",
+    itemListElement: SERVICES.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: service.label,
+        description: service.description,
+        url: `${SITE_URL}${service.href}`,
+        serviceType: service.serviceType,
+        areaServed: { "@type": "Country", name: "India" },
+        provider: { "@type": "Organization", name: ORGANIZATION_NAME, url: SITE_URL },
+      },
+    })),
+  };
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />;
+}
+
+function AnimatedHeading() {
+  const lines = [
+    { text: "Business solutions", accent: false },
+    { text: "built for sustainable growth.", accent: true },
   ];
 
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-      },
-    },
-  };
+  return (
+    <motion.h2
+      id="services-heading"
+      variants={containerVariants}
+      className="text-3xl font-black leading-[1.05] tracking-[-0.045em] text-[#0f2a4a] sm:text-4xl md:text-5xl"
+    >
+      {lines.map((line) => (
+        <motion.span key={line.text} variants={fadeUpVariants} className={`block ${line.accent ? "text-[#f26522]" : ""}`}>
+          {line.text}
+        </motion.span>
+      ))}
+    </motion.h2>
+  );
+}
 
-  const fadeUpVariants = {
-    hidden: {
-      opacity: 0,
-      y: 24,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 24,
-      },
-    },
-  };
+function ServiceCard({ service }) {
+  const Icon = service.icon;
 
   return (
-    <section className="relative w-full bg-[#fafafa] py-10 sm:py-12 font-sans select-none overflow-hidden text-[#0f172a]">
-      <div className="absolute top-10 left-10 opacity-20 pointer-events-none hidden md:block">
-        <div className="grid grid-cols-6 gap-2">
-          {Array.from({ length: 24 }).map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#f26522]" />
-          ))}
-        </div>
-      </div>
-
-      <div className="absolute top-10 right-10 opacity-20 pointer-events-none hidden md:block">
-        <div className="grid grid-cols-6 gap-2">
-          {Array.from({ length: 24 }).map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#157327]" />
-          ))}
-        </div>
-      </div>
-
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{
-          once: true,
-          margin: "-40px",
-        }}
-        variants={containerVariants}
-        className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+    <motion.li variants={cardVariants} className="group list-none">
+      <Link
+        href={service.href}
+        aria-label={`Learn more about ${service.label}`}
+        className="relative flex h-full min-h-[190px] flex-col overflow-hidden rounded-md border border-slate-200 bg-white p-5 transition-colors duration-300 ease-out hover:border-[#f26522]/30 sm:min-h-[195px]"
       >
-        <motion.div variants={fadeUpVariants} className="text-center flex flex-col items-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#fff5f0] border border-[#f26522]/20 px-3.5 py-1 mb-3.5 shadow-sm">
-            <Star className="w-3 h-3 fill-[#f26522] text-[#f26522]" />
-
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#f26522]">OUR EXPERTISE</span>
+        <div className="relative z-10 flex h-full flex-col">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-[10px] font-bold tracking-[0.18em] text-[#f26522]">{service.number}</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-[#0f2a4a] transition-all duration-300 group-hover:rotate-45 group-hover:border-[#f26522]/30 group-hover:bg-[#fff5f0]">
+              <ArrowUpRight size={15} />
+            </span>
           </div>
 
-          <div
-            ref={headerRef}
-            className={`text-center max-w-3xl mx-auto space-y-4 transition-all duration-700 delay-150 ease-out ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0f2a4a] leading-tight tracking-tight transition-colors duration-300 hover:text-[#f26522]">
-              Business Solutions Designed
-              <br className="hidden sm:inline" />
-              for Sustainable Growth
-            </h2>
+          <div className="mt-4 flex h-9 w-9 items-center justify-center rounded-md border border-[#f26522]/15 bg-[#fff7f3] text-[#f26522] transition-transform duration-300 group-hover:scale-105">
+            <Icon size={18} strokeWidth={1.8} />
           </div>
 
-          <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-slate-500 font-normal max-w-2xl leading-relaxed">
-            From registration and financial setup to branding, certifications, legal compliance, and operations, we offer tailored
-            end-to-end solutions for your business.
-          </p>
-        </motion.div>
+          <div className="mt-3">
+            <p className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-[#157327]">{service.category}</p>
+            <h3 className="text-[16px] font-black leading-tight tracking-[-0.02em] text-[#0f2a4a]">{service.label}</h3>
+            <p className="mt-1.5 text-[11px] leading-4 text-slate-500">{service.summary}</p>
+          </div>
 
-        <motion.div layout className="space-y-4 sm:space-y-6">
-          <AnimatePresence mode="popLayout">
-            {/* ==================== TOP ROW ==================== */}
-            <motion.div
-              layout
-              key={`top-group-${activeTab}`}
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              exit={{
-                opacity: 0,
-                scale: 0.96,
-              }}
-              transition={{
-                duration: 0.35,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch"
-            >
-              {/* ==================== REGISTRATION ==================== */}
-              {(activeTab === "All" || activeTab === "Registration") && (
-                <motion.div layout className="lg:col-span-6 flex">
-                  <Link
-                    href="/services/registration"
-                    className="group w-full relative flex flex-col justify-between rounded-md bg-white border border-slate-100 p-4 sm:p-6 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="flex flex-col sm:grid sm:grid-cols-12 gap-4 h-full">
-                      <div className="sm:col-span-7 flex flex-col justify-between order-1">
-                        <div>
-                          <div className="flex items-center gap-2 mb-2">
-                            <FileText className="w-4 h-4 text-[#f26522] shrink-0" />
-
-                            <span className="text-xs font-extrabold text-[#f26522]">01 —</span>
-                          </div>
-
-                          <h3 className="text-lg font-black text-[#0f2a4a] mb-1.5 group-hover:text-[#f26522] transition-colors duration-300">
-                            Registration
-                          </h3>
-
-                          <p className="text-xs text-slate-500 leading-relaxed mb-3">
-                            Start your company with ease. We handle Private Limited, LLP, OPC, MSME, and all essential business
-                            registrations. Includes GST registration, Startup India recognition, and Udyam/MSME certification — fully
-                            managed from start to finish.
-                          </p>
-
-                          <ul className="space-y-1.5 text-xs font-semibold text-slate-700 mb-4 sm:mb-2">
-                            <li className="flex items-center gap-2">
-                              <span className="text-[#f26522] font-bold">✓</span>
-                              Private Limited Company
-                            </li>
-
-                            <li className="flex items-center gap-2">
-                              <span className="text-[#f26522] font-bold">✓</span>
-                              LLP & Partnership Setup
-                            </li>
-
-                            <li className="flex items-center gap-2">
-                              <span className="text-[#f26522] font-bold">✓</span>
-                              One Person Company (OPC)
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div className="hidden sm:inline-flex items-center gap-2 text-xs font-bold text-[#0f2a4a] group-hover:text-[#f26522] transition-colors duration-300 mt-2">
-                          <span>Learn More</span>
-
-                          <div className="w-5 h-5 rounded-full bg-[#f26522] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-                            <ArrowRight className="w-3 h-3" />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="sm:col-span-5 relative h-36 sm:h-full min-h-[130px] w-full bg-slate-50/80 rounded-md flex items-center justify-center p-3 order-2">
-                        <Image
-                          src="/images/service-1.png"
-                          alt="Business Registration Services"
-                          width={280}
-                          height={220}
-                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                          priority
-                        />
-                      </div>
-
-                      <div className="flex sm:hidden items-center gap-2 text-xs font-bold text-[#0f2a4a] group-hover:text-[#f26522] transition-colors duration-300 order-3 pt-1">
-                        <span>Learn More</span>
-
-                        <div className="w-5 h-5 rounded-full bg-[#f26522] text-white flex items-center justify-center">
-                          <ArrowRight className="w-3 h-3" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              )}
-
-              {/* ==================== FINANCE ==================== */}
-              {(activeTab === "All" || activeTab === "Finance") && (
-                <motion.div layout className="lg:col-span-3 flex">
-                  <Link
-                    href="/services/finance"
-                    className="group w-full relative flex flex-col justify-between rounded-md bg-white border border-slate-100 p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <IndianRupee className="w-4 h-4 text-[#157327] shrink-0" />
-
-                        <span className="text-xs font-extrabold text-[#157327]">02 —</span>
-                      </div>
-
-                      <h3 className="text-base font-black text-[#0f2a4a] mb-1.5 group-hover:text-[#157327] transition-colors duration-300">
-                        Finance
-                      </h3>
-
-                      <p className="text-xs text-slate-500 leading-relaxed mb-3">
-                        Business loans, government subsidy support, investor pitching, and financial planning. Includes MSME loans, Mudra
-                        loans, and government funding assistance to help businesses secure the right financial support.
-                      </p>
-
-                      <div className="relative h-32 sm:h-28 w-full bg-slate-50/80 rounded-md flex items-center justify-center mb-3 p-2">
-                        <Image
-                          src="/images/service-2.png"
-                          alt="Business Finance and Loan Services"
-                          width={200}
-                          height={140}
-                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="inline-flex items-center gap-2 text-xs font-bold text-[#0f2a4a] group-hover:text-[#157327] transition-colors duration-300 mt-auto">
-                      <span>Learn More</span>
-
-                      <div className="w-5 h-5 rounded-full bg-[#157327] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-                        <ArrowRight className="w-3 h-3" />
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              )}
-
-              {/* ==================== CERTIFICATION ==================== */}
-              {(activeTab === "All" || activeTab === "Certification") && (
-                <motion.div layout className="lg:col-span-3 flex">
-                  <Link
-                    href="/services/certification"
-                    className="group w-full relative flex flex-col justify-between rounded-md bg-white border border-slate-100 p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Award className="w-4 h-4 text-[#f26522] shrink-0" />
-
-                        <span className="text-xs font-extrabold text-[#f26522]">03 —</span>
-                      </div>
-
-                      <h3 className="text-base font-black text-[#0f2a4a] mb-1.5 group-hover:text-[#f26522] transition-colors duration-300">
-                        Certification
-                      </h3>
-
-                      <p className="text-xs text-slate-500 leading-relaxed mb-3">
-                        ISO, MSME, FSSAI, Startup India, and trademark approvals to build market authority. Includes ISO certification,
-                        FSSAI registration, and Startup India recognition to strengthen business credibility.
-                      </p>
-
-                      <div className="relative h-32 sm:h-28 w-full bg-slate-50/80 rounded-md flex items-center justify-center mb-3 p-2">
-                        <Image
-                          src="/images/service-3.png"
-                          alt="ISO FSSAI and Business Certification Services"
-                          width={200}
-                          height={140}
-                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="inline-flex items-center gap-2 text-xs font-bold text-[#0f2a4a] group-hover:text-[#f26522] transition-colors duration-300 mt-auto">
-                      <span>Learn More</span>
-
-                      <div className="w-5 h-5 rounded-full bg-[#f26522] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-                        <ArrowRight className="w-3 h-3" />
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              )}
-            </motion.div>
-
-            {/* ==================== BOTTOM ROW ==================== */}
-            <motion.div
-              layout
-              key={`bottom-group-${activeTab}`}
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              exit={{
-                opacity: 0,
-                scale: 0.96,
-              }}
-              transition={{
-                duration: 0.35,
-                delay: 0.05,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-4"
-            >
-              {/* ==================== BRANDING ==================== */}
-              {(activeTab === "All" || activeTab === "Branding") && (
-                <motion.div layout className="flex">
-                  <Link
-                    href="/services/branding"
-                    className="group w-full relative flex flex-col justify-between rounded-md bg-white border border-slate-100 p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="flex flex-col sm:grid sm:grid-cols-12 gap-3 items-center mb-3">
-                      <div className="w-full sm:col-span-6">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <Palette className="w-4 h-4 text-[#157327] shrink-0" />
-
-                          <span className="text-xs font-extrabold text-[#157327]">04 —</span>
-                        </div>
-
-                        <h3 className="text-base font-black text-[#0f2a4a] mb-1 group-hover:text-[#157327] transition-colors duration-300">
-                          Branding
-                        </h3>
-
-                        <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed mb-3 sm:mb-0">
-                          Brand positioning, identity design, digital strategy, and high-impact UI/UX experiences. Includes logo design,
-                          brand identity, and website UI/UX design to create a consistent digital presence.
-                        </p>
-                      </div>
-
-                      <div className="w-full sm:col-span-6 h-32 sm:h-28 bg-slate-50/80 rounded-md flex items-center justify-center p-2">
-                        <Image
-                          src="/images/service-4.png"
-                          alt="Branding and Digital Design Services"
-                          width={160}
-                          height={120}
-                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-auto inline-flex items-center gap-2 text-xs font-bold text-[#0f2a4a] group-hover:text-[#157327] transition-colors duration-300">
-                      <span>Learn More</span>
-
-                      <div className="w-5 h-5 rounded-full bg-[#157327] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-                        <ArrowRight className="w-2.5 h-2.5" />
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              )}
-
-              {/* ==================== OPERATIONS ==================== */}
-              {(activeTab === "All" || activeTab === "Operations") && (
-                <motion.div layout className="flex">
-                  <Link
-                    href="/services/operations"
-                    className="group w-full relative flex flex-col justify-between rounded-md bg-white border border-slate-100 p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="flex flex-col sm:grid sm:grid-cols-12 gap-3 items-center mb-3">
-                      <div className="w-full sm:col-span-6">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <Settings className="w-4 h-4 text-[#f26522] shrink-0" />
-
-                          <span className="text-xs font-extrabold text-[#f26522]">05 —</span>
-                        </div>
-
-                        <h3 className="text-base font-black text-[#0f2a4a] mb-1 group-hover:text-[#f26522] transition-colors duration-300">
-                          Operations
-                        </h3>
-
-                        <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed mb-3 sm:mb-0">
-                          Streamline operations, workflow automation, team structure, and business consulting. Includes process
-                          optimization, workflow automation, and SOP development to improve efficiency and support scalable growth.
-                        </p>
-                      </div>
-
-                      <div className="w-full sm:col-span-6 h-32 sm:h-28 bg-slate-50/80 rounded-md flex items-center justify-center p-2">
-                        <Image
-                          src="/images/service-5.png"
-                          alt="Business Operations and Consulting Services"
-                          width={160}
-                          height={120}
-                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-auto inline-flex items-center gap-2 text-xs font-bold text-[#0f2a4a] group-hover:text-[#f26522] transition-colors duration-300">
-                      <span>Learn More</span>
-
-                      <div className="w-5 h-5 rounded-full bg-[#f26522] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-                        <ArrowRight className="w-2.5 h-2.5" />
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              )}
-
-              {/* ==================== LEGAL & CA ==================== */}
-              {(activeTab === "All" || activeTab === "Legal & CA") && (
-                <motion.div layout className="flex">
-                  <Link
-                    href="/services/legal-ca"
-                    className="group w-full relative flex flex-col justify-between rounded-md bg-white border border-slate-100 p-4 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="flex flex-col sm:grid sm:grid-cols-12 gap-3 items-center mb-3">
-                      <div className="w-full sm:col-span-6">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <Scale className="w-4 h-4 text-[#157327] shrink-0" />
-
-                          <span className="text-xs font-extrabold text-[#157327]">06 —</span>
-                        </div>
-
-                        <h3 className="text-base font-black text-[#0f2a4a] mb-1 group-hover:text-[#157327] transition-colors duration-300">
-                          Legal & CA
-                        </h3>
-
-                        <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed mb-3 sm:mb-0">
-                          GST filings, income tax returns, ROC filings, legal drafting, and audit compliance. Includes GST return filing,
-                          income tax filing, and ROC annual compliance to keep your business legally and financially compliant.
-                        </p>
-                      </div>
-
-                      <div className="w-full sm:col-span-6 h-32 sm:h-28 bg-slate-50/80 rounded-md flex items-center justify-center p-2">
-                        <Image
-                          src="/images/service-6.png"
-                          alt="Legal Compliance and CA Services"
-                          width={160}
-                          height={120}
-                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-auto inline-flex items-center gap-2 text-xs font-bold text-[#0f2a4a] group-hover:text-[#157327] transition-colors duration-300">
-                      <span>Learn More</span>
-
-                      <div className="w-5 h-5 rounded-full bg-[#157327] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-                        <ArrowRight className="w-2.5 h-2.5" />
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
-
-        {/* ==================== CTA ==================== */}
-        <motion.div
-          variants={fadeUpVariants}
-          className="mt-8 sm:mt-10 rounded-md bg-gradient-to-r from-[#fff2eb] via-[#fff8f5] to-white border border-[#f26522]/15 p-5 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 shadow-sm"
-        >
-          <div className="flex flex-col sm:flex-row items-center text-center sm:text-left gap-3.5 sm:gap-4 w-full md:w-auto">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-md bg-white shadow-sm border border-[#f26522]/20 flex items-center justify-center text-[#f26522] shrink-0">
-              <Headphones className="w-6 h-6 sm:w-7 sm:h-7" />
+          <div className="mt-auto pt-4">
+            <div className="relative h-px w-full overflow-hidden bg-slate-100">
+              <span
+                aria-hidden="true"
+                className="absolute left-0 top-0 h-full w-[22%] bg-[#f26522] transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full"
+              />
             </div>
 
-            <div>
-              <h3 className="text-base sm:text-xl font-black text-[#0f2a4a]">Ready to Grow Your Business?</h3>
-
-              <p className="text-xs text-slate-500 mt-0.5">
-                Our experts are here to guide you through every stage of your business journey.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
-            <Link
-              href="/contact"
-              className="group relative flex items-center gap-1 overflow-hidden rounded-full border border-[#F26522] bg-[#F26522] px-4 py-1.5 text-xs font-semibold text-white shadow-xs hover:shadow-md transition-all duration-300 ease-out hover:text-[#03254C]"
-            >
-              <span className="absolute inset-0 z-0 translate-y-full bg-white transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
-
-              <span className="relative z-10 flex items-center gap-1">
-                Get Free Consultation
-                <ArrowUpRight className="h-5 w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-white group-hover:text-[#157327]" />
+            <div className="mt-2 flex items-center justify-between">
+              <span className="text-[10px] font-semibold text-slate-500 transition-colors duration-300 group-hover:text-[#0f2a4a]">
+                Explore service
               </span>
-            </Link>
-
-            <div className="hidden lg:flex items-center gap-2 shrink-0">
-              <div className="flex -space-x-2">
-                {avatars.map((avatar, idx) => (
-                  <div key={idx} className="w-8 h-8 rounded-full border-2 border-white bg-slate-300 overflow-hidden relative shrink-0">
-                    <Image src={avatar} alt={`Client ${idx + 1}`} fill sizes="32px" className="object-cover" />
-                  </div>
-                ))}
-              </div>
-
-              <div className="text-left">
-                <p className="text-xs font-black text-[#0f2a4a]">1000+</p>
-                <p className="text-[10px] text-slate-400 font-medium">Businesses Trust Us</p>
-              </div>
             </div>
           </div>
-        </motion.div>
-      </motion.div>
-    </section>
+        </div>
+      </Link>
+    </motion.li>
+  );
+}
+
+function ConsultationCTA() {
+  return (
+    <motion.div
+      variants={fadeUpVariants}
+      className="mt-8 overflow-hidden rounded-md border border-[#f26522]/15 bg-gradient-to-r from-[#fff2eb] via-[#fff8f5] to-white"
+    >
+      <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        <div className="flex items-center gap-4">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[#f26522]/20 bg-white text-[#f26522] sm:h-12 sm:w-12">
+            <Headphones size={21} strokeWidth={1.8} />
+          </div>
+
+          <div>
+            <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#f26522]">Expert Guidance</p>
+            <h3 className="mt-1 text-base font-black tracking-[-0.02em] text-[#0f2a4a] sm:text-lg">Ready to grow your business?</h3>
+            <p className="mt-1 max-w-xl text-xs leading-5 text-slate-500">
+              Our experts are here to guide you through registration, compliance and certification at every stage of your business
+              journey.
+            </p>
+          </div>
+        </div>
+
+        <Link
+          href="/contact"
+          className="group inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-md border border-[#f26522] bg-[#f26522] px-5 py-3 text-xs font-bold text-white transition-all duration-300 sm:w-auto"
+        >
+          Get Free Consultation
+          <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
+function DotGrid({ className }) {
+  return (
+    <div aria-hidden="true" className={`pointer-events-none absolute top-10 hidden opacity-30 sm:block ${className}`}>
+      <div className="grid grid-cols-6 gap-2">
+        {Array.from({ length: 24 }).map((_, index) => (
+          <span key={index} className="h-1.5 w-1.5 rounded-full bg-[#f26522]" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function ServicesSection() {
+  return (
+    <>
+      <ServicesStructuredData />
+
+      <section
+        aria-labelledby="services-heading"
+        className="relative w-full overflow-hidden bg-[#fafafa] py-12 font-sans text-[#0f172a] sm:py-16 lg:py-20"
+      >
+        <DotGrid className="right-4" />
+        <DotGrid className="left-4" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={containerVariants}>
+            <div className="mx-auto mb-8 max-w-4xl text-center sm:mb-10 lg:mb-12">
+              <motion.div variants={fadeUpVariants}>
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#f26522]/20 bg-[#fff5f0] px-4 py-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#f26522]" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#f26522]">Our Expertise</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#157327]" />
+                </div>
+              </motion.div>
+
+              <AnimatedHeading />
+
+              <motion.p variants={fadeUpVariants} className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-slate-500 sm:text-[15px]">
+                From company incorporation and tax registration to licences, certifications, trademark protection and ongoing
+                compliance, we offer end-to-end support for businesses across India.
+              </motion.p>
+            </div>
+
+            <motion.div
+              variants={fadeUpVariants}
+              className="mb-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-y border-slate-200 py-3 sm:mb-8"
+            >
+              <span className="mr-1 text-[9px] font-bold uppercase tracking-[0.17em] text-slate-400">Our services</span>
+
+              {["Registration", "Tax & Compliance", "Licensing", "Certification", "Brand Protection", "Tax Benefits"].map((item, index) => (
+                <span key={item} className="flex items-center gap-2 text-[10px] font-semibold text-[#0f2a4a]">
+                  {index !== 0 && <span className="text-slate-300">•</span>}
+                  {item}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.ul
+              variants={containerVariants}
+              className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+              role="list"
+              aria-label="Business registration, compliance and certification services"
+            >
+              {SERVICES.map((service) => (
+                <ServiceCard key={service.href} service={service} />
+              ))}
+            </motion.ul>
+
+            <ConsultationCTA />
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

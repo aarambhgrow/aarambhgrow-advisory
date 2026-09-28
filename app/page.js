@@ -9,152 +9,63 @@ import BusinessCategories from "./components/home/BusinessCategories";
 import CTASection from "./components/layout/CTA";
 import Footer from "./components/layout/Footer";
 import JsonLd from "./components/seo/JsonLd";
+import { buildMetadata } from "./lib/seo";
+import { ADDRESS, ORGANIZATION_ID, ORGANIZATION_NAME, SITE_URL, TELEPHONE } from "./data/site";
 
-export const metadata = {
-  title: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
-
+export const metadata = buildMetadata({
+  title: "Business Registration, GST & Compliance Services India | AarambhGrow",
   description:
-    "AarambhGrow Advisory provides company incorporation, MSME registration, GST registration, ITR filing, MCA compliance, DSC, Startup India recognition, licences, certifications and business compliance services across India.",
+    "AarambhGrow Advisory supports startups and MSMEs across India with company incorporation, GST, Udyam, ITR, ROC compliance, DPIIT, licences, certifications and trademarks.",
+  path: "/",
+  ogDescription:
+    "Business registration, tax, compliance, licensing and certification support for startups and MSMEs across India.",
+  twitterTitle: "Business Registration & Compliance Services India | AarambhGrow",
+  twitterDescription:
+    "Company incorporation, GST, Udyam, ROC compliance, DPIIT recognition, licences, certifications and trademark support across India.",
+});
 
-  alternates: {
-    canonical: "https://aarambhgrow.com/",
-  },
+const address = { "@type": "PostalAddress", ...ADDRESS };
+const areaServed = { "@type": "Country", name: "India" };
 
-  openGraph: {
-    title: "AarambhGrow Advisory – Company Registration, GST & Compliance Services",
-
-    description:
-      "Company incorporation, GST, MSME registration, ITR filing, MCA compliance, licences, certifications and startup compliance support for businesses across India.",
-
-    url: "https://aarambhgrow.com/",
-
-    type: "website",
-
-    images: [
-      {
-        url: "https://aarambhgrow.com/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AarambhGrow Advisory",
-      },
-    ],
-  },
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": ORGANIZATION_ID,
+      name: ORGANIZATION_NAME,
+      url: `${SITE_URL}/`,
+      description:
+        "Business registration, taxation, statutory compliance, licensing, certification and startup recognition advisory services for startups and MSMEs across India.",
+      telephone: TELEPHONE,
+      address,
+      areaServed,
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE_URL}/#business`,
+      name: ORGANIZATION_NAME,
+      url: `${SITE_URL}/`,
+      telephone: TELEPHONE,
+      address,
+      areaServed,
+      parentOrganization: { "@id": ORGANIZATION_ID },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
+      name: ORGANIZATION_NAME,
+      publisher: { "@id": ORGANIZATION_ID },
+      inLanguage: "en-IN",
+    },
+  ],
 };
 
 export default function Home() {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-
-    name: "AarambhGrow Advisory",
-
-    alternateName: "AarambhGrow Advisory",
-
-    url: "https://aarambhgrow.com",
-
-    logo: "https://aarambhgrow.com/images/white-logo.png",
-
-    description:
-      "AarambhGrow Advisory provides company incorporation, MSME registration, GST registration, income tax filing, MCA compliance, Startup India recognition, licences, certifications and business compliance services for startups, entrepreneurs and MSMEs.",
-
-    address: {
-      "@type": "PostalAddress",
-
-      streetAddress: "813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway",
-
-      addressLocality: "Ahmedabad",
-
-      addressRegion: "Gujarat",
-
-      postalCode: "380060",
-
-      addressCountry: "IN",
-    },
-
-    contactPoint: {
-      "@type": "ContactPoint",
-
-      telephone: "+91-9998715799",
-
-      contactType: "customer service",
-
-      areaServed: "IN",
-
-      availableLanguage: ["English", "Hindi", "Gujarati"],
-    },
-  };
-
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-
-    name: "AarambhGrow Advisory",
-
-    image: "https://aarambhgrow.com/images/white-logo.png",
-
-    url: "https://aarambhgrow.com",
-
-    telephone: "+91-9998715799",
-
-    email: "info@aarambhgrow.com",
-
-    description:
-      "Professional business registration and compliance services including company incorporation, MSME registration, GST registration, ITR filing, MCA annual filing, ROC compliance, DSC, Startup India recognition, labour licence, FSSAI licence, ISO certification, trademark registration, ZED certification and 80IAC tax exemption support.",
-
-    address: {
-      "@type": "PostalAddress",
-
-      streetAddress: "813, Silver Radiance 4, Ovnaj, Bhavik Publication, SG Highway",
-
-      addressLocality: "Ahmedabad",
-
-      addressRegion: "Gujarat",
-
-      postalCode: "380060",
-
-      addressCountry: "IN",
-    },
-
-    geo: {
-      "@type": "GeoCoordinates",
-
-      latitude: 23.0929,
-
-      longitude: 72.5247,
-    },
-
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-
-        opens: "09:00",
-
-        closes: "19:00",
-      },
-    ],
-
-    areaServed: ["Ahmedabad", "Surat", "Vadodara"],
-  };
-
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-
-    name: "AarambhGrow Advisory",
-
-    url: "https://aarambhgrow.com",
-
-    description:
-      "Company registration, GST, MSME, tax filing, MCA compliance, licences and certification services for businesses across India.",
-  };
-
   return (
     <main className="min-h-screen bg-white font-sans antialiased">
-      <JsonLd data={organizationSchema} />
-      <JsonLd data={localBusinessSchema} />
-      <JsonLd data={websiteSchema} />
+      <JsonLd data={homeSchema} />
 
       <Preloader />
       <Navbar />
