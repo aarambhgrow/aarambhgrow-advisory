@@ -43,3 +43,8 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Lenis drives smooth scrolling itself; native smooth scroll makes it stall. */
+html.lenis {
+  scroll-behavior: auto;
+}
