@@ -36,3 +36,26 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
+
+Setup
+
+- content/blog/*.mdx holds one file per post.
+- app/blog/page.js is the listing page, built automatically from each post's header.
+- app/blog/[slug]/page.js renders any post and generates its SEO metadata.
+- app/components/blog/ holds the reusable blocks.
+- Optionally add a layout: field in the header ("classic", "wide", "magazine") to switch the overall page frame.
+
+Your workflow
+
+1. Your team sends the content as a Doc or Word file, plus images.
+2. You create one .mdx file and drop the images into public/blog/<slug>/.
+3. You arrange the blocks to suit that post.
+4. You commit and deploy, and the post is live and added to the sitemap.
+
+Once there's a library of blocks, each new post should take about 15–30 minutes.
+
+

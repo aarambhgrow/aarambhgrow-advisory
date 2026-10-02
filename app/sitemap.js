@@ -1,3 +1,4 @@
+import { posts } from "../content/blog";
 import { serviceSlugs } from "./data/services";
 import { SITE_URL } from "./data/site";
 
@@ -9,6 +10,7 @@ export default function sitemap() {
     { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/services`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/contact`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/blogs`, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   const serviceRoutes = serviceSlugs.map((slug) => ({
@@ -17,5 +19,15 @@ export default function sitemap() {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...serviceRoutes].map((route) => ({ ...route, lastModified }));
+  const blogRoutes = posts.map((post) => ({
+    url: `${SITE_URL}/blogs/${post.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.7,
+    lastModified: new Date(post.updated || post.date),
+  }));
+
+  return [
+    ...[...staticRoutes, ...serviceRoutes].map((route) => ({ ...route, lastModified })),
+    ...blogRoutes,
+  ];
 }
