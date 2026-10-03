@@ -1,0 +1,255 @@
+.dock {
+  position: fixed;
+  right: clamp(14px, 2vw, 24px);
+  bottom: clamp(14px, 2vw, 22px);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 247, 230, 0.72);
+}
+
+/* :where() keeps this reset at zero specificity, so the component classes
+   below can restyle buttons without fighting it. */
+.dock :where(button) {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.dock :where(button, input):focus-visible {
+  outline: 1px solid var(--nv-gold);
+  outline-offset: 3px;
+}
+
+/* ---- the chip ---- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px 10px 14px;
+  border: 1px solid rgba(255, 247, 230, 0.14);
+  border-radius: 999px;
+  background: rgba(10, 6, 5, 0.82);
+  transition:
+    border-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.chip:hover,
+.chip[aria-expanded="true"] {
+  border-color: rgba(245, 185, 66, 0.55);
+  color: var(--nv-white);
+}
+
+.chipDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nv-gold);
+  box-shadow: 0 0 10px rgba(245, 185, 66, 0.8);
+}
+
+.chip kbd {
+  font: inherit;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: rgba(255, 247, 230, 0.08);
+  color: rgba(255, 247, 230, 0.55);
+}
+
+/* ---- the panel ---- */
+
+.panel {
+  width: min(292px, calc(100vw - 28px));
+  max-height: min(calc(100svh - 96px), 720px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 247, 230, 0.18) transparent;
+  border: 1px solid rgba(255, 247, 230, 0.12);
+  border-radius: 16px;
+  /* Deliberately opaque rather than blurred: a backdrop-filter over an
+     animating canvas would be re-blurred on every frame. */
+  background: rgba(10, 6, 5, 0.93);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  animation: rise 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+  color: var(--nv-gold);
+  letter-spacing: 0.2em;
+}
+
+.reset {
+  color: rgba(255, 247, 230, 0.5);
+  transition: color 0.3s ease;
+}
+
+.reset:hover {
+  color: var(--nv-white);
+}
+
+.group {
+  display: grid;
+  gap: 2px;
+  padding: 10px 8px;
+  border-top: 1px solid rgba(255, 247, 230, 0.08);
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 7px 8px;
+  border-radius: 8px;
+  text-align: left;
+  transition: background 0.25s ease;
+}
+
+.switch:hover {
+  background: rgba(255, 247, 230, 0.05);
+}
+
+.switchLabel em {
+  margin-left: 8px;
+  font-style: normal;
+  color: var(--nv-pink);
+  letter-spacing: 0.08em;
+}
+
+.switchState {
+  min-width: 38px;
+  padding: 3px 0;
+  border: 1px solid rgba(255, 247, 230, 0.16);
+  border-radius: 999px;
+  text-align: center;
+  color: rgba(255, 247, 230, 0.4);
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.switch[aria-checked="true"] .switchState {
+  color: #1a0d02;
+  border-color: var(--nv-gold);
+  background: var(--nv-gold);
+}
+
+.slider {
+  display: grid;
+  gap: 7px;
+  padding: 7px 8px;
+}
+
+.sliderHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sliderHead output {
+  color: var(--nv-gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.slider input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 14px;
+  margin: 0;
+  background: transparent;
+}
+
+.slider input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 247, 230, 0.18);
+}
+
+.slider input[type="range"]::-moz-range-track {
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 247, 230, 0.18);
+}
+
+.slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -5px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--nv-gold);
+  box-shadow: 0 0 0 4px rgba(245, 185, 66, 0.16);
+}
+
+.slider input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--nv-gold);
+  box-shadow: 0 0 0 4px rgba(245, 185, 66, 0.16);
+}
+
+.segmentHead {
+  padding: 6px 8px 8px;
+}
+
+.segment {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin: 0 8px 8px;
+  padding: 3px;
+  border: 1px solid rgba(255, 247, 230, 0.12);
+  border-radius: 10px;
+}
+
+.segment button {
+  padding: 7px 0;
+  border-radius: 7px;
+  color: rgba(255, 247, 230, 0.5);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.segment button:hover {
+  color: var(--nv-white);
+}
+
+.segment button[aria-checked="true"] {
+  color: #1a0d02;
+  background: var(--nv-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}

@@ -5,6 +5,8 @@ import "lenis/dist/lenis.css";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
+import NavratriProvider from "./components/navratri/NavratriProvider";
+
 export default function ClientLayout({ children }) {
   const pathname = usePathname();
   const lenisRef = useRef(null);
@@ -33,7 +35,8 @@ export default function ClientLayout({ children }) {
         anchors: { offset: -110 },
       }}
     >
-      {children}
+      {/* Seasonal layer; renders the children untouched outside Navratri (app/data/navratri.js). */}
+      <NavratriProvider>{children}</NavratriProvider>
     </ReactLenis>
   );
 }

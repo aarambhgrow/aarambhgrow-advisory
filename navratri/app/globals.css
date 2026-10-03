@@ -1,0 +1,52 @@
+:root {
+  /* Navratri palette — mirrored in components/navratri/config.ts and the shaders. */
+  --nv-gold: #f5b942;
+  --nv-orange: #ff7a18;
+  --nv-pink: #ff3d81;
+  --nv-purple: #a855f7;
+  --nv-white: #fff7e6;
+  --nv-black: #050304;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--nv-black);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100svh;
+  margin: 0;
+  background: var(--nv-black);
+  color: var(--nv-white);
+  font-family:
+    var(--font-sans),
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(245, 185, 66, 0.3);
+  color: var(--nv-white);
+}

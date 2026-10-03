@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { ArrowRight, Building2, FileCheck2, Globe2, ShieldCheck, ArrowUpRight } from "lucide-react";
 
+import { NavratriHeroSlot } from "../navratri/NavratriAccents";
+
 export default function Hero() {
   return (
     <section className="relative flex min-h-[calc(100dvh-4rem)] w-full select-none flex-col justify-between bg-[#fafafa] font-sans lg:h-[calc(100dvh-4rem)]">
@@ -43,6 +45,9 @@ export default function Hero() {
           opacity: 0;
         }
       `}</style>
+
+      {/* Navratri animation layer (renders nothing outside Navratri mode) */}
+      <NavratriHeroSlot />
 
       {/* MAIN CONTENT */}
       <div className="relative flex min-h-0 flex-grow items-center py-8 lg:py-0">

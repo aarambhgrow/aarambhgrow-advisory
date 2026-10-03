@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { services } from "../../data/services";
 import { getServiceIcon } from "../services/serviceIcons";
+import { NavratriBadge } from "../navratri/NavratriAccents";
 
 const COLORS = {
   navy: "#03254C",
@@ -339,6 +340,7 @@ export default function Navbar() {
             priority
             className="h-auto w-[150px] object-contain sm:w-[175px]"
           />
+          <NavratriBadge />
         </Link>
 
         <nav className="hidden items-center lg:flex">

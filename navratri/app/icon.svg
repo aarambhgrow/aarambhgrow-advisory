@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="stick" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFD271"/>
+      <stop offset="1" stop-color="#FF7A18"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#F5B942" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#F5B942" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0A0605"/>
+  <circle cx="32" cy="30" r="24" fill="url(#glow)"/>
+  <g stroke-linecap="round">
+    <g transform="rotate(32 32 30)">
+      <path d="M32 8v44" stroke="url(#stick)" stroke-width="5"/>
+      <path d="M32 14v4" stroke="#FF3D81" stroke-width="5" stroke-linecap="butt"/>
+      <path d="M32 40v8" stroke="#A855F7" stroke-width="5" stroke-linecap="butt"/>
+    </g>
+    <g transform="rotate(-32 32 30)">
+      <path d="M32 8v44" stroke="url(#stick)" stroke-width="5"/>
+      <path d="M32 14v4" stroke="#A855F7" stroke-width="5" stroke-linecap="butt"/>
+      <path d="M32 40v8" stroke="#FF3D81" stroke-width="5" stroke-linecap="butt"/>
+    </g>
+  </g>
+</svg>
