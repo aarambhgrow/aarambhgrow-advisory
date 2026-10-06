@@ -340,7 +340,6 @@ export default function Navbar() {
             priority
             className="h-auto w-[150px] object-contain sm:w-[175px]"
           />
-          <NavratriBadge />
         </Link>
 
         <nav className="hidden items-center lg:flex">

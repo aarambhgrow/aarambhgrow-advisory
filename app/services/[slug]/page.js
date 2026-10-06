@@ -9,6 +9,8 @@ import { getServiceBySlug, serviceSlugs } from "../../data/services";
 import { getServiceHeroImage } from "../../data/serviceImages";
 import { ORGANIZATION_ID, SITE_URL } from "../../data/site";
 import { buildMetadata } from "../../lib/seo";
+import NavratriOfferBar from "../../components/navratri/NavratriOfferBar";
+
 
 export const dynamicParams = false;
 
@@ -90,7 +92,7 @@ export default async function ServicePage({ params }) {
     <>
       <JsonLd data={serviceSchema} />
       {faqSchema && <JsonLd data={faqSchema} />}
-
+      <NavratriOfferBar/>
       <Navbar />
 
       <main className="min-h-screen">

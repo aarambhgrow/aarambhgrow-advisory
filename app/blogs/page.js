@@ -7,6 +7,8 @@ import CTASection from "../components/layout/CTA";
 import CoverImage from "../components/blog/CoverImage";
 import { formatDate, posts } from "../../content/blog";
 import { buildMetadata } from "../lib/seo";
+import NavratriOfferBar from "../components/navratri/NavratriOfferBar";
+
 
 export const metadata = buildMetadata({
   title: "Blog: Business Registration, Tax & Compliance Guides | AarambhGrow",
@@ -109,6 +111,7 @@ export default function BlogPage() {
 
   return (
     <>
+    <NavratriOfferBar/>
       <Navbar />
 
       <main className="min-h-screen bg-[#fafafa]">

@@ -7,6 +7,8 @@ import ArticleLayout from "../../components/blog/ArticleLayout";
 import { getPost, posts } from "../../../content/blog";
 import { OG_IMAGE, ORGANIZATION_ID, SITE_URL } from "../../data/site";
 import { buildMetadata } from "../../lib/seo";
+import NavratriOfferBar from "../../components/navratri/NavratriOfferBar";
+
 
 export const dynamicParams = false;
 
@@ -87,7 +89,7 @@ export default async function BlogPostPage({ params }) {
     <>
       <JsonLd data={articleSchema} />
       {faqSchema && <JsonLd data={faqSchema} />}
-
+      <NavratriOfferBar/>
       <Navbar />
 
       <main className="min-h-screen bg-white">
