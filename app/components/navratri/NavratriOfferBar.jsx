@@ -52,21 +52,15 @@ export default function NavratriOfferBar() {
 
 
 <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-white/90 sm:text-sm">
-  <span>Get</span>
+  <span>Buy Any Digital Service &amp; Get</span>
 
-  <span className="bg-gradient-to-r from-[#FFE9A8] via-[#FFD166] to-[#FFA94D] bg-clip-text font-extrabold text-transparent">
-    Any 2 Services FREE
+  <span className="border border-dashed border-[#FFD166] px-2 py-1 bg-white/5 rounded-sm">
+    <span className="bg-gradient-to-r from-[#FFE9A8] via-[#FFD166] to-[#FFA94D] bg-clip-text font-extrabold text-transparent">
+      2 Growth Consultations
+    </span>
   </span>
 
-  <span className="font-bold text-[#FFD166]">+</span>
-
-  <span className="text-white/90">
-    5-Page Static Website Package
-  </span>
-
-  <span className="text-white/70">
-    • Selected Services Only
-  </span>
+  <span className="font-bold text-[#FFD166]">100% FREE</span>
 </p>
 
 
