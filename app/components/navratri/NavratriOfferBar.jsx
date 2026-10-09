@@ -34,7 +34,7 @@ export default function NavratriOfferBar() {
           </span>
 
           {/* Offer text */}
-          <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-white/90 sm:text-sm">
+          {/* <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-white/90 sm:text-sm">
             <span>Get</span>
             <span className="bg-gradient-to-r from-[#FFE9A8] via-[#FFD166] to-[#FFA94D] bg-clip-text font-extrabold text-transparent">
               3 Months Social Media Management
@@ -46,7 +46,30 @@ export default function NavratriOfferBar() {
             <span className="hidden text-white/70 lg:inline">
               with selected services
             </span>
-          </p>
+          </p> */}
+
+          
+
+
+<p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-white/90 sm:text-sm">
+  <span>Get</span>
+
+  <span className="bg-gradient-to-r from-[#FFE9A8] via-[#FFD166] to-[#FFA94D] bg-clip-text font-extrabold text-transparent">
+    Any 2 Services FREE
+  </span>
+
+  <span className="font-bold text-[#FFD166]">+</span>
+
+  <span className="text-white/90">
+    5-Page Static Website Package
+  </span>
+
+  <span className="text-white/70">
+    • Selected Services Only
+  </span>
+</p>
+
+
 
           {/* CTA */}
           <Link

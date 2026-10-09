@@ -94,8 +94,7 @@ function DesktopNavItem({ link, onNavigate }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18 }}
-            className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4"
-          >
+className="absolute left-1/2 top-full z-50 translate-x-[-42%] pt-3"          >
             <div
               className="w-[1080px] max-w-[calc(100vw-32px)] overflow-hidden rounded-md border bg-white shadow-[0_25px_70px_rgba(3,37,76,0.16)]"
               style={{ borderColor: COLORS.slate200 }}
