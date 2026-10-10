@@ -18,7 +18,7 @@ export const ADDRESS = {
   streetAddress: "Silver Radiance 4, 813, Sarkhej - Gandhinagar Hwy, Gota",
   addressLocality: "Ahmedabad",
   addressRegion: "Gujarat",
-  postalCode: "382470",
+  postalCode: "380060",
   addressCountry: "IN",
 };
 
