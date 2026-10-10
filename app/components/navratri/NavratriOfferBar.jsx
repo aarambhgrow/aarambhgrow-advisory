@@ -2,16 +2,36 @@
 
 import Link from "next/link";
 import { ArrowUpRight, Sparkles, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function NavratriOfferBar() {
   const [visible, setVisible] = useState(true);
+  const barRef = useRef(null);
+
+  // Publish the bar's height so the navbar (and anything else sticky) can sit below it.
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+
+    const root = document.documentElement;
+    const sync = () => root.style.setProperty("--offer-bar-h", `${bar.offsetHeight}px`);
+    sync();
+
+    const observer = new ResizeObserver(sync);
+    observer.observe(bar);
+
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty("--offer-bar-h");
+    };
+  }, [visible]);
 
   if (!visible) return null;
 
   return (
     <div
-      className="relative z-[60] w-full overflow-hidden border-b border-[#FFD166]/30 bg-[#2A0016] text-white"
+      ref={barRef}
+      className="sticky top-0 z-[60] w-full overflow-hidden border-b border-[#FFD166]/30 bg-[#2A0016] text-white"
       style={{
         backgroundImage: "url('/images/navratri-offer-bg.png')",
         backgroundRepeat: "no-repeat",

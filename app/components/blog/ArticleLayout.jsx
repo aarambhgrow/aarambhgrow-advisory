@@ -100,7 +100,7 @@ function GuideLayout({ post, children }) {
 
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[240px_minmax(0,1fr)]">
         <aside className="hidden lg:block">
-          <div className="sticky top-28">
+          <div className="sticky top-[calc(7rem+var(--offer-bar-h,0px))]">
             <TocList items={post.toc} />
           </div>
         </aside>
@@ -148,7 +148,7 @@ function ComparisonLayout({ post, children }) {
 
       <nav
         aria-label="In this guide"
-        className="sticky top-20 z-30 border-b border-slate-200 bg-white/90 backdrop-blur"
+        className="sticky top-[calc(5rem+var(--offer-bar-h,0px))] z-30 border-b border-slate-200 bg-white/90 backdrop-blur"
       >
         <div className="mx-auto flex max-w-5xl gap-2 overflow-x-auto px-4 py-3 sm:px-6">
           {post.toc.map(([label, id]) => (
