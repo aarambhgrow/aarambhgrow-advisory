@@ -45,10 +45,10 @@ export default function LegalPage({ badge, title, subtitle, intro, sections }) {
     <>
       <section className="w-full border-b border-slate-200 bg-[#f8fafc] font-sans">
         <div className="mx-auto max-w-4xl px-4 py-12 text-center sm:px-6 sm:py-16 lg:px-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#157327]/20 bg-[#157327]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#03254C] sm:text-xs">
+          {/* <div className="inline-flex items-center gap-2 rounded-full border border-[#157327]/20 bg-[#157327]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#03254C] sm:text-xs">
             <span className="h-2 w-2 rounded-full bg-[#157327]" />
             <span>{badge}</span>
-          </div>
+          </div> */}
 
           <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-[#03254C] sm:text-4xl lg:text-[44px]">{title}</h1>
           <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-[#F26522]" />
