@@ -9,10 +9,10 @@
 */
 export const NAVRATRI = {
   /* Master switch. `false` removes the whole feature, previews included. */
-  enabled: true,
+  enabled: false,
 
   /* Preview override: show Navratri even outside the dates below. */
-  forceNavratri: true,
+  forceNavratri: false,
 
   /* First and last day, inclusive, as read on a clock in `timeZone`. */
   startDate: "2026-10-11",

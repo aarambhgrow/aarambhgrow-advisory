@@ -9,7 +9,6 @@ import CTASection from "../components/layout/CTA";
 import Footer from "../components/layout/Footer";
 import JsonLd from "../components/seo/JsonLd";
 import { buildMetadata, ROBOTS_BASIC } from "../lib/seo";
-import NavratriOfferBar from "../components/navratri/NavratriOfferBar";
 
 export const metadata = buildMetadata({
   title: "About AarambhGrow Advisory | Business Compliance Experts India",
@@ -53,7 +52,6 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
-      <NavratriOfferBar />
       <Navbar />
 
       <main className="min-h-screen">

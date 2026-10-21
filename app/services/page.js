@@ -6,7 +6,6 @@ import ServicesGrid from "../components/services/ServicesGrid";
 import { services } from "../data/services";
 import { SITE_URL } from "../data/site";
 import { buildMetadata, ROBOTS_BASIC } from "../lib/seo";
-import NavratriOfferBar from "../components/navratri/NavratriOfferBar";
 
 
 export const metadata = buildMetadata({
@@ -54,7 +53,6 @@ export default function ServicesPage() {
     <>
       <JsonLd data={listSchema} />
       <JsonLd data={breadcrumbSchema} />
-    <NavratriOfferBar/>
       <Navbar />
 
       <main className="min-h-screen">

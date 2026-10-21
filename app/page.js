@@ -11,7 +11,6 @@ import Footer from "./components/layout/Footer";
 import JsonLd from "./components/seo/JsonLd";
 import { buildMetadata } from "./lib/seo";
 import { ADDRESS, ORGANIZATION_ID, ORGANIZATION_NAME, SITE_URL, TELEPHONE } from "./data/site";
-import NavratriOfferBar from "./components/navratri/NavratriOfferBar";
 
 export const metadata = buildMetadata({
   title: "Business Registration, GST & Compliance Services India | AarambhGrow",
@@ -69,7 +68,6 @@ export default function Home() {
       <JsonLd data={homeSchema} />
 
       <Preloader />
-      <NavratriOfferBar />
       <Navbar />
       <Hero />
       <AboutSection />
