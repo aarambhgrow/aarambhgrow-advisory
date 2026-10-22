@@ -48,3 +48,18 @@ html {
 html.lenis {
   scroll-behavior: auto;
 }
+
+/*
+  Diwali (app/data/diwali.js). The head script marks <html> before the first
+  paint; these rules keep every Diwali piece hidden until it does.
+*/
+html:not([data-diwali]) .diwali-only,
+html:not([data-diwali-intro]) .diwali-intro {
+  display: none !important;
+}
+
+/* The sparkler stands in for the mouse pointer while it is on screen. */
+html[data-sparkler],
+html[data-sparkler] * {
+  cursor: none !important;
+}

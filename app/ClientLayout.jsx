@@ -6,6 +6,8 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 import NavratriProvider from "./components/navratri/NavratriProvider";
+import DiwaliOfferBar from "./components/diwali/DiwaliOfferBar";
+import DiwaliLayer from "./components/diwali/DiwaliLayer";
 
 export default function ClientLayout({ children }) {
   const pathname = usePathname();
@@ -35,8 +37,12 @@ export default function ClientLayout({ children }) {
         anchors: { offset: -110 },
       }}
     >
-      {/* Seasonal layer; renders the children untouched outside Navratri (app/data/navratri.js). */}
-      <NavratriProvider>{children}</NavratriProvider>
+      {/* Seasonal layers; outside their dates the site renders untouched (app/data/navratri.js, app/data/diwali.js). */}
+      <NavratriProvider>
+        <DiwaliOfferBar />
+        {children}
+        <DiwaliLayer />
+      </NavratriProvider>
     </ReactLenis>
   );
 }

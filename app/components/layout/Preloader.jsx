@@ -3,18 +3,29 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+import DiwaliIntro from "../diwali/DiwaliIntro";
+import { DIWALI_ATTR } from "../../lib/diwali";
+
 let hasShownPreloader = false;
 
+/* During Diwali the "light the diya" intro opens the site instead (app/data/diwali.js). */
 export default function Preloader() {
+  return (
+    <>
+      <DiwaliIntro />
+      <StandardPreloader />
+    </>
+  );
+}
+
+function StandardPreloader() {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState("entering");
   const [shouldShow, setShouldShow] = useState(false);
 
   useEffect(() => {
-    if (hasShownPreloader) {
-      setShouldShow(false);
-      return;
-    }
+    // Already shown once this visit, or Diwali's intro opens the site instead.
+    if (hasShownPreloader || document.documentElement.hasAttribute(DIWALI_ATTR)) return;
 
     hasShownPreloader = true;
     setShouldShow(true);

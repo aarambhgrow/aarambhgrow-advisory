@@ -8,6 +8,7 @@ import { Phone, Mail, MapPin, Building2, ArrowUpRight } from "lucide-react";
 import { services } from "../../data/services";
 import { ADDRESS_LINE, MAPS_DIRECTIONS_URL } from "../../data/site";
 import { NavratriGreeting } from "../navratri/NavratriAccents";
+import DiwaliGreeting from "../diwali/DiwaliGreeting";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -369,6 +370,7 @@ export default function Footer() {
           <p>© {currentYear} AarambhGrow Advisory. All rights reserved.</p>
 
           <NavratriGreeting />
+          <DiwaliGreeting />
 
           <div className="flex justify-center gap-5">
             <a
