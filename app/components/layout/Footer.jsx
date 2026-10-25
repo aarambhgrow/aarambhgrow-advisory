@@ -363,6 +363,30 @@ export default function Footer() {
       </div>
 
       {/* =========================================================
+          DISCLAIMER & PAYMENT NOTICE
+      ========================================================= */}
+      <div className="relative z-10 bg-[#061528] py-5">
+        <div className="mx-auto max-w-7xl space-y-3 px-4 text-[11px] leading-[1.75] text-slate-400 sm:px-6 lg:px-8">
+          <p>
+            <strong className="font-semibold text-slate-200">Disclaimer:</strong> AarambhGrow Services Pvt. Ltd. and
+            AarambhGrow Advisory Pvt. Ltd. are private consultancy and business support firms specializing in start-up
+            advisory services across India. We provide professional guidance and assistance tailored to the needs of
+            start-ups, entrepreneurs, and emerging enterprises. Both companies are part of the AarambhGrow Group of
+            Companies and operate independently. They are not affiliated with any government or non-government agency,
+            institution, or department.
+          </p>
+
+          <p className="border-l-2 border-[#F26522] pl-3">
+            <strong className="font-semibold text-slate-200">Important Notice:</strong> All payments for services
+            provided by AarambhGrow Services Pvt. Ltd. and AarambhGrow Advisory Pvt. Ltd. must be made exclusively to
+            the respective company&apos;s authorized current account through NEFT, IMPS, RTGS, or approved digital
+            payment platforms (Cashfree, Razorpay, Paytm/Axis). We do not accept payments through personal accounts or
+            unauthorized third-party intermediaries.
+          </p>
+        </div>
+      </div>
+
+      {/* =========================================================
           COPYRIGHT
       ========================================================= */}
       <div className="relative z-10 bg-[#051120] py-4">

@@ -42,9 +42,7 @@ export const metadata = {
 
   robots: ROBOTS_FULL,
 
-  icons: {
-    icon: "/images/favicon.ico",
-  },
+  /* Icons come from app/favicon.ico, app/icon.png and app/apple-icon.png. */
 
   openGraph: {
     type: "website",
