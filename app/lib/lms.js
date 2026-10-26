@@ -7,7 +7,7 @@ const LMS_TIMEOUT_MS = 8000;
   Pushes a contact-form enquiry into the LMS (POST /api/external/leads).
   Returns true when the LMS accepted the lead; never throws.
 */
-export async function pushLeadToLms({ fullName, email, phone, subject, message }) {
+export async function pushLeadToLms({ fullName, email, phone, subject, message, consentNote }) {
   const url = process.env.LMS_API_URL;
   const secret = process.env.LMS_INTERNAL_SECRET;
 
@@ -27,7 +27,8 @@ export async function pushLeadToLms({ fullName, email, phone, subject, message }
         name: fullName,
         email,
         phone,
-        message: subject ? `[${serviceLabel(subject)}] ${message}` : message,
+        // The LMS has no consent field yet, so the consent record travels in the message.
+        message: `${subject ? `[${serviceLabel(subject)}] ` : ""}${message}\n\n[Consent] ${consentNote}`,
         domain: new URL(SITE_URL).hostname,
         source: ORGANIZATION_NAME,
       }),

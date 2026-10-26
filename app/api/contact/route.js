@@ -28,8 +28,15 @@ export async function POST(request) {
       return Response.json({ success: false, message: "Please enter a valid email address." }, { status: 400 });
     }
 
+    // DPDP: contact only with an explicit, recorded consent.
+    if (body.consent !== true) {
+      return Response.json({ success: false, message: "Please accept the consent to submit." }, { status: 400 });
+    }
+
+    const consentNote = `Agreed to be contacted about this enquiry via the website form, ${new Date().toISOString()}`;
+
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const payload = { fullName, email, phone, subject, message };
+    const payload = { fullName, email, phone, subject, message, consentNote };
 
     // The lead is captured if either the LMS or the admin email accepts it.
     const [leadSaved, { error }] = await Promise.all([

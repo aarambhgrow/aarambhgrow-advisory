@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Lock, ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import { ADDRESS_LINE, MAPS_DIRECTIONS_URL, MAPS_EMBED_URL } from "../../data/site";
@@ -12,6 +13,7 @@ export default function ContactFormWithMap() {
     phone: "",
     subject: "",
     message: "",
+    consent: false,
   });
 
   const [loading, setLoading] = useState(false);
@@ -46,6 +48,7 @@ export default function ContactFormWithMap() {
         phone: "",
         subject: "",
         message: "",
+        consent: false,
       });
     } catch (error) {
       console.error("Submit error:", error);
@@ -208,6 +211,32 @@ export default function ContactFormWithMap() {
                   className="w-full resize-none rounded-md border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-[#03254C] transition-all focus:border-[#F26522] focus:bg-white focus:outline-none"
                   required
                 />
+              </motion.div>
+
+              {/* Consent */}
+              <motion.div variants={fadeInUp}>
+                <label className="flex cursor-pointer items-start gap-2.5 text-[11px] leading-relaxed text-slate-600">
+                  <input
+                    type="checkbox"
+                    checked={formData.consent}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        consent: e.target.checked,
+                      })
+                    }
+                    className="mt-0.5 h-3.5 w-3.5 shrink-0 cursor-pointer accent-[#F26522]"
+                    required
+                  />
+                  <span>
+                    I agree to be contacted by AarambhGrow Advisory by call, WhatsApp or email about this enquiry, as described in
+                    the{" "}
+                    <Link href="/privacy-policy" target="_blank" className="font-semibold text-[#157327] underline hover:text-[#F26522]">
+                      Privacy Policy
+                    </Link>
+                    .
+                  </span>
+                </label>
               </motion.div>
 
               {/* Submit */}

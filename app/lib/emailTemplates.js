@@ -65,7 +65,7 @@ function row(label, value) {
   </tr>`;
 }
 
-export function adminEmailHtml({ fullName, email, phone, subject, message }) {
+export function adminEmailHtml({ fullName, email, phone, subject, message, consentNote }) {
   return shell(`
     <h1 style="margin:0 0 4px;font-size:20px;color:${NAVY};">New Contact Enquiry</h1>
     <p style="margin:0 0 20px;font-size:12px;color:#64748b;">A new message was submitted from the website contact form.</p>
@@ -74,6 +74,7 @@ export function adminEmailHtml({ fullName, email, phone, subject, message }) {
       ${row("Email", email)}
       ${row("Phone", phone)}
       ${row("Service", serviceLabel(subject))}
+      ${row("Consent", consentNote)}
     </table>
     <div style="margin-top:20px;padding:16px;background:#f8fafc;border-left:3px solid ${ORANGE};border-radius:4px;">
       <p style="margin:0 0 6px;font-size:12px;font-weight:bold;color:${NAVY};">Message</p>
