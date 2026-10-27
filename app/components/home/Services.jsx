@@ -133,7 +133,6 @@ function ServiceCard({ service }) {
           <div className="mt-3">
             <p className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-[#157327]">{service.category}</p>
             <h3 className="text-[16px] font-black leading-tight tracking-[-0.02em] text-[#0f2a4a]">{service.label}</h3>
-            <p className="mt-1.5 text-[11px] leading-4 text-slate-500">{service.summary}</p>
           </div>
 
           <div className="mt-auto pt-4">
