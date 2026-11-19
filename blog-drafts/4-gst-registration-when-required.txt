@@ -1,0 +1,231 @@
+STATUS: DRAFT - NOT READY TO PUBLISH. A qualified CA or CS must check it first (see the list at the end).
+Planned publish date: 25 November 2026
+Facts checked up to: 31 October 2026
+
+SEO DETAILS
+Slug: gst-registration-when-required-india-2026
+Category: GST & Tax
+Read time: 10 min read
+Primary keyword: when is GST registration required
+Secondary keywords: GST registration limit 2026, GST threshold for services, GST registration turnover limit, compulsory GST registration, voluntary GST registration, GST registration for e-commerce sellers
+Title options:
+  A (recommended): When Is GST Registration Required in India? Turnover Limits and Compulsory Cases
+  B: GST Registration Limit in 2026: ₹40 Lakh, ₹20 Lakh and When You Must Register Anyway
+  C: Do You Need GST Registration? A Simple Guide for Small Businesses
+SEO title: When Is GST Registration Required? Limits & Compulsory Cases (2026)
+Meta description: When is GST registration required in India? Check the ₹40 lakh and ₹20 lakh limits, the cases where you must register from the first sale, and how to apply.
+Excerpt: The turnover limit is only part of the answer. Here is how to work out whether your business must register for GST, should register anyway, or can wait.
+Cover image needed: /blog/gst-registration-when-required-india-2026/cover.png
+
+
+# When Is GST Registration Required in India? Turnover Limits and Compulsory Cases
+
+GST registration is generally required when your aggregate turnover crosses ₹40 lakh for goods or ₹20 lakh for services in most states. Lower limits apply in some states. Some businesses must register from their first sale whatever their turnover, including most sellers of goods to other states and most sellers of goods on e-commerce platforms.
+
+This guide is for proprietors, freelancers, founders and small businesses who want a clear answer for their own situation. It explains how the limits work, when they do not apply, and when registering voluntarily makes sense.
+
+KEY TAKEAWAYS
+- Goods only: ₹40 lakh in most states, including Gujarat. ₹20 lakh in some states.
+- Services, or goods and services together: ₹20 lakh in most states. ₹10 lakh in some states.
+- Turnover is counted across India for all businesses under the same PAN.
+- Selling goods to another state generally requires registration from the first sale.
+- Apply within 30 days of becoming liable to register.
+- Voluntary registration can help if your customers are GST-registered businesses, but it brings regular filing duties.
+
+## Contents
+- Turnover limits
+- What counts as aggregate turnover
+- When you must register anyway
+- Real-life examples
+- Should you register voluntarily?
+- How to apply
+- If you register late
+- FAQs
+
+
+## What Is the GST Registration Limit in 2026?
+
+The limit depends on what you sell and where your business is registered.
+
+| What you supply | Most states, including Gujarat | States with lower limits |
+| Goods only | ₹40 lakh | ₹20 lakh |
+| Services only | ₹20 lakh | ₹10 lakh |
+| Both goods and services | ₹20 lakh | ₹10 lakh |
+
+For goods, the ₹20 lakh limit applies in Arunachal Pradesh, Manipur, Meghalaya, Mizoram, Nagaland, Puducherry, Sikkim, Telangana, Tripura and Uttarakhand. For services and mixed supplies, the ₹10 lakh limit applies in Manipur, Mizoram, Nagaland and Tripura.
+
+Three details change the answer for many businesses:
+
+- **The ₹40 lakh limit is only for goods.** A business that also supplies services generally falls under the ₹20 lakh limit, even if most of its sales are goods.
+- **Some goods do not qualify for ₹40 lakh.** Exceptions include items such as ice cream, pan masala and tobacco products.
+- **You must meet the conditions for the ₹40 lakh limit.** This includes not making inter-state supplies, which are covered below.
+
+
+## What Counts as Aggregate Turnover?
+
+This is where many small businesses go wrong. Aggregate turnover is not just your taxable sales in one state. It is counted across India for all persons with the same PAN.
+
+| Included | Not included |
+| Taxable supplies | CGST, SGST, UTGST, IGST and cess |
+| Exempt and nil-rated supplies | Purchases on which you pay tax under reverse charge |
+| Exports | |
+| Inter-state supplies | |
+
+So if a proprietor runs a shop and a separate consulting business under one PAN, both turnovers count together. And because services are involved, the ₹20 lakh limit would generally apply.
+
+
+## When Must You Register for GST Regardless of Turnover?
+
+Section 24 of the CGST Act lists cases where the normal limit does not apply. In these cases, you may need to register from your first rupee of sales.
+
+| Situation | Registration position |
+| Selling goods to another state | Generally required from the first sale |
+| Selling services to another state | Exempt up to the normal ₹20 lakh or ₹10 lakh limit |
+| Selling goods through an e-commerce operator that collects TCS | Generally required, with a limited route for small sellers in one state |
+| Selling services through an e-commerce operator | ₹20 lakh limit is generally available |
+| Paying tax under reverse charge | Generally required |
+| Running an e-commerce platform | Required |
+| Casual taxable person or non-resident taxable person | Required |
+| Input Service Distributor, agent, or a person required to deduct GST TDS | Required, depending on the facts |
+
+The most common surprise is the first row. A small manufacturer in Ahmedabad with ₹5 lakh in sales needs registration as soon as it ships goods to a customer in Rajasthan, because this is an inter-state supply of goods.
+
+
+## Do You Need GST? Five Common Examples
+
+These examples are for illustration only. They assume the business is in Gujarat and has no other trigger.
+
+| Business | Annual turnover | Is registration required? | Why |
+| Local shop selling goods within Gujarat | ₹35 lakh | Not because of turnover | Below the ₹40 lakh goods limit |
+| The same shop, sending one order to Rajasthan | ₹35 lakh | Yes | Inter-state supply of goods |
+| Design agency with clients in several states | ₹18 lakh | Not because of turnover | Inter-state services are exempt up to ₹20 lakh |
+| The same agency, one year later | ₹23 lakh | Yes | Above the ₹20 lakh limit |
+| Trader with a store and a repair service | ₹30 lakh | Yes | Mixed supplier, so the ₹20 lakh limit applies |
+
+**Do freelancers with foreign clients need GST?** Export income counts towards your aggregate turnover. Many service exporters stay below the limit without needing to register, but those who register can export without paying tax by filing a Letter of Undertaking. Discuss your facts with an adviser, because this is a common area of confusion.
+
+
+## Should You Register for GST Voluntarily?
+
+You can register even when the law does not require it. It suits some businesses and costs others money.
+
+| Registration may help if | It may not be worth it if |
+| Your customers are GST-registered and want input tax credit | You mainly sell to consumers, who cannot claim the credit, and GST would raise your price |
+| You pay significant GST on your purchases and want to claim the credit | You have few business expenses that carry GST |
+| A marketplace, tender or large customer asks for your GSTIN | No customer needs it |
+| You expect to cross the limit soon | Your business is small and likely to stay that way |
+
+Think about the filing duties before you apply. Once registered, you must file returns on time even in months with no sales, and you must charge GST on your taxable sales.
+
+If your business is small and sells mainly to consumers, ask your adviser about the composition scheme, which has a simpler structure but its own restrictions.
+
+
+## How Do You Apply for GST Registration?
+
+Apply online on the GST portal using Form GST REG-01. Prepare these documents first:
+
+CHECKLIST: DOCUMENTS FOR GST REGISTRATION
+[ ] PAN of the business or proprietor
+[ ] Aadhaar of the proprietor, partners or authorised signatory
+[ ] Proof of business constitution, such as a Certificate of Incorporation or partnership deed
+[ ] Proof of principal place of business, such as a utility bill along with a rent agreement or ownership proof
+[ ] Owner's no-objection certificate, where needed
+[ ] Bank account details
+[ ] Photographs and details of the authorised signatory
+
+### Is there a faster route?
+
+Since 1 November 2025, Rule 14A has offered a simplified route for small applicants. If your output tax on supplies to registered persons is not expected to exceed ₹2.5 lakh per month, you can opt for this route. With successful Aadhaar authentication, registration is granted electronically within 3 working days.
+
+This is a tax-liability test, not a turnover test. Note its limits too:
+
+- Only one Rule 14A registration is allowed per PAN in a state or union territory.
+- It is an optional registration route, not a lower tax rate.
+- If your output tax on supplies to registered persons goes above the limit, you must apply to withdraw from this route, which has its own conditions.
+
+### Do you need more than one registration?
+
+Registration is state-wise. If you make taxable supplies from more than one state, you generally need a separate registration in each. Having a customer in a state does not by itself mean you need to register there. Having a place of business in that state usually does.
+
+
+## What Happens If You Register Late?
+
+You should apply within 30 days of becoming liable. A casual or non-resident taxable person must apply at least 5 days before starting business.
+
+Delays can create these problems:
+
+- You may have to pay tax on past taxable supplies, along with interest.
+- A penalty can apply if you were liable to register and failed to do so. Section 122 provides for the higher of ₹10,000 or the tax amount involved, with higher exposure in some cases.
+- You may have issued invoices without GST, and it can be hard to recover that tax from customers later.
+- Large customers, marketplaces and tenders may stop working with you until you have a GSTIN.
+
+So keep an eye on your turnover during the year. Once your sales reach about 80% of your limit, start preparing your documents so that a single large order does not catch you out.
+
+
+## Frequently Asked Questions
+
+### What is the GST registration limit for services in 2026?
+The limit is ₹20 lakh of aggregate turnover in most states and ₹10 lakh in some states such as Manipur, Mizoram, Nagaland and Tripura. Inter-state supplies of services are also generally exempt from compulsory registration while you stay within this limit.
+
+### Is GST registration mandatory for selling on Amazon or Flipkart?
+Sellers of goods through an e-commerce operator that collects TCS generally need registration whatever their turnover. A limited route exists for small sellers supplying within one state, subject to conditions. Service providers selling through such platforms generally have the normal ₹20 lakh limit.
+
+### Is GST required for a business with turnover below ₹20 lakh?
+Not always, but it can be. Below the limit, you may still need to register if you sell goods to another state, sell goods through certain e-commerce operators, pay tax under reverse charge, or fall into another case listed in section 24.
+
+### Is turnover counted per business or per PAN?
+It is counted per PAN, across India. If one PAN runs several businesses or operates in several states, you add them together. Turnover includes taxable, exempt and nil-rated supplies, plus exports, but excludes GST itself and purchases taxed under reverse charge.
+
+### How long do I have to apply after crossing the limit?
+You should apply within 30 days of becoming liable to register. A casual taxable person or a non-resident taxable person must apply at least 5 days before starting business. Applying on time helps you avoid penalty and interest problems later.
+
+### Can a new company get GST registration at incorporation?
+Yes, the MCA incorporation process can include a GSTIN application when it applies. A new company should not assume it needs one, or that it does not. Check the activity, turnover, place of supply and customer needs. Our team can help you work this out.
+
+
+## Final Takeaway
+
+When GST registration is required depends on more than a turnover number. Check what you sell, who you sell to, where they are, how you sell and what your total PAN-level turnover is. If you are close to the limit or selling across states, it is better to check early than to fix a late registration.
+
+If you are also setting up a new entity, see our guides on [Private Limited Company registration](/blogs/private-limited-company-registration-india-2026) and [LLP registration](/blogs/llp-registration-india-2026).
+
+CALL TO ACTION
+Heading: Not sure whether you need GST registration?
+Text: Tell AarambhGrow Advisory what you sell, where you sell it and your expected turnover. We can help you work out what applies and prepare your application.
+Button: Explore GST registration support
+Link: /services/gst-registration
+
+
+## Sources
+
+This article is educational and should not be treated as a substitute for legal or tax advice. GST rules, limits and notifications can change. Review the latest official requirements before registering or filing.
+
+- GST portal: https://www.gst.gov.in/
+- CBIC tax information portal: https://taxinformation.cbic.gov.in/
+- GST registration under sections 22, 23 and 24, TaxGuru: https://taxguru.in/goods-and-service-tax/gst-registration-requirements-section-22-23-24-cgst-act-2017.html
+- GST registration limits, CalcGuru: https://calcguru.in/gst-registration-threshold-20-40-lakh/
+- Rule 14A explained, TaxGuru: https://taxguru.in/goods-and-service-tax/rule-14a-gst-registration.html
+- Section 25 of the CGST Act, Teachoo: https://teachoo.com/5818/1917/Section-25-CGST---Procedure-for-registration/category/Chapter-VI-CGST--Registration-(Section-22-to-30)
+- Section 122 of the CGST Act, StudyCafe: https://studycafe.in/section-122-of-cgst-act2017-penalty-for-certain-offences-15631.html
+
+
+================================================================
+REMOVE EVERYTHING BELOW BEFORE PUBLISHING
+================================================================
+
+WHAT THE CA OR CS MUST CHECK
+1. State lists: sources conflict, especially for the ₹10 lakh services limit. Check them against Notification 10/2019-Central Tax and section 22. Also confirm Jammu & Kashmir, Ladakh, Assam, Himachal Pradesh and Uttarakhand.
+2. Section 122 penalty: the search did not confirm the exact wording for failure to register. Confirm the amount and clause.
+3. Section 25(1) 30-day rule: from my knowledge of the Act, not confirmed by the search. Also confirm how the effective date of registration works.
+4. Small e-commerce seller route: from my knowledge of Notification 34/2023-Central Tax. Confirm it and its conditions.
+5. Excluded goods for the ₹40 lakh limit: confirm the list against the notification.
+6. Foreign clients paragraph: confirm the wording on exports of services, the ₹20 lakh limit and the Letter of Undertaking.
+7. Section 24 table, including reverse charge and agents: confirm each row. Some persons may be exempt by notification.
+8. Rule 14A: one source said ₹5 lakh, while most sources and the detailed explanation say ₹2.5 lakh. Confirm against Notification 18/2025-Central Tax.
+9. Composition scheme: I left the limits out on purpose. Add them if you want them after checking.
+10. "About 80% of your limit" is my own practical suggestion, not a legal rule. Keep it only if you agree.
+
+BEFORE IT GOES LIVE
+- Add a real author or reviewer name, only if that person actually reviewed it.
+- Make the cover image.
+- Publish Blog 2 first, because this post links to it.

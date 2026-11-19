@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes loading {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Lenis drives smooth scrolling itself; native smooth scroll makes it stall. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
+/*
+  Diwali (app/data/diwali.js). The head script marks <html> before the first
+  paint; these rules keep every Diwali piece hidden until it does.
+*/
+html:not([data-diwali]) .diwali-only,
+html:not([data-diwali-intro]) .diwali-intro {
+  display: none !important;
+}
+
+/* The sparkler stands in for the mouse pointer while it is on screen. */
+html[data-sparkler],
+html[data-sparkler] * {
+  cursor: none !important;
+}
+
+/*
+  Chat (app/components/chatbot, the same ARTHIQ chat as the Euroasia site).
+  The widget's own button would be a 60px circle 24px from the corner on
+  desktop, 16px below 1024px (offsets set in FundingChatbot.jsx); these keep
+  the mascot button and the pill lined up with that.
+*/
+
+/* Mascot as the chat button (ChatLauncher.jsx). The 88px box is offset so
+   its body sits where the widget's 60px button would be. */
+.chat-launcher {
+  right: calc(24px - 14px);
+  bottom: calc(24px - 10px);
+}
+
+@media (max-width: 1023.98px) {
+  .chat-launcher {
+    right: calc(16px - 14px);
+    bottom: calc(16px + env(safe-area-inset-bottom) - 10px);
+  }
+}
+
+/* Phones: the open chat fills the screen, so the button steps aside. */
+@media (max-width: 640px) {
+  .chat-launcher[aria-expanded="true"] {
+    display: none;
+  }
+}
+
+/* "N people chatting with ARTHIQ" pill (ChatPresence.jsx), left of the button */
+.chat-presence {
+  right: calc(24px + 60px + 12px);
+  bottom: calc(24px + 10px);
+  font-family: var(--chat-font-body), "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+@media (max-width: 1023.98px) {
+  .chat-presence {
+    right: calc(16px + 60px + 10px);
+    bottom: calc(16px + env(safe-area-inset-bottom) + 10px);
+  }
+}
+
+@keyframes livePulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.live-pulse {
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-pulse {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,233 @@
+STATUS: DRAFT - NOT READY TO PUBLISH. A qualified CA or CS must check it first (see the list at the end).
+Planned publish date: 18 November 2026
+Facts checked up to: 31 October 2026
+
+SEO DETAILS
+Slug: dpiit-recognition-vs-80iac-2026
+Category: Startup Benefits
+Layout: comparison (versus: "DPIIT Recognition", "80-IAC")
+Read time: 10 min read
+Primary keyword: DPIIT recognition vs 80-IAC
+Secondary keywords: DPIIT startup recognition 2026, 80-IAC eligibility, Section 140 Income Tax Act 2025, startup tax exemption India, deep tech startup recognition
+Title options:
+  A (recommended): DPIIT Recognition vs 80-IAC in 2026: What Each One Really Gives Your Startup
+  B: Does DPIIT Recognition Give You a Tax Exemption? DPIIT vs 80-IAC Explained
+  C: DPIIT Startup Recognition and 80-IAC: Eligibility, Limits and How to Apply
+SEO title: DPIIT Recognition vs 80-IAC in 2026: Eligibility, Limits & Tax Benefit
+Meta description: DPIIT recognition does not automatically give you a tax holiday. Compare DPIIT and 80-IAC eligibility, the new 2026 limits and how to decide what to apply for.
+Excerpt: DPIIT recognition and the startup tax deduction are two separate steps with different limits. Here is what each one gives you, and who qualifies.
+Cover image needed: /blog/dpiit-recognition-vs-80iac-2026/cover.png
+
+
+# DPIIT Recognition vs 80-IAC in 2026: What Each One Really Gives Your Startup
+
+DPIIT recognition and the 80-IAC tax deduction are not the same thing. DPIIT recognition confirms your business as a startup under the government's definition. The tax deduction is a separate benefit, which requires another certificate and has tighter limits. Getting recognised does not by itself make your profits tax-free.
+
+This guide is for Indian founders who have heard "get Startup India registration and pay no tax", and want to know what is actually true. It explains the February 2026 changes, the differences between the two, and how to decide what to apply for.
+
+KEY TAKEAWAYS
+- DPIIT recognition comes first, and DPIIT says it charges no fee for it.
+- Recognition limits: up to 10 years old and ₹200 crore turnover, or 20 years and ₹300 crore for deep tech startups.
+- Tax deduction limits: company or LLP only, incorporated before 1 April 2030, with turnover up to ₹300 crore in the year of the claim for tax years from 2026-27.
+- The deduction is 100% of eligible profits, for 3 consecutive years out of the first 10.
+- You also need a certificate from the Inter-Ministerial Board, so recognition alone is not enough.
+- Under the Income-tax Act, 2025, the deduction now appears in section 140.
+
+## Contents
+- Quick comparison
+- What changed in 2026
+- What DPIIT recognition gives you
+- How the tax deduction works
+- Why the two turnover limits differ
+- Which should you apply for?
+- Common misunderstandings
+- FAQs
+
+
+## DPIIT Recognition vs 80-IAC: Quick Comparison
+
+| Point | DPIIT recognition | 80-IAC / section 140 deduction |
+| What it is | Official startup status | Income tax deduction on profits |
+| Who decides | DPIIT | Inter-Ministerial Board issues the certificate, then you claim it in your tax return |
+| Do you need the other first? | No | Yes, you must be a recognised startup |
+| Entity types | Private limited company, LLP, partnership firm, cooperative society | Private limited company or LLP only |
+| Age limit | Up to 10 years, or 20 years for deep tech | Choose 3 consecutive years within the first 10 years |
+| Turnover limit | Under ₹200 crore, or ₹300 crore for deep tech | Up to ₹300 crore in the relevant tax year from 2026-27 (₹100 crore for earlier years) |
+| Incorporation date | Within the age limit | On or after 1 April 2016 and before 1 April 2030 |
+| Audit needed? | Not a stated condition | Yes, accounts must be audited by the specified date |
+| Main benefit | Access to startup schemes and relaxations | 100% deduction of eligible profits |
+
+
+## What Changed for DPIIT Recognition in 2026?
+
+DPIIT issued a new notification, G.S.R. 108(E), on 4 February 2026. It replaced the 2019 startup definition and made these main changes:
+
+| Point | Before | Now |
+| Turnover limit (regular startup) | ₹100 crore | ₹200 crore |
+| Deep tech category | No separate category | Up to 20 years and ₹300 crore |
+| Entity types | Private limited company, LLP, partnership firm | Also includes cooperative societies |
+
+Reports on the notification also note tighter rules on how funds are used, including limits on speculative investments, and stronger powers to revoke recognition obtained through false information.
+
+The deep tech category is aimed at businesses with heavy research costs and long development periods. Being in technology is not enough on its own. Read the detailed conditions before you apply under this category.
+
+The basic tests still apply. Your business must be working on innovation or improving products, services or processes, and it cannot be formed by splitting up or reconstructing an existing business.
+
+
+## What Does DPIIT Recognition Give You?
+
+Recognition matters even if you never claim the tax deduction. The official Startup India material lists benefits including:
+
+- Faster examination of patent applications.
+- A rebate of 80% on patent filing fees and 50% on trademark filing fees, compared with other companies.
+- Self-certification under certain labour and environmental laws, subject to conditions.
+- No Earnest Money Deposit or bid security for government tenders, where the rule applies.
+- The ability to apply for the startup income tax deduction.
+
+Consider where these fit in your business. A product company filing patents or a brand filing trademarks may benefit quickly. A company that bids for government work may find the tender relaxation is worth more than anything else on the list.
+
+If you have seen older articles promoting an "angel tax exemption" as a main benefit, check the date. The angel tax provision was removed from AY 2025-26 onward, so it should no longer be a reason to apply.
+
+Applications are made online through the National Single Window System. Prepare your incorporation documents and a clear description of your innovation. Specific, honest answers about what you are building work better than broad claims.
+
+
+## How Does the 80-IAC Tax Deduction Work?
+
+Many people still call it 80-IAC, the section number under the Income-tax Act, 1961. For tax years under the new Income-tax Act, 2025, the same type of deduction appears in section 140. You will see both names for some time.
+
+To qualify under section 140, a startup must meet all of these conditions:
+
+1. It is a company or an LLP engaged in an eligible business.
+2. It was incorporated on or after 1 April 2016 and before 1 April 2030.
+3. Its total turnover does not exceed ₹300 crore in the relevant tax year. The Finance Act, 2026 raised this from ₹100 crore, with effect from 1 April 2026.
+4. It holds a certificate of eligible business from the Inter-Ministerial Board of Certification.
+5. Its accounts are audited before the specified date, and the audit report is furnished.
+6. It was not formed by splitting up or reconstructing an existing business, and not by transferring previously used machinery or plant to a new business.
+
+If you qualify, you can deduct 100% of the profits from the eligible business for any 3 consecutive tax years, chosen from the 10 years starting with your year of incorporation.
+
+### Timing your 3 years
+
+Choosing these years is a real decision, because many startups make losses early on. If you claim during loss years, you use up your window with little to gain. Your tax adviser should look at your expected profits before you settle on the 3 years.
+
+You should also check the tax regime. A company that chooses the 22% corporate tax regime generally gives up certain deductions. Compare the options over several years instead of looking at one rate.
+
+
+## Why Do the Two Turnover Limits Differ?
+
+Recognition and the tax deduction are set under different rules, so their turnover limits do not always match. Many websites still quote ₹100 crore for the tax deduction. That was the earlier limit, and it still matters for older years.
+
+| Test | Regular startup | Deep tech startup |
+| DPIIT recognition | Under ₹200 crore | Under ₹300 crore |
+| Tax deduction, tax years from 2026-27 | Up to ₹300 crore | Up to ₹300 crore |
+| Tax deduction, FY 2025-26 and earlier | Up to ₹100 crore | Up to ₹100 crore |
+
+Here is a simple example. Take a private limited startup that is 6 years old, is not in the deep tech category, and has turnover of ₹250 crore in tax year 2026-27.
+
+- Tax test: its turnover is under the ₹300 crore limit.
+- DPIIT test: its turnover is above the ₹200 crore limit for a regular startup.
+
+So passing one test does not settle the other. Before you plan around the deduction, ask your adviser how crossing a recognition limit affects your claim.
+
+A partnership firm or cooperative society faces a different gap. It may qualify for recognition, but only a company or LLP can claim this deduction.
+
+You can also confuse the deep tech figures. The 20-year period is a recognition limit. The tax deduction still uses its own window of 3 consecutive years within the first 10 years.
+
+
+## Which One Should Your Startup Apply For?
+
+| Your situation | Recommended step |
+| New company with no profits yet | Apply for DPIIT recognition if you qualify. Plan the tax deduction application for later |
+| Company or LLP close to making profits | Get recognised, then discuss the tax certificate with your adviser soon |
+| Partnership firm or cooperative society | You may seek recognition for its other benefits, but not this tax deduction. Think about whether your structure still fits |
+| Turnover above ₹300 crore | This deduction will not apply in those years. Check whether you still meet the recognition limits |
+| Normal trading or service business with nothing new to show | You may not meet the innovation test. Do not force the application |
+| Business formed by splitting or reconstructing an existing one | Generally not eligible for either |
+
+Not every business needs either one. A small profitable service firm may gain more by getting its basic compliance right. Our guide to [Private Limited vs LLP](/blogs/private-limited-vs-llp-2026) can help if you are still choosing your structure, and the [Private Limited compliance checklist](/blogs/private-limited-company-compliance-checklist-2026) covers the filings that continue after recognition.
+
+
+## Common Misunderstandings
+
+**"Startup India registration means no tax."**
+It does not. You need recognition and the separate certificate, and you must meet the other conditions.
+
+**"The tax holiday lasts for 10 years."**
+It lasts for 3 consecutive years, chosen from a 10-year window.
+
+**"Recognition removes compliance."**
+Your MCA, GST and income tax filings continue. Self-certification under certain laws is not the same as an exemption from your filing duties.
+
+**"Every tech company counts as deep tech."**
+Deep tech has its own criteria. Using software or AI in your product does not automatically qualify you.
+
+**"Recognition lasts forever."**
+It depends on your age and turnover limits, and it can be revoked if it was obtained through false information.
+
+
+## Frequently Asked Questions
+
+### Does DPIIT recognition give a tax exemption automatically?
+No. DPIIT recognition makes you eligible to apply, but it does not give the deduction itself. You also need a certificate of eligible business from the Inter-Ministerial Board of Certification, and you must meet the audit, turnover, entity type and incorporation date conditions.
+
+### What is the turnover limit for DPIIT recognition in 2026?
+Under the February 2026 notification, a regular startup must have turnover below ₹200 crore in each financial year since incorporation. A deep tech startup has a ₹300 crore limit. The age limits are 10 years for regular startups and 20 years for deep tech startups.
+
+### Is 80-IAC still available under the new Income-tax Act?
+Yes, the equivalent deduction appears in section 140 of the Income-tax Act, 2025. It covers eligible companies and LLPs incorporated before 1 April 2030. Income for FY 2025-26 remains under the 1961 Act, so you will still see the old section number in some filings.
+
+### Can an LLP claim the 80-IAC deduction?
+Yes. An LLP can claim it if it is a recognised startup, holds the Inter-Ministerial Board certificate and meets the other conditions. Partnership firms and cooperative societies may be able to get DPIIT recognition, but this tax deduction is limited to companies and LLPs.
+
+### Is there a government fee for DPIIT recognition?
+The official Startup India page says DPIIT recognition carries no fee. Any charge you see comes from a consultant or service provider for their work. Before paying one, ask what is covered and be cautious of anyone promising approval, because the decision belongs to the government.
+
+### Can AarambhGrow guarantee approval?
+No. Recognition and the tax certificate are decided by the government. AarambhGrow Advisory can help you assess eligibility, organise your information and prepare your application, so that you know what to expect before you apply.
+
+
+## Final Takeaway
+
+Think of DPIIT recognition and the 80-IAC deduction as two separate decisions. Recognition is often worth considering if your business is genuinely innovative. The tax deduction depends on your structure, turnover, profits and timing, so plan for it with your numbers in hand.
+
+CALL TO ACTION
+Heading: Not sure what your startup qualifies for?
+Text: AarambhGrow Advisory can review your structure, turnover and stage, then help you prepare for recognition and the tax application.
+Button: Explore DPIIT recognition support
+Link: /services/startup-india-dpiit-recognition
+Second link: /services/80iac-tax-exemption
+
+
+## Sources
+
+This article is educational and should not be treated as a substitute for legal, tax or professional advice. Rules, eligibility conditions and processes can change. Review the latest official requirements before applying.
+
+- Startup India - DPIIT Startup Recognition and Tax Exemption: https://www.startupindia.gov.in/content/sih/en/startupgov/startup_recognition_page.html
+- Startup India scheme page: https://www.startupindia.gov.in/content/sih/en/startup-scheme.html
+- Lakshmikumaran & Sridharan on G.S.R. 108(E): https://www.lkslaw.com/insights/articles/india-s-new-startup-and-deep-tech-startup-framework-why-the-2026-dpiit-notification-matters
+- Section 140, Income-tax Act, 2025 with the Finance Act, 2026 change, TaxClue: https://taxclue.in/blog/section-140-income-tax-act-2025-deduction-for-eligible-start-ups
+- Finance Act, 2026 key amendments, DPNC: https://www.dpncindia.com/finance-act-2026-some-key-amendments
+- Section 140 conditions, earlier text, EZTax: https://eztax.in/income-tax-act-2025/section-140
+- National Single Window System: https://www.nsws.gov.in/
+
+
+================================================================
+REMOVE EVERYTHING BELOW BEFORE PUBLISHING
+================================================================
+
+WHAT THE CA OR CS MUST CHECK
+1. Section 140 TURNOVER LIMIT: most important. This draft now says ₹300 crore from 1 April 2026, based on reports of the Finance Act, 2026 and Euroasia's published post. I did not read the enacted Act, and one older copy of section 140 still shows ₹100 crore. Confirm from the Gazette text, including whether the test looks at the tax year of the claim. The turnover section and example depend on this.
+1a. Crossing a recognition limit: if a regular startup's turnover goes above ₹200 crore, what happens to its deduction? I left this as a question for the adviser. Please answer it in the blog if you can.
+2. DPIIT turnover wording: Startup India says "less than INR 200 Crores ... in any of the previous financial years". The FAQ says "in each financial year since incorporation". Confirm the wording against G.S.R. 108(E).
+3. Entity types: Startup India does not mention multi-state cooperatives by name, but law firm reports do. Check G.S.R. 108(E). Also check whether section 140 uses "company" more widely than the "private limited" wording on the Startup India page.
+4. Angel tax: I wrote this from my knowledge of the Finance (No. 2) Act, 2024, and the official pages still mention the old exemption. Please confirm.
+5. 22% regime: confirm that it rules out this deduction under current law, and whether the section numbers need to be added.
+6. Self-certification: sources disagree on the number of laws, so I left the number out. Also check how the new labour codes affect this.
+7. 80% and 50% rebates: confirm that they are still current.
+8. "Income for FY 2025-26 remains under the 1961 Act": confirm the wording.
+9. "Recognition lasts forever" and "can be revoked": confirm how recognition ends under the new notification. The law firm report did not cover what happens when a startup crosses the limits.
+
+BEFORE IT GOES LIVE
+- Add a real author or reviewer name, only if that person actually reviewed it.
+- Make the cover image.
+- Publish Blog 1 first, because this post links to it.

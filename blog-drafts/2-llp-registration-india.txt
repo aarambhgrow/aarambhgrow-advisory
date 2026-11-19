@@ -1,0 +1,268 @@
+STATUS: DRAFT - NOT READY TO PUBLISH. A qualified CA or CS must check it first (see the list at the end).
+Planned publish date: 13 November 2026
+Facts checked up to: 31 October 2026
+
+SEO DETAILS
+Slug: llp-registration-india-2026
+Category: Business Registration
+Read time: 12 min read
+Primary keyword: LLP registration in India
+Secondary keywords: how to register an LLP, LLP registration process, documents for LLP registration, LLP agreement Form 3, LLP Form 8 and Form 11, LLP compliance
+Title options:
+  A (recommended): LLP Registration in India 2026: Process, Documents, Costs and First-Year Filings
+  B: How to Register an LLP in India in 2026: Step-by-Step Guide
+  C: LLP Registration in India: What Founders Should Know Before They File
+SEO title: LLP Registration in India 2026: Process, Documents, Cost & Filings
+Meta description: Planning LLP registration in India? Learn who can register, the documents and FiLLiP process, what affects cost, and the Form 3, Form 8 and Form 11 duties.
+Excerpt: A step-by-step guide to registering an LLP in India, including the documents you need, what affects the cost, and the filings that start after registration.
+Cover image needed: /blog/llp-registration-india-2026/cover.png
+
+
+# LLP Registration in India 2026: Process, Documents, Costs and First-Year Filings
+
+To register an LLP in India, you need at least two partners and two designated partners, with at least one designated partner resident in India. You reserve a name, file the FiLLiP incorporation form on the MCA portal, and then file your LLP agreement in Form 3 within 30 days of incorporation.
+
+This guide is for founders, professionals and small partner-led businesses who have already decided that an LLP may suit them. It also covers what many short guides leave out: the audit limits, annual filings and late fees that begin after registration.
+
+KEY TAKEAWAYS
+- Minimum structure: 2 partners and 2 designated partners, with at least 1 designated partner resident in India.
+- Main steps: Digital Signature Certificates, name, FiLLiP, certificate of incorporation, then the LLP agreement in Form 3.
+- Yearly filings: Form 11 by 30 May and Form 8 by 30 October, even with low or no business.
+- Audit: required if turnover is above ₹40 lakh or contribution is above ₹25 lakh.
+- Tax: an LLP pays 30% plus applicable surcharge and cess, and has no lower optional rate like a company's 22% regime.
+
+## Contents
+- Is an LLP right for you?
+- Who can register
+- Documents needed
+- Step-by-step process
+- What affects the cost
+- After registration
+- Late fees
+- Common mistakes
+- FAQs
+
+
+## Is an LLP the Right Structure for You?
+
+An LLP combines limited liability with the flexibility of a partnership. It usually suits businesses owned and run by their partners, where internal terms are set by agreement and outside equity funding is unlikely.
+
+| Your situation | Is an LLP a good fit? | What to think about |
+| Consulting, agency or professional firm with active partners | Often yes | Agree on profit share and exit terms in the LLP agreement |
+| Family or partner-owned trading business | Often yes | Check tax, audit needs and how partners will take money out |
+| Startup planning angel or VC funding | Often no | Investors usually prefer shares, so compare a Private Limited Company |
+| Business planning employee stock options | Often no | Share-based companies are the more familiar route |
+| Solo founder | No | An LLP needs at least 2 partners. Compare an OPC or a proprietorship |
+
+If you are still deciding, read our full comparison of [Private Limited vs LLP in 2026](/blogs/private-limited-vs-llp-2026). Changing structure later can create legal, tax and paperwork costs, so choose with your 2-3 year plan in mind.
+
+
+## Who Can Register an LLP in India?
+
+The LLP Act, 2008 sets the basic structure:
+
+- At least 2 partners. There is no maximum number.
+- At least 2 designated partners, who must be individuals. They carry the main legal and filing responsibilities.
+- At least 1 designated partner must be resident in India.
+- A company or another LLP can be a partner. If it needs to act as a designated partner, it does so through an individual nominee.
+- Each designated partner needs a Designated Partner Identification Number (DPIN) or DIN, and a Digital Signature Certificate for signing filings.
+
+There is no fixed minimum contribution for an LLP. Even so, decide the amount with care. Contribution affects your MCA fee, late fees, audit requirement and how much each partner has at stake.
+
+CALLOUT: Are designated partners only a formality?
+No. Designated partners sign filings and are responsible for compliance. Before someone accepts the role just to meet the two-person rule, they should understand what they are taking on.
+
+
+## What Documents Do You Need for LLP Registration?
+
+Most delays come from details that do not match. Names, dates of birth and addresses should be the same across PAN, ID proof and the application.
+
+CHECKLIST: FOR EACH PARTNER
+[ ] PAN, or passport for foreign nationals
+[ ] Identity proof
+[ ] Address proof
+[ ] Email address and mobile number
+[ ] Digital Signature Certificate for designated partners
+[ ] Signed consent to act as a partner or designated partner
+
+CHECKLIST: FOR THE REGISTERED OFFICE
+[ ] Rent or lease agreement, or ownership proof
+[ ] Recent utility bill or other accepted address proof
+[ ] Owner's no-objection certificate, where needed
+
+CHECKLIST: FOR THE LLP
+[ ] 1 or 2 proposed names
+[ ] Description of the business activity
+[ ] Contribution amount and each partner's share
+[ ] Profit-sharing ratio
+[ ] Draft LLP agreement
+
+Foreign partners may need notarised or apostilled documents, depending on their country. Allow extra time for this.
+
+
+## How to Register an LLP: Step by Step
+
+### Step 1: Get Digital Signature Certificates
+Designated partners sign MCA forms electronically, so arrange their Digital Signature Certificates first. Check that the details on each one match the partner's PAN.
+
+### Step 2: Reserve the LLP name
+You can reserve the name using the RUN-LLP service or apply within the incorporation filing. A name can be rejected if it is too close to an existing company, LLP or trademark. Keep a second option ready, and do not order branding until the name is approved.
+
+TIP: Search the MCA and trademark records before you apply. If you plan to build a brand, read our [trademark registration service page](/services/trademark-registration) as well.
+
+### Step 3: File the FiLLiP form
+FiLLiP is the incorporation form for a Limited Liability Partnership. It records the name, business activity, registered office, partners, contribution and designated partners. Partners who do not yet have a DPIN or DIN can apply for one through this form, subject to its limits.
+
+### Step 4: Respond to any queries
+The Registrar may ask for corrections or send the application back. Common reasons include unclear business activity, weak address proof or mismatched details.
+
+### Step 5: Receive the Certificate of Incorporation
+Once approved, the LLP gets its certificate and LLP Identification Number (LLPIN). Processing time varies, and published estimates often run from about 1 to 3 weeks. No adviser can promise a government approval date, so plan with a range.
+
+### Step 6: File the LLP agreement in Form 3
+File the signed and stamped LLP agreement in Form 3 within 30 days of incorporation. Stamp duty depends on the state. If there is no agreement, the default rules in the First Schedule of the LLP Act can apply, and they may not match what the partners intended.
+
+A good LLP agreement should cover:
+- Contribution and profit-sharing
+- Roles and decision-making
+- Admitting a new partner, and how a partner leaves
+- What happens if a partner dies or is unable to continue
+- How the LLP handles disputes or closes down
+
+
+## What Does LLP Registration Cost?
+
+There is no single price that applies to everyone. A useful quote separates government costs from professional fees, so you can see what you are paying for.
+
+| Cost item | What affects it | What to ask |
+| MCA filing fee | Mainly the total contribution | Is it included in the quote? |
+| Stamp duty on the LLP agreement | State and contribution | Which state's duty was assumed? |
+| Digital Signature Certificates | Number of signatories and provider | How many are included? |
+| Professional fees | Drafting, number of partners, foreign partners | Are Form 3 and any re-filing covered? |
+| Registered office documents | Owned, rented or shared premises | What proof or NOC do you need? |
+| First-year compliance | Accounts, audit, Form 11, Form 8, tax return | What happens after the certificate? |
+
+CALLOUT: Be careful with low headline prices
+A low price may leave out stamp duty, Digital Signature Certificates, the LLP agreement or Form 3. Compare what is covered, not only the number.
+
+
+## What Happens After LLP Registration?
+
+Registration is only the start. These are the main items to plan for:
+
+| Item | When | Note |
+| Form 3 (LLP agreement) | Within 30 days of incorporation | Also needed when the agreement changes |
+| Bank account and partner contribution | Soon after incorporation | Keep clear records of each partner's contribution |
+| PAN, TAN and GST review | At the start | GST depends on your activity and turnover |
+| Form 11 (annual return) | By 30 May each year | Due within 60 days of the year-end |
+| Form 8 (accounts and solvency) | By 30 October each year | Needs 2 designated partners' signatures and a practising professional's certification |
+| Income tax return (ITR-5) | Depends on whether an audit is required | Check the date each year, as CBDT can extend it |
+| Audit | Yearly, if limits are crossed | Required above ₹40 lakh turnover or ₹25 lakh contribution |
+| Director KYC | Once every 3 financial years | Applies to individuals holding a DIN, including designated partners |
+
+Not sure which registrations apply? Our guide on [when GST registration is required](/blogs/gst-registration-when-required-india-2026) is a good next step.
+
+### How is an LLP taxed?
+
+An LLP pays tax at 30% plus applicable surcharge and cess. It has no lower optional rate like the 22% regime open to domestic companies. A partner's share of profit is generally not taxed again in the partner's hands.
+
+The headline rate is only part of the answer. Partner pay, interest and how owners take money out can all change the final tax, so ask a tax professional to compare the total result.
+
+
+## What Are the Late Fees for LLP Form 8 and Form 11?
+
+Be careful with this one, because many websites still say ₹100 per day. Since the LLP Rules were amended with effect from 1 April 2022, the additional fee is a multiple of the normal filing fee. It rises with the delay and applies to each form separately.
+
+| Delay | Small LLP | Other LLP |
+| Up to 15 days | 1 times the normal fee | 1 times |
+| 15 to 30 days | 2 times | 4 times |
+| 30 to 60 days | 4 times | 8 times |
+| 60 to 90 days | 6 times | 12 times |
+| 90 to 180 days | 10 times | 20 times |
+| 180 to 360 days | 15 times | 30 times |
+| Over 360 days | 15 times + ₹10 per day | 30 times + ₹20 per day |
+
+A small LLP generally has contribution up to ₹25 lakh and turnover up to ₹40 lakh. The normal fee depends on contribution, which means the amounts are often modest at first. The bigger risks are penalty action against the LLP and its designated partners, and several years of filings building up.
+
+Two more points are easy to miss:
+
+- MCA's October 2026 relief for AOC-4 and MGT-7 applies to companies. It does not cover LLP Form 8 or Form 11.
+- The Companies Compliance Facilitation Scheme 2026 also did not cover LLPs.
+
+
+## Common Mistakes in LLP Registration
+
+- Choosing an LLP when you already know you want equity investors.
+- Adding a designated partner only to meet the two-person rule, without explaining the responsibility.
+- Using a free online agreement that does not cover exits or disputes.
+- Missing the 30-day Form 3 deadline.
+- Assuming a small or inactive LLP does not have to file Form 11 and Form 8.
+- Finalising branding before the name is approved.
+- Paying business expenses personally without recording them properly.
+
+
+## Frequently Asked Questions
+
+### How many people are needed to register an LLP?
+You need at least two partners. At least two of them must be individuals acting as designated partners, and at least one designated partner must be resident in India. There is no maximum number of partners, so an LLP can grow without changing this basic structure.
+
+### Is there a minimum capital for an LLP?
+No fixed minimum contribution applies. Partners decide the amount, and it can be in forms other than cash if properly valued. Think it through, though, because contribution affects your filing fees, late fees and whether an audit is required.
+
+### How long does LLP registration take?
+Published estimates often range from about 1 to 3 weeks, but no fixed timeline applies. The time depends on name approval, document quality, Registrar queries and portal processing. Foreign partners can take longer, because their documents may need notarisation or an apostille.
+
+### Is an audit compulsory for every LLP?
+No. An audit is required if turnover is above ₹40 lakh or contribution is above ₹25 lakh in the financial year. Below both limits, an audit under the LLP rules is not required, but the LLP must still keep accounts and file Form 8 and Form 11.
+
+### Can an LLP raise funds from investors?
+An LLP cannot issue shares, so typical equity funding from angel or venture investors does not fit it well. An investor could join as a partner, but most prefer a share-based company. If you expect to raise equity soon, compare a Private Limited Company first.
+
+### What happens if an LLP does not file Form 8 or Form 11?
+Additional fees apply to each late form and rise as the delay grows. The LLP and its designated partners can also face penalty action. An LLP with overdue Form 8 or Form 11 also cannot be closed through Form 24 until those filings and fees are cleared.
+
+
+## Final Takeaway
+
+LLP registration in India is usually simple when the partners agree on the important points first: who owns what, who signs, how profits are shared and how someone can leave. Treat the LLP agreement seriously, and add Form 11 and Form 8 to your calendar on the day you are registered.
+
+CALL TO ACTION
+Heading: Planning to register an LLP?
+Text: AarambhGrow Advisory can help you compare structures, organise your documents and prepare your LLP filing.
+Button: Explore LLP and company registration
+Link: /services/company-incorporation
+
+
+## Sources
+
+This article is educational and should not be treated as a substitute for legal, tax or secretarial advice. Rules, fees and portal processes can change. Review the latest official requirements before filing.
+
+- MCA portal and current notices: https://www.mca.gov.in/
+- LLP Act, 2008, ICAI copy: https://live.icai.org/bos/vcc/pdf/LLP_ACT_2008.pdf
+- LLP Rules 2022 amendment, TaxGuru: https://taxguru.in/corporate-law/limited-liability-partnership-amendment-rules-2022.html
+- LLP Form 8 and Form 11 due dates and late-fee table, CalcGuru: https://calcguru.in/?p=9869
+- LLP tax position, Treelife: https://treelife.in/taxation/startup-tax-structuring-in-india/
+- CCFS-2026 coverage, India Briefing: https://www.india-briefing.com/news/india-mca-extends-ccfs-2026-deadline-15-september-46746.html/
+- MCA General Circular 05/2026, as reproduced by TaxGuru: https://taxguru.in/company-law/mca-extends-aoc-4-filing-31-december-2026-mgt-7-31-january-2027-without-additional-fees.html
+- DIR-3 KYC changes, TaxGuru: https://taxguru.in/company-law/dir-3-kyc-changed-31-march-2026-files-trap-avoid.html
+
+
+================================================================
+REMOVE EVERYTHING BELOW BEFORE PUBLISHING
+================================================================
+
+WHAT THE CA OR CS MUST CHECK
+1. LATE-FEE TABLE: most important. It comes from one source (CalcGuru) and fits reports on the 2022 Rules, but other sites still say ₹100 per day. Check it against Annexure A of the LLP Rules. Also confirm the table's boundary days.
+2. "Resident in India": I left the number of days out on purpose. Sources show 182 days and 120 days. I believe the LLP (Amendment) Act, 2021 changed it to 120 days in the financial year. If you confirm this, it is worth adding.
+3. Form 3 within 30 days and the First Schedule default rules: from the Act and Rules and my own knowledge. Please confirm.
+4. FiLLiP: confirm the limit on how many DPIN or DIN applications it allows, and whether RUN-LLP is still the correct name service.
+5. Timeline of "about 1 to 3 weeks": based on commercial websites (7 to 15 working days). Replace it with your real experience if you can.
+6. Form 8 certification and Form 11 certification details.
+7. "Can be in forms other than cash" and a partner's profit share "generally not taxed again": please confirm the wording. Tax references should follow the Income Tax Act, 2025 where it applies.
+8. Director KYC: confirm how the 3-year rule applies to designated partners who hold a DIN.
+
+BEFORE IT GOES LIVE
+- Add a real author or reviewer name, only if that person actually reviewed it.
+- Make the cover image.
+- The GST link only works once Blog 4 is live on 25 November. Remove it or publish Blog 4 first.
+- Add a link from the "Private Limited vs LLP" blog to this post.

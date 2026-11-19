@@ -1,0 +1,101 @@
+import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+import "./globals.css";
+import ClientLayout from "./ClientLayout";
+// import FundingChatbot from "./components/chatbot/FundingChatbot";
+import { OG_IMAGE, ORGANIZATION_NAME, SITE_URL } from "./data/site";
+import { ROBOTS_FULL } from "./lib/seo";
+import { DIWALI } from "./data/diwali";
+import { diwaliHeadScript } from "./lib/diwali";
+
+const GA_MEASUREMENT_ID = "G-YPBJVM607L";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+const HOME_TITLE = "Business Registration, GST & Compliance Services India | AarambhGrow";
+
+/*
+  Site-wide defaults. No title template: every page title from the SEO spec
+  already ends with the brand name.
+*/
+export const metadata = {
+  metadataBase: new URL(SITE_URL),
+
+  title: HOME_TITLE,
+
+  description:
+    "AarambhGrow Advisory supports startups and MSMEs across India with company incorporation, GST, Udyam, ITR, ROC compliance, DPIIT, licences, certifications and trademarks.",
+
+  applicationName: ORGANIZATION_NAME,
+  authors: [{ name: ORGANIZATION_NAME }],
+  creator: ORGANIZATION_NAME,
+  publisher: ORGANIZATION_NAME,
+
+  robots: ROBOTS_FULL,
+
+  /* Icons come from app/favicon.ico, app/icon.png and app/apple-icon.png. */
+
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: ORGANIZATION_NAME,
+    title: HOME_TITLE,
+    description:
+      "Business registration, tax, compliance, licensing and certification support for startups and MSMEs across India.",
+    url: `${SITE_URL}/`,
+    images: [OG_IMAGE],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Business Registration & Compliance Services India | AarambhGrow",
+    description:
+      "Company incorporation, GST, Udyam, ROC compliance, DPIIT recognition, licences, certifications and trademark support across India.",
+    images: [OG_IMAGE.url],
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    // suppressHydrationWarning: the Diwali head script adds attributes to <html> before React loads.
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      {DIWALI.enabled && (
+        <head>
+          <script dangerouslySetInnerHTML={{ __html: diwaliHeadScript() }} />
+        </head>
+      )}
+      <body className="min-h-full flex flex-col">
+        <ClientLayout>{children}</ClientLayout>
+        {/* ARTHIQ, the AI funding assistant (same chat as the Euroasia site, served from chatbot.euroasia.cloud) */}
+        {/* <FundingChatbot /> */}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </body>
+    </html>
+  );
+}
