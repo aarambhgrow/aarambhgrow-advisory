@@ -29,9 +29,9 @@ export default function ContactPage() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "AarambhGrow Advisory",
-    url: "https://aarambhgrow.com",
+    url: "https://aarambhgrow.in",
     telephone: "+91-9998715799",
-    email: "info@aarambhgrow.com",
+    email: "info@aarambhgrow.in",
     description:
       "Business registration, taxation, statutory compliance, licensing and certification advisory services for startups, MSMEs and businesses across India.",
     address: { "@type": "PostalAddress", ...ADDRESS },
