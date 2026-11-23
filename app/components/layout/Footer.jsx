@@ -320,10 +320,10 @@ export default function Footer() {
               <div>
                 <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-slate-500">Official Correspondence</p>
                 <a
-                  href="mailto:info@aarambhgrow.com"
+                  href="mailto:info@aarambhgrow.in"
                   className="mt-0.5 block text-xs font-semibold text-white transition-colors duration-200 hover:text-[#157327]"
                 >
-                  info@aarambhgrow.com
+                  info@aarambhgrow.in
                 </a>
               </div>
             </motion.div>
