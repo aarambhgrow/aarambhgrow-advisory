@@ -1,7 +1,7 @@
 import { ORGANIZATION_NAME } from "./site";
 
-const EMAIL = "info@aarambhgrow.com";
-const WEBSITE = "aarambhgrow.com";
+const EMAIL = "info@aarambhgrow.in";
+const WEBSITE = "aarambhgrow.in";
 
 /*
   Content for the Privacy Policy and Terms of Service pages.
