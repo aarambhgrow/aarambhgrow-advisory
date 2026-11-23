@@ -61,7 +61,7 @@ export default function ContactMainSection() {
 
               {/* EMAIL */}
               <a
-                href="mailto:info@aarambhgrow.com"
+                href="mailto:info@aarambhgrow.in"
                 className="group relative flex flex-col justify-between rounded-md border border-slate-200/80 bg-[#f8fafc] p-3.5 transition-all duration-200 hover:border-[#F26522] hover:bg-white hover:shadow-md"
               >
                 <div className="flex items-center justify-between">
@@ -76,7 +76,7 @@ export default function ContactMainSection() {
                   <span className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">Official Email</span>
 
                   <p className="mt-0.5 truncate text-xs font-bold text-[#03254C] transition-colors group-hover:text-[#F26522]">
-                    info@aarambhgrow.com
+                    info@aarambhgrow.in
                   </p>
                 </div>
               </a>
