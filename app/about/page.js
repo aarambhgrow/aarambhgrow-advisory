@@ -33,7 +33,7 @@ const breadcrumbSchema = {
 
       name: "Home",
 
-      item: "https://aarambhgrow.com/",
+      item: "https://aarambhgrow.in/",
     },
 
     {
@@ -43,7 +43,7 @@ const breadcrumbSchema = {
 
       name: "About Us",
 
-      item: "https://aarambhgrow.com/about",
+      item: "https://aarambhgrow.in/about",
     },
   ],
 };
