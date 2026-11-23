@@ -12,13 +12,13 @@ export const metadata = {
   description:
     "Contact AarambhGrow Advisory for business registration, MSME, GST, ITR filing, MCA compliance, licences, certifications, Startup India DPIIT recognition and other business advisory services across India.",
   alternates: {
-    canonical: "https://aarambhgrow.com/contact",
+    canonical: "https://aarambhgrow.in/contact",
   },
   openGraph: {
     title: "Contact AarambhGrow Advisory | Business Registration & Compliance Support",
     description:
       "Connect with AarambhGrow Advisory for company incorporation, GST, MSME registration, tax filing, MCA compliance, licences, certifications and startup recognition support.",
-    url: "https://aarambhgrow.com/contact",
+    url: "https://aarambhgrow.in/contact",
     siteName: "AarambhGrow Advisory",
     type: "website",
   },
